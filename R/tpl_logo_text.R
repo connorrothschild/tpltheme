@@ -28,6 +28,3 @@ tpl_logo_text <- function() {
                        fontfamily = "Adobe Caslon Pro"))
   )
 }
-
-grid.arrange(plot, tpl_logo_text(), ncol = 1, heights = c(30, 1))
-
