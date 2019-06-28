@@ -1,0 +1,19 @@
+Package: tpltheme
+Type: Package
+Title: Creates custom ggplot themes in the style of Texas Policy Lab
+Version: 0.1.0
+Authors@R: person("Connor", "Rothschild", email = "connorrothschild@gmail.com",
+    role = c("aut", "cre"))
+URL: https://github.com/connorrothschild/tpltheme
+Maintainer: Connor Rothschild <connorrothschild@gmail.com>
+Description: Creates custom ggplot themes in the style of Texas Policy Lab
+Imports: 
+    ggplot2,
+    extrafont,
+    dplyr,
+    scales,
+    ggrepel
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
