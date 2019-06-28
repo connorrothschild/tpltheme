@@ -172,10 +172,25 @@ theme_tpl_print <- function(base_size = 11, base_family = "Adobe Caslon Pro",
   )
 }
 
+set_tpl_theme(style = "print")
+
 ggplot(iris, aes(x=Sepal.Length,y=Sepal.Width,color=Species)) +
   geom_point() +
   labs(title = "Title",
        subtitle ="Subtitle",
-       caption = "Source: Source\nDesign: Texas Policy Lab") +
-  theme_tpl_print()
+       caption = "Source: Source\nDesign: Texas Policy Lab")
+
+plot <- ggplot(iris, aes(x=Sepal.Length,y=Sepal.Width,color=Sepal.Length)) +
+  geom_point() +
+  labs(title = "Title",
+       subtitle ="Subtitle",
+       caption = "Source: Source\n")
+
+plot <- ggplot(iris, aes(x=Species,y=Sepal.Width,fill=Species)) +
+  geom_col(position = "dodge") +
+  labs(title = "Title",
+       subtitle ="Subtitle",
+       caption = element_blank())
+
+grid.arrange(plot, tpl_logo_text(), ncol = 1, heights = c(30, 1))
 

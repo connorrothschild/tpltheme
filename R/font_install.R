@@ -4,7 +4,7 @@
 #'
 #' Note: Adobe Caslon Pro must be installed on your computer for \code{font_install} to work.
 #'
-#' Test to see if Prooxima Nova is imported and registered with \code{font_test()}.
+#' Test to see if Adobe Caslon Pro is imported and registered with \code{font_test()}.
 #'
 #' @md
 #' @export

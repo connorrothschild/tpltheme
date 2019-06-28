@@ -10,9 +10,6 @@
 #' @param base_line_size,base_rect_size base line and rectangle sizes
 #' @export
 #'
-
-### TO DO
-
 theme_tpl_texas <- function(scale = "continuous",
                            base_size = 8.5,
                            base_family = "Adobe Caslon Pro",
