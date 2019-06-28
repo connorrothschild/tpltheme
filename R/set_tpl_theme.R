@@ -9,20 +9,19 @@
 #' @md
 #' @export
 
-# set default theme
-
 set_tpl_theme <- function(style = "print") {
 
-  if (style == "print") {
-  ggplot2::theme_set(theme_tpl_print())
+  # set default theme
+
+    if (style == "print") {
+    ggplot2::theme_set(theme_tpl_print())
+  } else if (style == "Texas") {
+    ggplot2::theme_set(theme_tpl_texas())
+  } else {
+    stop('Style does not exist. Try "print" or "Texas".',
+         call. = FALSE
+      )
   }
-} else if (style == "Texas") {
-  ggplot2::theme_set(theme_tpl_texas())
-} else {
-  stop('Style does not exist. Try "print" or "Texas".',
-       call. = FALSE
-    )
-}
 
 # add font
 
@@ -33,7 +32,10 @@ ggplot2::update_geom_defaults("label_repel", list(family = "Adobe Caslon Pro"))
 
 # set color scales for continuous
 
-### to do
+options(
+  ggplot2.continuous.colour = "gradient",
+  ggplot2.continuous.fill = "gradient"
+        )
 
 # set colors for single bars, etc.
 
@@ -53,3 +55,5 @@ ggplot2::update_stat_defaults("count", list(fill = "#151348"))
 ggplot2::update_stat_defaults("boxplot", list(fill = "#151348"))
 ggplot2::update_stat_defaults("density", list(fill = "#151348"))
 ggplot2::update_stat_defaults("ydensity", list(fill = "#151348"))
+
+}
