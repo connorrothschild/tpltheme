@@ -54,8 +54,8 @@ scale_fill_discrete <- function(...) {
 #' @param ... other arguments passed to \code{discrete_scale()}
 #' @export
 scale_color_gradientn <- function(...,
-                                  colours = c("#1188A6","#117B9B","#116E91","#126186","#12547C","#134771","#133A67","#142D5C","#142052"),
-                                  colors = c("#1188A6","#117B9B","#116E91","#126186","#12547C","#134771","#133A67","#142D5C","#142052"),
+                                  colours = config$palettes$seq$p9,
+                                  colors = config$palettes$seq$p9,
                                   values = NULL,
                                   space = "Lab",
                                   na.value = "grey50",
@@ -92,8 +92,8 @@ scale_colour_gradientn <- scale_color_gradientn
 #' @param ... other arguments passed to \code{discrete_scale()}
 #' @export
 scale_fill_gradientn <- function(...,
-                                 colours = c("#1188A6","#117B9B","#116E91","#126186","#12547C","#134771","#133A67","#142D5C","#142052"),
-                                 colors = c("#1188A6","#117B9B","#116E91","#126186","#12547C","#134771","#133A67","#142D5C","#142052"),
+                                 colours = config$palettes$seq$p9,
+                                 colors = config$palettes$seq$p9,
                                  values = NULL,
                                  space = "Lab",
                                  na.value = "grey50",
