@@ -9,7 +9,6 @@ Maintainer: Connor Rothschild <connorrothschild@gmail.com>
 Description: Creates custom ggplot themes in the style of Texas Policy Lab
 Imports: 
     ggplot2,
-    grid,
     gridExtra,
     extrafont,
     dplyr,
@@ -21,3 +20,4 @@ LazyData: true
 RoxygenNote: 6.1.1
 Suggests: 
     testthat
+
