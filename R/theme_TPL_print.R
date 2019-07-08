@@ -6,8 +6,10 @@
 #' @import extrafont
 #' @import ggrepel
 #' @md
-#' @param base_family,base_size base font family and size
-#' @param base_line_size,base_rect_size base line and rectangle sizes
+#' @param base_family base font family. font options are Adobe Caslon Pro and Lato. Choices are "adobe" and "lato"
+#' @param base_size base font size
+#' @param base_line_size base line
+#' @param base_rect_size rectangle sizes
 #' @export
 
 theme_tpl_print <- function(base_size = 11, base_family = "Adobe Caslon Pro",
