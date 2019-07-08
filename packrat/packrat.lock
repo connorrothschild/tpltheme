@@ -149,8 +149,8 @@ Package: ggplot2
 Source: CRAN
 Version: 3.2.0
 Hash: 3f9c63b2e40ea80716bbf249d9eeb9f4
-Requires: digest, gtable, lazyeval, rlang, viridisLite, withr, scales,
-    reshape2, tibble
+Requires: digest, gtable, lazyeval, rlang, viridisLite, withr, plyr,
+    scales, reshape2, tibble
 
 Package: ggrepel
 Source: CRAN
