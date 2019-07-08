@@ -13,7 +13,8 @@ Imports:
     extrafont,
     dplyr,
     scales,
-    ggrepel
+    ggrepel,
+    maps
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

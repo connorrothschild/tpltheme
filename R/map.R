@@ -1,4 +1,4 @@
-config <- utilsR::read_yaml("./config.yaml")
+#'@importFrom magrittr "%>%"
 
 cmp <- config$maps$base
 
@@ -19,9 +19,9 @@ ditch_the_axes <- ggplot2::theme(
 #' @title base map
 #' @param data the data to use
 base_map <- function(data) {
-  
+
   ggplot2::ggplot() +
-    ggplot2::geom_polygon(data = data, 
+    ggplot2::geom_polygon(data = data,
                           ggplot2::aes(x = long, y = lat, fill = region, group = group), color = cmp$color, fill = cmp$fill) +
     ggplot2::coord_fixed(1.3) +
     ggplot2::guides(fill = FALSE) +
@@ -31,14 +31,14 @@ base_map <- function(data) {
 
 #' @title United States base map
 usa_base_map <- function() {
-  
+
   base_map(data = state)
-  
+
 }
 
 #' @title Texas base map
 tx_base_map <- function(data = cntys) {
-  
+
   base_map(data = cntys)
-  
+
 }
