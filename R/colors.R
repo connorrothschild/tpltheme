@@ -10,18 +10,21 @@
 #'@family TPL palettes
 #'@rdname TPL_palletes
 #'@export
-palette_TPL_main <- c(
-  blue = "#151348",
-  red = "#E54E4D",
-  lightblue = "#5393EA")
+palette_TPL_main <- config$palettes$tpl_main
+  # c(
+  # blue = "#151348",
+  # red = "#E54E4D",
+  # lightblue = "#5393EA")
 
-palette_school_soc_sci <- c(
-  blue = "#004080",
-  gray = "#DDDDDD",
-  white = "#ffffff"
-)
+palette_school_soc_sci <- config$palettes$school_soc_sci
+#   c(
+#   blue = "#004080",
+#   gray = "#DDDDDD",
+#   white = "#ffffff"
+# )
 
-palette_rice <- c(
-  blue = "#005499",
-  gray = "#505050"
-)
+palette_rice <- config$palettes$rice
+#   c(
+#   blue = "#005499",
+#   gray = "#505050"
+# )
