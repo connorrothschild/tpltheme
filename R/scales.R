@@ -21,7 +21,7 @@ tpl_color_pal <- function(palette = "categorical") {
 #' @param ... other arguments passed to \code{discrete_scale()}
 #' @export
 scale_color_discrete <- function(...) {
-  ggplot2::discrete_scale("colour", "tpl", tpl_color_pal("categorical"), ...)
+  ggplot2::discrete_scale("fill", "tpl", tpl_color_pal("categorical"), ...)
 }
 
 #' Discrete color scale
@@ -30,7 +30,7 @@ scale_color_discrete <- function(...) {
 #' @param ... other arguments passed to \code{discrete_scale()}
 #' @export
 scale_colour_discrete <- function(...) {
-  ggplot2::discrete_scale("colour", "tpl", tpl_color_pal("categorical"), ...)
+  ggplot2::discrete_scale("fill", "tpl", tpl_color_pal("categorical"), ...)
 }
 
 #' Discrete fill scale
@@ -63,7 +63,7 @@ scale_color_gradientn <- function(...,
 
   colours <- if (missing(colours)) colors else colours
 
-  ggplot2::continuous_scale("colour", "gradientn",
+  ggplot2::continuous_scale("fill", "gradientn",
                             scales::gradient_n_pal(colours, values, space), na.value = na.value, guide = guide, ...)
 }
 
