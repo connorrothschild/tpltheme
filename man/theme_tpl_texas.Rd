@@ -9,9 +9,13 @@ theme_tpl_texas(scale = "continuous", base_size = 8.5,
   base_rect_size = 0.5)
 }
 \arguments{
-\item{base_family, base_size}{base font family and size}
+\item{base_size}{base font size}
 
-\item{base_line_size, base_rect_size}{base line and rectangle sizes}
+\item{base_family}{base font family}
+
+\item{base_line_size}{base line}
+
+\item{base_rect_size}{base rectangle sizes}
 }
 \description{
 \code{theme_tpl} provides a \link{ggplot2} theme formatted according to the TPL

@@ -4,7 +4,7 @@
 \name{palette_TPL_main}
 \alias{palette_TPL_main}
 \title{Texas Policy Lab color palettes}
-\format{An object of class \code{character} of length 3.}
+\format{An object of class \code{NULL} of length 0.}
 \source{
 Texas Policy Lab website
   \url{https://www.texaspolicylab.org/}
