@@ -15,9 +15,12 @@ Imports:
     scales,
     ggrepel,
     maps
+    magrittr
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
 Suggests: 
-    testthat
+    testthat,
+    knitr
+VignetteBuilder: knitr

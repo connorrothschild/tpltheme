@@ -2,6 +2,7 @@
 
 cmp <- config$maps$base
 
+#' @importFrom magrittr "%>%"
 cntys <- ggplot2::map_data("county") %>%
   subset(region == "texas")
 
