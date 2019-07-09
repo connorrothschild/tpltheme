@@ -87,6 +87,13 @@ theme_tpl_print <- function(base_size = 11, base_family = "Adobe Caslon Pro",
 
     axis.ticks = ggplot2::element_line(),
     axis.ticks.length = ggplot2::unit(4L, "pt"),
+    axis.ticks.length.x = ggplot2::unit(4L, "pt"),
+    axis.ticks.length.x.top = ggplot2::unit(4L, "pt"),
+    axis.ticks.length.x.bottom = ggplot2::unit(4L, "pt"),
+    axis.ticks.length.y = ggplot2::unit(4L, "pt"),
+    axis.ticks.length.y.left = ggplot2::unit(4L, "pt"),
+    axis.ticks.length.y.right = ggplot2::unit(4L, "pt"),
+
     axis.ticks.x = ggplot2::element_line(colour = NULL,
                                          size = NULL,
                                          linetype = NULL,
