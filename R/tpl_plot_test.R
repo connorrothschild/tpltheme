@@ -8,10 +8,10 @@
 #' @export
 #' @param type Type of plot to be produced. Options include \code{barplot}, \code{scatterplot}, \code{boxplot}, and \code{histogram}
 #' @param include.logo Whether to include the TPL logo at the bottom of the plot
-tpl_plot_test <- function(type = "barplot", include.logo = F) {
+tpl_plot_test <- function(type = "barplot", font = "adobe", include.logo = F) {
 
   #set theme
-  set_tpl_theme(style = "print", font = "adobe")
+  set_tpl_theme(style = "print", font = font)
 
   #select plot type
     if (type == "barplot") {
@@ -37,13 +37,14 @@ tpl_plot_test <- function(type = "barplot", include.logo = F) {
     # logo option
     if (include.logo == T) {
       plot <- gridExtra::grid.arrange(plot, tpl_logo_text(), ncol = 1, heights = c(30, 1))
+      print("WARNING: Including the TPL logo in a plot will make the output to be difficult to edit (because it is a grid of objects rather than one plot). Consider making include.logo = FALSE. Only use this function to see what the logo looks like, not to make a plot that will be edited in the future.")
     } else if (include.logo == F) {
       return(plot)
     }
     return(plot)
   }
 
-# tpl_plot_test(type = "barplot", include.logo = T)
+# plot <- tpl_plot_test(type = "barplot", include.logo = T)
 # tpl_plot_test(type = "boxplot", include.logo = T)
 # tpl_plot_test(type = "scatterplot", include.logo = F)
 # tpl_plot_test(type = "histogram", include.logo = F)
