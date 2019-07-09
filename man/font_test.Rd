@@ -2,13 +2,13 @@
 % Please edit documentation in R/font_test.R
 \name{font_test}
 \alias{font_test}
-\title{Test for Adobe Caslon Pro import and registration}
+\title{Test for Adobe Caslon Pro & Lato import and registration}
 \usage{
 font_test()
 }
 \description{
-\code{font_test} tests to see if Adobe Caslon Pro is imported and registered.
+\code{font_test} tests to see if default fonts are imported and registered.
 }
 \details{
-Import and register Adobe Caslon Pro in R with font_install().
+Import and register Adobe Caslon Pro & Lato in R with font_install().
 }

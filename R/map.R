@@ -1,4 +1,4 @@
-config <- utilsR::read_yaml("./config.yaml")
+#'@importFrom magrittr "%>%"
 
 cmp <- config$maps$base
 

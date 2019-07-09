@@ -21,7 +21,7 @@ tpl_color_pal <- function(palette = "categorical") {
 #' @param ... other arguments passed to \code{discrete_scale()}
 #' @export
 scale_color_discrete <- function(...) {
-  ggplot2::discrete_scale("fill", "tpl", tpl_color_pal("categorical"), ...)
+  ggplot2::discrete_scale("colour", "tpl", tpl_color_pal("categorical"), ...)
 }
 
 #' Discrete color scale
@@ -30,7 +30,7 @@ scale_color_discrete <- function(...) {
 #' @param ... other arguments passed to \code{discrete_scale()}
 #' @export
 scale_colour_discrete <- function(...) {
-  ggplot2::discrete_scale("fill", "tpl", tpl_color_pal("categorical"), ...)
+  ggplot2::discrete_scale("colour", "tpl", tpl_color_pal("categorical"), ...)
 }
 
 #' Discrete fill scale
@@ -54,8 +54,8 @@ scale_fill_discrete <- function(...) {
 #' @param ... other arguments passed to \code{discrete_scale()}
 #' @export
 scale_color_gradientn <- function(...,
-                                  colours = c("#1188A6","#117B9B","#116E91","#126186","#12547C","#134771","#133A67","#142D5C","#142052"),
-                                  colors = c("#1188A6","#117B9B","#116E91","#126186","#12547C","#134771","#133A67","#142D5C","#142052"),
+                                  colours = config$palettes$seq,
+                                  colors = config$palettes$seq,
                                   values = NULL,
                                   space = "Lab",
                                   na.value = "grey50",
@@ -63,7 +63,7 @@ scale_color_gradientn <- function(...,
 
   colours <- if (missing(colours)) colors else colours
 
-  ggplot2::continuous_scale("fill", "gradientn",
+  ggplot2::continuous_scale("colour", "gradientn",
                             scales::gradient_n_pal(colours, values, space), na.value = na.value, guide = guide, ...)
 }
 
@@ -92,8 +92,8 @@ scale_colour_gradientn <- scale_color_gradientn
 #' @param ... other arguments passed to \code{discrete_scale()}
 #' @export
 scale_fill_gradientn <- function(...,
-                                 colours = c("#1188A6","#117B9B","#116E91","#126186","#12547C","#134771","#133A67","#142D5C","#142052"),
-                                 colors = c("#1188A6","#117B9B","#116E91","#126186","#12547C","#134771","#133A67","#142D5C","#142052"),
+                                 colours = config$palettes$seq,
+                                 colors = config$palettes$seq,
                                  values = NULL,
                                  space = "Lab",
                                  na.value = "grey50",

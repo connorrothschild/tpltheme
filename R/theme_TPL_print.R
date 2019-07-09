@@ -174,11 +174,3 @@ theme_tpl_print <- function(base_size = 11, base_family = "Adobe Caslon Pro",
   )
 }
 
-# set_tpl_theme(style = "print")
-# plot <- ggplot(iris, aes(x=Species,y=Sepal.Width,fill=Species)) +
-#   geom_col(position = "dodge") +
-#   labs(title = "Title",
-#        subtitle ="Subtitle",
-#        caption = element_blank())
-# grid.arrange(plot, tpl_logo_text(), ncol = 1, heights = c(30, 1))
-

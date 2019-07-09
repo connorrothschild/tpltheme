@@ -4,11 +4,9 @@
 \alias{scale_fill_gradientn}
 \title{Continuous fill scale}
 \usage{
-scale_fill_gradientn(..., colours = c("#1188A6", "#117B9B", "#116E91",
-  "#126186", "#12547C", "#134771", "#133A67", "#142D5C", "#142052"),
-  colors = c("#1188A6", "#117B9B", "#116E91", "#126186", "#12547C",
-  "#134771", "#133A67", "#142D5C", "#142052"), values = NULL,
-  space = "Lab", na.value = "grey50", guide = "colourbar")
+scale_fill_gradientn(..., colours = config$palettes$seq,
+  colors = config$palettes$seq, values = NULL, space = "Lab",
+  na.value = "grey50", guide = "colourbar")
 }
 \arguments{
 \item{...}{other arguments passed to \code{discrete_scale()}}

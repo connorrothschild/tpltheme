@@ -23,14 +23,13 @@ set_tpl_theme <- function(style = "print", font = "adobe") {
       )
   }
 
-# add font
+  # add font
 
   if (font == "adobe") {
     ggplot2::theme_update(text = ggplot2::element_text(family = "Adobe Caslon Pro"))
     # ggplot2::update_geom_defaults("label", list(family = "Adobe Caslon Pro"))
     # ggplot2::update_geom_defaults("text_repel", list(family = "Adobe Caslon Pro"))
     # ggplot2::update_geom_defaults("label_repel", list(family = "Adobe Caslon Pro"))
-
   } else if (font == "lato") {
     ggplot2::theme_update(text = ggplot2::element_text(family = "Lato"))
     # ggplot2::update_geom_defaults("label", list(family = "Lato"))
@@ -52,31 +51,21 @@ set_tpl_theme <- function(style = "print", font = "adobe") {
 
 # set colors for single bars, etc.
 
-    ggplot2::update_geom_defaults("bar", list(fill = "#151348"))
-    ggplot2::update_geom_defaults("col", list(fill = "#151348"))
-    ggplot2::update_geom_defaults("point", list(colour = "#151348"))
-    ggplot2::update_geom_defaults("line", list(colour = "#151348"))
-    ggplot2::update_geom_defaults("step", list(colour = "#151348"))
-    ggplot2::update_geom_defaults("path", list(colour = "#151348"))
-    ggplot2::update_geom_defaults("boxplot", list(fill = "#151348"))
-    ggplot2::update_geom_defaults("density", list(fill = "#151348"))
-    ggplot2::update_geom_defaults("violin", list(fill = "#151348"))
+    ggplot2::update_geom_defaults("bar", list(fill = config$palettes$tpl_main$blue))
+    ggplot2::update_geom_defaults("col", list(fill = config$palettes$tpl_main$blue))
+    ggplot2::update_geom_defaults("point", list(colour = config$palettes$tpl_main$blue))
+    ggplot2::update_geom_defaults("line", list(colour = config$palettes$tpl_main$blue))
+    ggplot2::update_geom_defaults("step", list(colour = config$palettes$tpl_main$blue))
+    ggplot2::update_geom_defaults("path", list(colour = config$palettes$tpl_main$blue))
+    ggplot2::update_geom_defaults("boxplot", list(fill = config$palettes$tpl_main$blue))
+    ggplot2::update_geom_defaults("density", list(fill = config$palettes$tpl_main$blue))
+    ggplot2::update_geom_defaults("violin", list(fill = config$palettes$tpl_main$blue))
 
 # set colors for stats
 
-    ggplot2::update_stat_defaults("count", list(fill = "#151348"))
-    ggplot2::update_stat_defaults("boxplot", list(fill = "#151348"))
-    ggplot2::update_stat_defaults("density", list(fill = "#151348"))
-    ggplot2::update_stat_defaults("ydensity", list(fill = "#151348"))
+    ggplot2::update_stat_defaults("count", list(fill = config$palettes$tpl_main$blue))
+    ggplot2::update_stat_defaults("boxplot", list(fill = config$palettes$tpl_main$blue))
+    ggplot2::update_stat_defaults("density", list(fill = config$palettes$tpl_main$blue))
+    ggplot2::update_stat_defaults("ydensity", list(fill = config$palettes$tpl_main$blue))
 
 }
-
-# set_tpl_theme(style = "print", font = "adobe")
-#
-# ggplot2::ggplot(iris, ggplot2::aes(x=Species,y=Sepal.Width,fill=Species)) +
-#   ggplot2::geom_col(position = "dodge") +
-#   scale_fill_ordinal() +
-#   ggplot2::labs(title = "Title",
-#        subtitle ="Subtitle",
-#        caption = ggplot2::element_blank())
-# grid.arrange(plot, tpl_logo_text(), ncol = 1, heights = c(30, 1))
