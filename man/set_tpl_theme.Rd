@@ -4,7 +4,7 @@
 \alias{set_tpl_theme}
 \title{The TPL \link{ggplot2} theme}
 \usage{
-set_tpl_theme(style = "print")
+set_tpl_theme(style = "print", font = "adobe")
 }
 \arguments{
 \item{style}{The default theme style for the R session. "print" or "map".}
