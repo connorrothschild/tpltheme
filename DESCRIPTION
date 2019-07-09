@@ -14,7 +14,7 @@ Imports:
     dplyr,
     scales,
     ggrepel,
-    maps
+    maps,
     magrittr
 License: GPL-3
 Encoding: UTF-8
