@@ -4,12 +4,11 @@
 #'
 #' @format A \code{list}
 #' @export
-
 palette_tpl <- {
 
   palette <- list(
     categorical = config$palettes$cat,
     sequential = config$palettes$seq
   )
-
+  palette
 }
