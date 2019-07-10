@@ -8,6 +8,7 @@
 #' read_word(pth)
 #' ```
 #' }
+#' @seealso read_word_table
 #' @export
 read_word <- function(pth) {
 
@@ -15,5 +16,17 @@ read_word <- function(pth) {
   x <- paste(x, collapse = "\n\n")
 
   cat(x)
+
+}
+
+#' @title Read Word table
+#' @description Reads in a table from word and prints it using the knitr and kableExtra package
+#' @seealso read_word_table
+read_word_table <- function(pth) {
+
+  docx <- docxtractr::read_docx(pth)
+  df <- docxtractr::docx_extract_tbl(docx)
+
+  return(df)
 
 }
