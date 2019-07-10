@@ -4,7 +4,7 @@
 \alias{theme_tpl_texas}
 \title{A Texas shaped \link{ggplot2} theme formatted in TPL style}
 \usage{
-theme_tpl_texas(scale = "continuous", base_size = 8.5,
+theme_tpl_texas(scale = "continuous", base_size = 12,
   base_family = "Adobe Caslon Pro", base_line_size = 0.5,
   base_rect_size = 0.5)
 }

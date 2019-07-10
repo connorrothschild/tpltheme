@@ -11,14 +11,13 @@
 #' @param base_line_size base line
 #' @param base_rect_size base rectangle sizes
 #' @export
-#'
 theme_tpl_texas <- function(scale = "continuous",
-                           base_size = 8.5,
+                           base_size = 12,
                            base_family = "Adobe Caslon Pro",
                            base_line_size = 0.5,
                            base_rect_size = 0.5) {
 
-  gg <- theme_tpl_print(base_size = 8.5, base_family = "Adobe Caslon Pro",
+  gg <- theme_tpl_print(base_size = 12, base_family = "Adobe Caslon Pro",
                          base_line_size = 0.5,
                          base_rect_size = 0.5)
 
@@ -43,3 +42,4 @@ theme_tpl_texas <- function(scale = "continuous",
   # return gg
   gg
 }
+
