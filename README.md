@@ -105,12 +105,12 @@ plot <- ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
     geom_boxplot(show.legend = FALSE) +
     labs(x="Species", y="Sepal Width (cm)", fill="Species", title="Iris Dataset", subtitle ="When specifying align = 1")
     
-add_tpl_logo(plot, align = 1)    
+add_tpl_logo(plot, align = 1.5)    
 ```
 
 ![](man/figures/README-unnamed-chunk-8-2.png)
 
-The user will rarely, if ever, need to specify `align` to be greater than 1 (rightward shift of one unit) or less than -1 (leftward shift of one unit). The argument allows for decimals for greater fine-tuned specification. It's default is 0.
+The process of specifying `align` is mostly guess-and-checking. Usually, the alignment will fall somewhere in the range of ~1 (rightward shift of one unit) and -1 (leftward shift of one unit). The argument allows for decimals for greater fine-tuned specification. It's default is 0.
 
 ### Drop Axes
 
