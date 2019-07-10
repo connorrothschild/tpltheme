@@ -21,7 +21,13 @@ read_word <- function(pth) {
 
 #' @title Read Word table
 #' @description Reads in a table from word and prints it using the knitr and kableExtra package
-#' @seealso read_word_table
+#' @param pth the path to the word document to read
+#' @seealso read_word
+#' @examples \dontrun{
+#' pth <- "path/table.docx"
+#' df <- read_word_table(pth)
+#' }
+#' @export
 read_word_table <- function(pth) {
 
   docx <- docxtractr::read_docx(pth)
