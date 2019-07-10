@@ -70,6 +70,60 @@ ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, siz
 
 ![](man/figures/README-unnamed-chunk-6-1.png)
 
+By specifying `style = "Texas"` within `set_tpl_theme`, the user may also create Texas-specific plots.
+
+``` r
+tx_vac <- readr::read_csv("https://raw.githubusercontent.com/connorrothschild/tpltheme/master/tx_vac_example.csv")
+```
+
+    #> Parsed with column specification:
+    #> cols(
+    #>   X1 = col_double(),
+    #>   long = col_double(),
+    #>   lat = col_double(),
+    #>   group = col_double(),
+    #>   order = col_double(),
+    #>   region = col_character(),
+    #>   subregion = col_character(),
+    #>   avgvac = col_double()
+    #> )
+
+``` r
+set_tpl_theme(style = "Texas")
+ggplot2::ggplot(data = tx_vac, mapping = ggplot2::aes(x = long, y = lat, group = group, fill = avgvac*100)) +
+  ggplot2::coord_fixed(1.3) +
+  ggplot2::geom_polygon(color = "black") +
+  labs(title = "Texas Vaccination Rate by County",
+       subtitle = "Among Kindergarteners",
+       fill = "Percent\nVaccinated",
+       caption = "Source: Texas DSHS")
+```
+
+![](man/figures/README-unnamed-chunk-7-1.png)
+
+And it also works for categorical variables:
+
+``` r
+tx_vac %>% 
+  dplyr::mutate(cat = factor(dplyr::case_when(avgvac*100 > 99 ~ "Great",
+                         avgvac*100 > 90 ~ "Average",
+                         avgvac*100 < 90 ~ "Bad"))) %>% 
+  ggplot(mapping = ggplot2::aes(x = long, y = lat, group = group, fill = cat)) +
+  ggplot2::coord_fixed(1.3) +
+  ggplot2::geom_polygon(color = "black") +
+  labs(title = "Texas Vaccination Rate by County",
+       subtitle = "Among Kindergarteners",
+       fill = "Vaccination Rating",
+       caption = "Source: Texas DSHS")
+```
+
+![](man/figures/README-unnamed-chunk-8-1.png)
+
+``` r
+# default to print afterwards
+set_tpl_theme(style = "print")
+```
+
 ### TPL Logo
 
 The user also has the option to include the TPL logo in single plots. This may be preferred for those reports being made especially public, or to serve as a pseudo-watermark in proprietary plots.
@@ -86,7 +140,7 @@ plot <- ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Spec
 add_tpl_logo(plot)
 ```
 
-![](man/figures/README-unnamed-chunk-7-1.png)
+![](man/figures/README-unnamed-chunk-9-1.png)
 
 The user may also need to specify `align`, which moves the plot horizontally across the bottom of the page. This will be necessary if legends are removed or if the plot object is of unique dimensions.
 
@@ -98,7 +152,7 @@ plot <- ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
 add_tpl_logo(plot, align = 0)  
 ```
 
-![](man/figures/README-unnamed-chunk-8-1.png)
+![](man/figures/README-unnamed-chunk-10-1.png)
 
 ``` r
 plot <- ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
@@ -108,7 +162,7 @@ plot <- ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
 add_tpl_logo(plot, align = 1.5)    
 ```
 
-![](man/figures/README-unnamed-chunk-8-2.png)
+![](man/figures/README-unnamed-chunk-10-2.png)
 
 The process of specifying `align` is mostly guess-and-checking. Usually, the alignment will fall somewhere in the range of ~1 (rightward shift of one unit) and -1 (leftward shift of one unit). The argument allows for decimals for greater fine-tuned specification. It's default is 0.
 
@@ -125,7 +179,7 @@ ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, siz
     drop_axis(axis = "y")
 ```
 
-![](man/figures/README-unnamed-chunk-9-1.png)
+![](man/figures/README-unnamed-chunk-11-1.png)
 
 #### Additional Functions
 
