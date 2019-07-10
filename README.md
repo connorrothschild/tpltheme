@@ -1,8 +1,20 @@
-# TPL Theme
 
-## Installation
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+``` r
+knitr::opts_chunk$set(
+  comment = "#>",
+  fig.path = "man/figures/README-"
+)
+```
 
-## Plotting
+TPL Theme
+=========
+
+Installation
+------------
+
+Plotting
+--------
 
 ### Overview
 
@@ -22,31 +34,26 @@ Load `library(tpltheme)` **after** `library(ggplot2)` and/or `library(tidyverse)
 
 A plot in TPL style may take the following forms:
 
-```
-library(ggplot2)
-library(tpltheme)
+    library(ggplot2)
+    library(tpltheme)
 
-set_tpl_theme(style = "print", font = "adobe")
+    set_tpl_theme(style = "print", font = "adobe")
 
-ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
-    geom_bar(stat="summary", fun.y="mean", show.legend = FALSE) +
-    labs(x="Species", y="Mean Sepal Width (cm)", fill="Species", title="Iris Dataset")
-```
-```
-ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
-    geom_boxplot(show.legend = FALSE) +
-    labs(x="Species", y="Sepal Width (cm)", fill="Species", title="Iris Dataset")
-```
-```
-ggplot(iris, aes(x=Sepal.Width)) +
-      geom_histogram(bins = 20) +
-      labs(x="Sepal Width (cm)", y="Count", title="Iris Dataset")
-```
-```
-ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, size = Petal.Length)) +
-    geom_point() +
-    labs(x="Sepal Width (cm)", y="Sepal Length (cm)", col="Species", size = "Petal Length", title="Iris Dataset")
-```
+    ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
+        geom_bar(stat="summary", fun.y="mean", show.legend = FALSE) +
+        labs(x="Species", y="Mean Sepal Width (cm)", fill="Species", title="Iris Dataset")
+
+    ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
+        geom_boxplot(show.legend = FALSE) +
+        labs(x="Species", y="Sepal Width (cm)", fill="Species", title="Iris Dataset")
+
+    ggplot(iris, aes(x=Sepal.Width)) +
+          geom_histogram(bins = 20) +
+          labs(x="Sepal Width (cm)", y="Count", title="Iris Dataset")
+
+    ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, size = Petal.Length)) +
+        geom_point() +
+        labs(x="Sepal Width (cm)", y="Sepal Length (cm)", col="Species", size = "Petal Length", title="Iris Dataset")
 
 ### TPL Logo
 
@@ -54,31 +61,27 @@ The user also has the option to include the TPL logo in single plots. This may b
 
 To include the TPL logo, use the function `add_tpl_logo()` on an existing plot object:
 
-```
-library(grid)
-library(gridExtra)
-plot <- ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, size = Petal.Length)) +
-    geom_point() +
-    labs(x="Sepal Width (cm)", y="Sepal Length (cm)", col="Species", size = "Petal Length", title="Iris Dataset")
-    
-add_tpl_logo(plot)
-```
+    library(grid)
+    library(gridExtra)
+    plot <- ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, size = Petal.Length)) +
+        geom_point() +
+        labs(x="Sepal Width (cm)", y="Sepal Length (cm)", col="Species", size = "Petal Length", title="Iris Dataset")
+        
+    add_tpl_logo(plot)
 
 The user may also need to specify `align`, which moves the plot horizontally across the bottom of the page. This will be necessary if legends are removed or if the plot object is of unique dimensions.
 
-```
-plot <- ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
-    geom_boxplot(show.legend = FALSE) +
-    labs(x="Species", y="Sepal Width (cm)", fill="Species", title="Iris Dataset", subtitle="Without fixing logo alignment")
-    
-add_tpl_logo(plot, align = 0)  
+    plot <- ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
+        geom_boxplot(show.legend = FALSE) +
+        labs(x="Species", y="Sepal Width (cm)", fill="Species", title="Iris Dataset", subtitle="Without fixing logo alignment")
+        
+    add_tpl_logo(plot, align = 0)  
 
-plot <- ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
-    geom_boxplot(show.legend = FALSE) +
-    labs(x="Species", y="Sepal Width (cm)", fill="Species", title="Iris Dataset", subtitle ="When specifying align = 1")
-    
-add_tpl_logo(plot, align = 1)    
-```
+    plot <- ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
+        geom_boxplot(show.legend = FALSE) +
+        labs(x="Species", y="Sepal Width (cm)", fill="Species", title="Iris Dataset", subtitle ="When specifying align = 1")
+        
+    add_tpl_logo(plot, align = 1)    
 
 The user will rarely, if ever, need to specify `align` to be greater than 1 (rightward shift of one unit) or less than -1 (leftward shift of one unit). The argument allows for decimals for greater fine-tuned specification. It's default is 0.
 
@@ -88,19 +91,18 @@ In the event that the user wishes to drop an axis, they may do so with `drop_axi
 
 Unlike `add_tpl_logo()`, `drop_axis()` should be *added* to an existing plot object:
 
-```
-ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, size = Petal.Length)) +
-    geom_point() +
-    labs(x="Sepal Width (cm)", y="Sepal Length (cm)", col="Species", size = "Petal Length", title="Iris Dataset") +
-    drop_axis(axis = "y")
-```
+    ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, size = Petal.Length)) +
+        geom_point() +
+        labs(x="Sepal Width (cm)", y="Sepal Length (cm)", col="Species", size = "Petal Length", title="Iris Dataset") +
+        drop_axis(axis = "y")
 
 #### Additional Functions
 
-* `undo_tpl_theme`: Removes all TPL-specific theme settings and restores to ggplot defaults.
-* `tpl_plot_test`: Four base plots which allow the user to quickly see what a TPL-themed figure may look like. The user may specify the plot type (scatterplot, boxplot, barplot, histogram), the plot font (adobe, lato), and whether to include the TPL logo (include.logo = T).
-* `colors`: **To do**
+-   `undo_tpl_theme`: Removes all TPL-specific theme settings and restores to ggplot defaults.
+-   `tpl_plot_test`: Four base plots which allow the user to quickly see what a TPL-themed figure may look like. The user may specify the plot type (scatterplot, boxplot, barplot, histogram), the plot font (adobe, lato), and whether to include the TPL logo (include.logo = T).
+-   `colors`: **To do**
 
-## Reporting
+Reporting
+---------
 
-* `read_word`: Reads word into Rmarkdown, such that word documents can be edited and read into the main Rmarkdown file for creating reports. 
+-   `read_word`: Reads word into Rmarkdown, such that word documents can be edited and read into the main Rmarkdown file for creating reports.
