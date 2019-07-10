@@ -1,17 +1,18 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-``` r
-knitr::opts_chunk$set(
-  comment = "#>",
-  fig.path = "man/figures/README-"
-)
-```
-
 TPL Theme
 =========
 
 Installation
 ------------
+
+``` r
+config <- utilsR::read_yaml("./config.yaml")
+install.packages("devtools")
+library(ggplot2)
+#library(tpltheme)
+devtools::load_all()
+```
 
 Plotting
 --------
@@ -34,26 +35,40 @@ Load `library(tpltheme)` **after** `library(ggplot2)` and/or `library(tidyverse)
 
 A plot in TPL style may take the following forms:
 
-    library(ggplot2)
-    library(tpltheme)
+``` r
+set_tpl_theme(style = "print", font = "adobe")
 
-    set_tpl_theme(style = "print", font = "adobe")
+ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
+    geom_bar(stat="summary", fun.y="mean", show.legend = FALSE) +
+    scale_color_discrete() +
+    labs(x="Species", y="Mean Sepal Width (cm)", fill="Species", title="Iris Dataset")
+```
 
-    ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
-        geom_bar(stat="summary", fun.y="mean", show.legend = FALSE) +
-        labs(x="Species", y="Mean Sepal Width (cm)", fill="Species", title="Iris Dataset")
+![](man/figures/README-unnamed-chunk-3-1.png)
 
-    ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
-        geom_boxplot(show.legend = FALSE) +
-        labs(x="Species", y="Sepal Width (cm)", fill="Species", title="Iris Dataset")
+``` r
+ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
+    geom_boxplot(show.legend = FALSE) +
+    labs(x="Species", y="Sepal Width (cm)", fill="Species", title="Iris Dataset")
+```
 
-    ggplot(iris, aes(x=Sepal.Width)) +
-          geom_histogram(bins = 20) +
-          labs(x="Sepal Width (cm)", y="Count", title="Iris Dataset")
+![](man/figures/README-unnamed-chunk-4-1.png)
 
-    ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, size = Petal.Length)) +
-        geom_point() +
-        labs(x="Sepal Width (cm)", y="Sepal Length (cm)", col="Species", size = "Petal Length", title="Iris Dataset")
+``` r
+ggplot(iris, aes(x=Sepal.Width)) +
+      geom_histogram(bins = 20) +
+      labs(x="Sepal Width (cm)", y="Count", title="Iris Dataset")
+```
+
+![](man/figures/README-unnamed-chunk-5-1.png)
+
+``` r
+ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, size = Petal.Length)) +
+    geom_point() +
+    labs(x="Sepal Width (cm)", y="Sepal Length (cm)", col="Species", size = "Petal Length", title="Iris Dataset")
+```
+
+![](man/figures/README-unnamed-chunk-6-1.png)
 
 ### TPL Logo
 
@@ -61,27 +76,39 @@ The user also has the option to include the TPL logo in single plots. This may b
 
 To include the TPL logo, use the function `add_tpl_logo()` on an existing plot object:
 
-    library(grid)
-    library(gridExtra)
-    plot <- ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, size = Petal.Length)) +
-        geom_point() +
-        labs(x="Sepal Width (cm)", y="Sepal Length (cm)", col="Species", size = "Petal Length", title="Iris Dataset")
-        
-    add_tpl_logo(plot)
+``` r
+library(grid)
+library(gridExtra)
+plot <- ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, size = Petal.Length)) +
+    geom_point() +
+    labs(x="Sepal Width (cm)", y="Sepal Length (cm)", col="Species", size = "Petal Length", title="Iris Dataset")
+    
+add_tpl_logo(plot)
+```
+
+![](man/figures/README-unnamed-chunk-7-1.png)
 
 The user may also need to specify `align`, which moves the plot horizontally across the bottom of the page. This will be necessary if legends are removed or if the plot object is of unique dimensions.
 
-    plot <- ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
-        geom_boxplot(show.legend = FALSE) +
-        labs(x="Species", y="Sepal Width (cm)", fill="Species", title="Iris Dataset", subtitle="Without fixing logo alignment")
-        
-    add_tpl_logo(plot, align = 0)  
+``` r
+plot <- ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
+    geom_boxplot(show.legend = FALSE) +
+    labs(x="Species", y="Sepal Width (cm)", fill="Species", title="Iris Dataset", subtitle="Without fixing logo alignment")
+    
+add_tpl_logo(plot, align = 0)  
+```
 
-    plot <- ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
-        geom_boxplot(show.legend = FALSE) +
-        labs(x="Species", y="Sepal Width (cm)", fill="Species", title="Iris Dataset", subtitle ="When specifying align = 1")
-        
-    add_tpl_logo(plot, align = 1)    
+![](man/figures/README-unnamed-chunk-8-1.png)
+
+``` r
+plot <- ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
+    geom_boxplot(show.legend = FALSE) +
+    labs(x="Species", y="Sepal Width (cm)", fill="Species", title="Iris Dataset", subtitle ="When specifying align = 1")
+    
+add_tpl_logo(plot, align = 1)    
+```
+
+![](man/figures/README-unnamed-chunk-8-2.png)
 
 The user will rarely, if ever, need to specify `align` to be greater than 1 (rightward shift of one unit) or less than -1 (leftward shift of one unit). The argument allows for decimals for greater fine-tuned specification. It's default is 0.
 
@@ -91,10 +118,14 @@ In the event that the user wishes to drop an axis, they may do so with `drop_axi
 
 Unlike `add_tpl_logo()`, `drop_axis()` should be *added* to an existing plot object:
 
-    ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, size = Petal.Length)) +
-        geom_point() +
-        labs(x="Sepal Width (cm)", y="Sepal Length (cm)", col="Species", size = "Petal Length", title="Iris Dataset") +
-        drop_axis(axis = "y")
+``` r
+ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, size = Petal.Length)) +
+    geom_point() +
+    labs(x="Sepal Width (cm)", y="Sepal Length (cm)", col="Species", size = "Petal Length", title="Iris Dataset") +
+    drop_axis(axis = "y")
+```
+
+![](man/figures/README-unnamed-chunk-9-1.png)
 
 #### Additional Functions
 

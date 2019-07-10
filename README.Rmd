@@ -6,7 +6,7 @@ editor_options:
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r}
+```{r, echo = FALSE}
 knitr::opts_chunk$set(
   comment = "#>",
   fig.path = "man/figures/README-"
@@ -17,9 +17,12 @@ knitr::opts_chunk$set(
 
 ## Installation
 
-```{r}
+```{r, warning = FALSE, message = FALSE}
+config <- utilsR::read_yaml("./config.yaml")
 install.packages("devtools")
-#devtools::install_bitbucket("figurethisout")
+library(ggplot2)
+#library(tpltheme)
+devtools::load_all()
 ```
 
 ## Plotting
@@ -43,13 +46,11 @@ Load `library(tpltheme)` **after** `library(ggplot2)` and/or `library(tidyverse)
 A plot in TPL style may take the following forms:
 
 ```{r}
-library(ggplot2)
-#library(tpltheme)
-
 set_tpl_theme(style = "print", font = "adobe")
 
 ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
     geom_bar(stat="summary", fun.y="mean", show.legend = FALSE) +
+    scale_color_discrete() +
     labs(x="Species", y="Mean Sepal Width (cm)", fill="Species", title="Iris Dataset")
 ```
 ```{r}
@@ -108,7 +109,7 @@ In the event that the user wishes to drop an axis, they may do so with `drop_axi
 
 Unlike `add_tpl_logo()`, `drop_axis()` should be *added* to an existing plot object:
 
-```{rz}
+```{r}
 ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, size = Petal.Length)) +
     geom_point() +
     labs(x="Sepal Width (cm)", y="Sepal Length (cm)", col="Species", size = "Petal Length", title="Iris Dataset") +
