@@ -6,7 +6,6 @@
 #' @import gridExtra
 #' @md
 #' @export
-
 tpl_logo_text <- function() {
 
   grid::grobTree(

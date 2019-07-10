@@ -4,7 +4,6 @@
 #'
 #' @export
 #' @param palette Palette name.
-
 tpl_color_pal <- function(palette = "categorical") {
   palette_list <- palette_tpl
 

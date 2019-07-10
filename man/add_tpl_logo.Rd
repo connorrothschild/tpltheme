@@ -4,7 +4,7 @@
 \alias{add_tpl_logo}
 \title{Texas Policy Lab \link{ggplot2} theme}
 \usage{
-add_tpl_logo(plot)
+add_tpl_logo(plot, align = 0)
 }
 \description{
 Add TPL logo to a single plot as grid object

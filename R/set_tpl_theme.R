@@ -8,7 +8,6 @@
 #' @import ggrepel
 #' @md
 #' @export
-
 set_tpl_theme <- function(style = "print", font = "adobe") {
 
   # set default theme
