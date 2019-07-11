@@ -41,4 +41,4 @@ view_palette <- function(palette = palette_tpl_main) {
 # #diverging
 # view_palette(palette = palette_tpl_diverging)
 # #sequential
-# ?
+# palette_tpl_sequential <- config$palettes$tpl_sequential
