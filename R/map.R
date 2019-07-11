@@ -61,6 +61,7 @@ tx_base_map <- function(data = data, mapping = mapping) {
 }
 
 #' @title Add Texas cities
+#' @export
 add_tx_cities <- function(label = FALSE) {
 
     maps::map("state", "Texas")
