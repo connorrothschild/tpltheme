@@ -7,7 +7,7 @@ Installation
 ------------
 
 ``` r
-install.packages("devtools")
+if (!require('devtools')) install.packages('devtools')
 config <- utilsR::read_yaml("./config.yaml")
 library(ggplot2)
 #library(tpltheme)
@@ -76,6 +76,7 @@ tx_vac <- readr::read_csv("https://raw.githubusercontent.com/connorrothschild/tp
 set_tpl_theme(style = "Texas")
 ggplot2::ggplot(data = tx_vac, mapping = ggplot2::aes(x = long, y = lat, group = group, fill = avgvac*100)) +
   ggplot2::coord_fixed(1.3) +
+  scale_fill_continuous(limits = c(78.3,100)) +
   ggplot2::geom_polygon(color = "black") +
   labs(title = "Texas Vaccination Rate by County",
        subtitle = "Among Kindergarteners",
@@ -94,7 +95,7 @@ tx_vac %>%
                          avgvac*100 < 90 ~ "Bad"))) %>% 
   ggplot2::ggplot(mapping = ggplot2::aes(x = long, y = lat, group = group, fill = cat)) +
   ggplot2::coord_fixed(1.3) +
-  ggplot2::geom_polygon(color = "black", show.legend = FALSE) +
+  ggplot2::geom_polygon(color = "black") +
   labs(title = "Texas Vaccination Rate by County",
        subtitle = "Among Kindergarteners",
        fill = "Vaccination Rating",
@@ -103,29 +104,15 @@ tx_vac %>%
 
 ![](man/figures/README-unnamed-chunk-8-1.png)
 
-``` r
-# default to print afterwards
-set_tpl_theme(style = "print")
-```
-
 If the number of colors exceeds the number of colors in the TPL palette (9), the function `tpl_color_pal()` will drop the TPL color palette and return the greatest number of unique colors possible within the RColorBrewer's "Paired" palette (for more information on the use of RColorBrewer palettes, see [this chapter](https://bookdown.org/rdpeng/exdata/plotting-and-color-in-r.html#using-the-rcolorbrewer-palettes)).
 
 ``` r
 tx_vac %>% 
-  dplyr::mutate(cat = factor(dplyr::case_when(avgvac*100 > 99 ~ "Great",
-                         avgvac*100 > 90 ~ "Average",
-                         avgvac*100 < 90 ~ "Bad"))) %>% 
   ggplot2::ggplot(mapping = ggplot2::aes(x = long, y = lat, group = group, fill = subregion)) +
   ggplot2::coord_fixed(1.3) +
   ggplot2::geom_polygon(color = "black", show.legend = FALSE) +
-  labs(title = "Texas Vaccination Rate by County",
-       subtitle = "Among Kindergarteners",
-       fill = "Vaccination Rating",
-       caption = "Source: Texas DSHS")
+  labs(title = "Texas Counties")
 ```
-
-    #> Warning in RColorBrewer::brewer.pal(n, "Paired"): n too large, allowed maximum for palette Paired is 12
-    #> Returning the palette you asked for with that many colors
 
 ![](man/figures/README-unnamed-chunk-9-1.png)
 
@@ -167,7 +154,7 @@ add_tpl_logo(plot, align = 0)
 ``` r
 plot <- ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
     geom_boxplot(show.legend = FALSE) +
-    labs(x="Species", y="Sepal Width (cm)", fill="Species", title="Iris Dataset", subtitle ="When specifying align = 1")
+    labs(x="Species", y="Sepal Width (cm)", fill="Species", title="Iris Dataset", subtitle ="When specifying align = 1.5")
     
 add_tpl_logo(plot, align = 1.5)    
 ```
@@ -195,9 +182,10 @@ ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, siz
 
 -   `undo_tpl_theme`: Removes all TPL-specific theme settings and restores to ggplot defaults.
 -   `tpl_plot_test`: Four base plots which allow the user to quickly see what a TPL-themed figure may look like. The user may specify the plot type (scatterplot, boxplot, barplot, histogram), the plot font (adobe, lato), and whether to include the TPL logo (include.logo = T).
--   `colors`: **To do**
+-   `view_palette`: Plots base color palettes included in `tplthemes`. All TPL color palettes are led by the notation `palette_tpl_*` and therefore can be easily autocompleted within RStudio.
 
 Reporting
 ---------
 
 -   `read_word`: Reads word into Rmarkdown, such that word documents can be edited and read into the main Rmarkdown file for creating reports.
+-   `read_word_table`: Reads a table from word into Rmarkdown, such that tables in word can be edited and then imported into Rmarkdown.
