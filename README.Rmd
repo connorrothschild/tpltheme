@@ -173,3 +173,4 @@ ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, siz
 ## Reporting
 
 * `read_word`: Reads word into Rmarkdown, such that word documents can be edited and read into the main Rmarkdown file for creating reports. 
+* `read_word_table`: Reads a table from word into Rmarkdown, such that tables in word can be edited and then imported into Rmarkdown.
