@@ -7,8 +7,8 @@ Installation
 ------------
 
 ``` r
-config <- utilsR::read_yaml("./config.yaml")
 install.packages("devtools")
+config <- utilsR::read_yaml("./config.yaml")
 library(ggplot2)
 #library(tpltheme)
 devtools::load_all()
@@ -40,7 +40,6 @@ set_tpl_theme(style = "print", font = "adobe")
 
 ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
     geom_bar(stat="summary", fun.y="mean", show.legend = FALSE) +
-    scale_color_discrete() +
     labs(x="Species", y="Mean Sepal Width (cm)", fill="Species", title="Iris Dataset")
 ```
 
@@ -74,21 +73,6 @@ By specifying `style = "Texas"` within `set_tpl_theme`, the user may also create
 
 ``` r
 tx_vac <- readr::read_csv("https://raw.githubusercontent.com/connorrothschild/tpltheme/master/tx_vac_example.csv")
-```
-
-    #> Parsed with column specification:
-    #> cols(
-    #>   X1 = col_double(),
-    #>   long = col_double(),
-    #>   lat = col_double(),
-    #>   group = col_double(),
-    #>   order = col_double(),
-    #>   region = col_character(),
-    #>   subregion = col_character(),
-    #>   avgvac = col_double()
-    #> )
-
-``` r
 set_tpl_theme(style = "Texas")
 ggplot2::ggplot(data = tx_vac, mapping = ggplot2::aes(x = long, y = lat, group = group, fill = avgvac*100)) +
   ggplot2::coord_fixed(1.3) +
@@ -108,9 +92,9 @@ tx_vac %>%
   dplyr::mutate(cat = factor(dplyr::case_when(avgvac*100 > 99 ~ "Great",
                          avgvac*100 > 90 ~ "Average",
                          avgvac*100 < 90 ~ "Bad"))) %>% 
-  ggplot(mapping = ggplot2::aes(x = long, y = lat, group = group, fill = cat)) +
+  ggplot2::ggplot(mapping = ggplot2::aes(x = long, y = lat, group = group, fill = cat)) +
   ggplot2::coord_fixed(1.3) +
-  ggplot2::geom_polygon(color = "black") +
+  ggplot2::geom_polygon(color = "black", show.legend = FALSE) +
   labs(title = "Texas Vaccination Rate by County",
        subtitle = "Among Kindergarteners",
        fill = "Vaccination Rating",
@@ -118,6 +102,32 @@ tx_vac %>%
 ```
 
 ![](man/figures/README-unnamed-chunk-8-1.png)
+
+``` r
+# default to print afterwards
+set_tpl_theme(style = "print")
+```
+
+If the number of colors exceeds the number of colors in the TPL palette (9), the function `tpl_color_pal()` will drop the TPL color palette and return the greatest number of unique colors possible within the RColorBrewer's "Paired" palette (for more information on the use of RColorBrewer palettes, see [this chapter](https://bookdown.org/rdpeng/exdata/plotting-and-color-in-r.html#using-the-rcolorbrewer-palettes)).
+
+``` r
+tx_vac %>% 
+  dplyr::mutate(cat = factor(dplyr::case_when(avgvac*100 > 99 ~ "Great",
+                         avgvac*100 > 90 ~ "Average",
+                         avgvac*100 < 90 ~ "Bad"))) %>% 
+  ggplot2::ggplot(mapping = ggplot2::aes(x = long, y = lat, group = group, fill = subregion)) +
+  ggplot2::coord_fixed(1.3) +
+  ggplot2::geom_polygon(color = "black", show.legend = FALSE) +
+  labs(title = "Texas Vaccination Rate by County",
+       subtitle = "Among Kindergarteners",
+       fill = "Vaccination Rating",
+       caption = "Source: Texas DSHS")
+```
+
+    #> Warning in RColorBrewer::brewer.pal(n, "Paired"): n too large, allowed maximum for palette Paired is 12
+    #> Returning the palette you asked for with that many colors
+
+![](man/figures/README-unnamed-chunk-9-1.png)
 
 ``` r
 # default to print afterwards
@@ -140,7 +150,7 @@ plot <- ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Spec
 add_tpl_logo(plot)
 ```
 
-![](man/figures/README-unnamed-chunk-9-1.png)
+![](man/figures/README-unnamed-chunk-10-1.png)
 
 The user may also need to specify `align`, which moves the plot horizontally across the bottom of the page. This will be necessary if legends are removed or if the plot object is of unique dimensions.
 
@@ -152,7 +162,7 @@ plot <- ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
 add_tpl_logo(plot, align = 0)  
 ```
 
-![](man/figures/README-unnamed-chunk-10-1.png)
+![](man/figures/README-unnamed-chunk-11-1.png)
 
 ``` r
 plot <- ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
@@ -162,7 +172,7 @@ plot <- ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
 add_tpl_logo(plot, align = 1.5)    
 ```
 
-![](man/figures/README-unnamed-chunk-10-2.png)
+![](man/figures/README-unnamed-chunk-11-2.png)
 
 The process of specifying `align` is mostly guess-and-checking. Usually, the alignment will fall somewhere in the range of ~1 (rightward shift of one unit) and -1 (leftward shift of one unit). The argument allows for decimals for greater fine-tuned specification. It's default is 0.
 
@@ -179,7 +189,7 @@ ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, siz
     drop_axis(axis = "y")
 ```
 
-![](man/figures/README-unnamed-chunk-11-1.png)
+![](man/figures/README-unnamed-chunk-12-1.png)
 
 #### Additional Functions
 
