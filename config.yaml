@@ -30,15 +30,47 @@ palettes:
       ["#1188A6","#117B9B","#116E91","#126186","#12547C","#134771","#133A67","#142D5C"],
       ["#1188A6","#117B9B","#116E91","#126186","#12547C","#134771","#133A67","#142D5C","#142052"]
     ]
+  div:
+    [
+      ["#fff7fb"],
+      ["#fff7fb","#ece7f2"],
+      ["#fff7fb","#ece7f2","#d0d1e6"],
+      ["#fff7fb","#ece7f2","#d0d1e6","#a6bddb"],
+      ["#fff7fb","#ece7f2","#d0d1e6","#a6bddb","#74a9cf"],
+      ["#fff7fb","#ece7f2","#d0d1e6","#a6bddb","#74a9cf","#3690c0"],
+      ["#fff7fb","#ece7f2","#d0d1e6","#a6bddb","#74a9cf","#3690c0","#0570b0"],
+      ["#fff7fb","#ece7f2","#d0d1e6","#a6bddb","#74a9cf","#3690c0","#0570b0","#045a8d"],
+      ["#fff7fb","#ece7f2","#d0d1e6","#a6bddb","#74a9cf","#3690c0","#0570b0","#045a8d","#023858"]
+    ]
   tpl_main:
-    blue: "#151348"
-    red: "#E54E4D"
+    oxfordblue: "#151248"
+    carminepink: "#E54E4D"
     lightblue: "#5393EA"
-  school_soc_sci:
-    blue: "#004080"
-    gray: "#DDDDDD"
-    white: "#ffffff"
-  rice:
-    blue: "#005499"
-    gray: "#505050"
-
+    tomato: "#FF6542"
+    pineapple: "#564154"
+    uclablue: "#556F91"
+    pink: "#DC479F"
+    desertsand: "#EAD2AC"
+    turquoise: "#41EAD4"
+  tpl_diverging:
+    #red1: "#67001f"
+    red2: "#b2182b"
+    red3: "#d6604d"
+    red4: "#f4a582"
+    red5: "#fddbc7"
+    neutr: "#f7f7f7"
+    blue5: "#d1e5f0"
+    blue4: "#92c5de"
+    blue3: "#4393c3"
+    blue2: "#2166ac"
+    #blue1: "#053061"
+  tpl_sequential:
+    blue1: "#fff7fb"
+    blue2: "#ece7f2"
+    blue3: "#d0d1e6"
+    blue4: "#a6bddb"
+    blue5: "#74a9cf"
+    blue6: "#3690c0"
+    blue7: "#0570b0"
+    blue8: "#045a8d"
+    blue9: "#023858"
