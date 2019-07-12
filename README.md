@@ -121,11 +121,11 @@ tx_vac %>%
 set_tpl_theme(style = "print")
 ```
 
-### TPL Logo
+### TPL Branding
+
+#### Logo
 
 The user also has the option to include the TPL logo in single plots. This may be preferred for those reports being made especially public, or to serve as a pseudo-watermark in proprietary plots.
-
-To include the TPL logo, use the function `add_tpl_logo()` on an existing plot object:
 
 ``` r
 library(grid)
@@ -139,29 +139,47 @@ add_tpl_logo(plot)
 
 ![](man/figures/README-unnamed-chunk-10-1.png)
 
-The user may also need to specify `align`, which moves the plot horizontally across the bottom of the page. This will be necessary if legends are removed or if the plot object is of unique dimensions.
+The user can specify the `position` of the logo as well as it's `size`:
 
 ``` r
-plot <- ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
-    geom_boxplot(show.legend = FALSE) +
-    labs(x="Species", y="Sepal Width (cm)", fill="Species", title="Iris Dataset", subtitle="Without fixing logo alignment")
-    
-add_tpl_logo(plot, align = 0)  
+add_tpl_logo(tpl_plot_test(type = "barplot"), size = "regular", position = "bottomright")
 ```
 
 ![](man/figures/README-unnamed-chunk-11-1.png)
+
+Finally (and here's the exciting part), the user is able to move the logo horizontally by specifying `align`. Positive values will shift the logo rightward while negative values shift it leftward:
+
+``` r
+add_tpl_logo(tpl_plot_test(type = "barplot"), size = "regular", position = "bottomright", align = -2)
+```
+
+![](man/figures/README-unnamed-chunk-12-1.png)
+
+#### Logo Text
+
+There may be some instances when an all-out logo is not warranted or preferred. If that is the case and the user would still like to watermark their figures, they can use the function `add_tpl_logo_text()` to add text to an existing plot object:
+
+``` r
+plot <- ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, size = Petal.Length)) +
+    geom_point() +
+    labs(x="Sepal Width (cm)", y="Sepal Length (cm)", col="Species", size = "Petal Length", title="Iris Dataset")
+    
+add_tpl_logo_text(plot)
+```
+
+![](man/figures/README-unnamed-chunk-13-1.png)
+
+The user may also need to specify `align`, which moves the plot horizontally across the bottom of the page.
 
 ``` r
 plot <- ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
     geom_boxplot(show.legend = FALSE) +
     labs(x="Species", y="Sepal Width (cm)", fill="Species", title="Iris Dataset", subtitle ="When specifying align = 1.5")
     
-add_tpl_logo(plot, align = 1.5)    
+add_tpl_logo_text(plot, align = 1.5)    
 ```
 
-![](man/figures/README-unnamed-chunk-11-2.png)
-
-The process of specifying `align` is mostly guess-and-checking. Usually, the alignment will fall somewhere in the range of ~1 (rightward shift of one unit) and -1 (leftward shift of one unit). The argument allows for decimals for greater fine-tuned specification. It's default is 0.
+![](man/figures/README-unnamed-chunk-14-1.png)
 
 ### Drop Axes
 
@@ -176,7 +194,7 @@ ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, siz
     drop_axis(axis = "y")
 ```
 
-![](man/figures/README-unnamed-chunk-12-1.png)
+![](man/figures/README-unnamed-chunk-15-1.png)
 
 #### Additional Functions
 
