@@ -3,7 +3,7 @@
 #' Add TPL logo to a single plot as grid object
 #'
 #' @example \dontrun{
-#' add_tpl_logo(plot)
+#' add_tpl_logo(plot, size = "regular", position = "bottomright", align = .5)
 #' }
 #' @import grid
 #' @import gridExtra
