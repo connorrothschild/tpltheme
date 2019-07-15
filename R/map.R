@@ -6,6 +6,9 @@ cmp <- config$maps$base
 cntys <- ggplot2::map_data("county") %>%
   subset(region == "texas")
 
+cities <- maps::'us.cities'
+cities <- cities[cities$country.etc == "TX", ]
+
 state <- ggplot2::map_data("state")
 
 ditch_the_axes <- ggplot2::theme(
@@ -33,13 +36,35 @@ base_map <- function(data) {
 #' @title United States base map
 usa_base_map <- function() {
 
-  base_map(data = state)
+  base_map(data = state) + theme_tpl_texas()
 
 }
 
 #' @title Texas base map
-tx_base_map <- function(data = cntys) {
+tx_base_map <- function(data = data, mapping = mapping) {
 
-  base_map(data = cntys)
+  texas <- state[state$region == "texas", ]
+
+  if (data == "none") {
+  base_map(data = texas)
+  } else if (data == "cntys") {
+  base_map(data = cntys) + theme_tpl_texas()
+  } else if (data == "cities") {
+  base_map(data = texas)
+  maps::map("state", "Texas")
+  maps::map.cities(maps::us.cities, country = "TX", label = TRUE)
+  } else {
+    stop("Geographic object does not exist. Try 'cntys' or 'cities', or 'none' to return a blank Texas map.",
+    .call = FALSE)
+  }
 
 }
+
+#' @title Add Texas cities
+#' @export
+add_tx_cities <- function(label = FALSE) {
+
+    maps::map("state", "Texas")
+    maps::map.cities(maps::us.cities, country = "TX", label = label)
+
+  }

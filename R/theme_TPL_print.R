@@ -119,7 +119,7 @@ theme_tpl_print <- function(base_size = 11, base_family = "Adobe Caslon Pro",
     legend.key.height = NULL,
     legend.key.width = NULL,
 
-    legend.text = ggplot2::element_text(size = base_size * 9.5 / 8.5,
+    legend.text = ggplot2::element_text(size = base_size,
                                         vjust = 1),
     legend.text.align = NULL,
     legend.title = ggplot2::element_text(size = base_size*1.25,

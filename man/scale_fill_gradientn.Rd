@@ -4,8 +4,8 @@
 \alias{scale_fill_gradientn}
 \title{Continuous fill scale}
 \usage{
-scale_fill_gradientn(..., colours = config$palettes$seq,
-  colors = config$palettes$seq, values = NULL, space = "Lab",
+scale_fill_gradientn(..., colours = config$palettes$seq[9][[1]],
+  colors = config$palettes$seq[9][[1]], values = NULL, space = "Lab",
   na.value = "grey50", guide = "colourbar")
 }
 \arguments{

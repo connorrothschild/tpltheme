@@ -16,14 +16,14 @@ tpl_logo_text <- function() {
              y = unit(1, "npc"),
              hjust = 2.2,
              vjust = 0,
-             gp = grid::gpar(col = config$palettes$tpl_main$blue,
+             gp = grid::gpar(col = config$palettes$tpl_main$oxfordblue,
                        fontfamily = "Adobe Caslon Pro")),
     grid::textGrob(label = "TEXAS",
              x = unit(1, "npc") - grid::grobWidth("caption1") - unit(0.001, "lines"),
              y = unit(1, "npc"),
              hjust = 3.3,
              vjust = 0,
-             gp = grid::gpar(col = config$palettes$tpl_main$red,
+             gp = grid::gpar(col = config$palettes$tpl_main$carminepink,
                        fontfamily = "Adobe Caslon Pro"))
   )
 }

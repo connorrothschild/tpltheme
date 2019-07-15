@@ -7,7 +7,7 @@
 tpl_plot_test(type = "barplot", font = "adobe", include.logo = F)
 }
 \arguments{
-\item{type}{Type of plot to be produced. Options include \code{barplot}, \code{scatterplot}, \code{boxplot}, and \code{histogram}}
+\item{type}{Type of plot to be produced. Options include \code{barplot}, \code{scatterplot}, \code{boxplot}, \code{histogram}, and \code{Texas}.}
 
 \item{include.logo}{Whether to include the TPL logo at the bottom of the plot}
 }

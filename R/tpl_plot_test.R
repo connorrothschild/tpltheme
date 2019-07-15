@@ -6,7 +6,7 @@
 #' tpl_plot_test(type = "scatterplot")
 #' }
 #' @export
-#' @param type Type of plot to be produced. Options include \code{barplot}, \code{scatterplot}, \code{boxplot}, and \code{histogram}
+#' @param type Type of plot to be produced. Options include \code{barplot}, \code{scatterplot}, \code{boxplot}, \code{histogram}, and \code{Texas}.
 #' @param include.logo Whether to include the TPL logo at the bottom of the plot
 tpl_plot_test <- function(type = "barplot", font = "adobe", include.logo = F) {
 
@@ -30,6 +30,15 @@ tpl_plot_test <- function(type = "barplot", font = "adobe", include.logo = F) {
     plot <- ggplot(iris, aes(x=Sepal.Width)) +
       geom_histogram(bins = 20) +
       labs(x="Sepal Width (cm)", y="Count", title="Iris Dataset")
+  } else if (type == "Texas") {
+    set_tpl_theme(style = "Texas", font = font)
+    tx_vac <- readr::read_csv("https://raw.githubusercontent.com/connorrothschild/tpltheme/master/tx_vac_example.csv")
+    plot <- ggplot2::ggplot(data = tx_vac, mapping = ggplot2::aes(x = long, y = lat, group = group, fill = avgvac*100)) +
+      ggplot2::coord_fixed(1.3) +
+      ggplot2::geom_polygon(color = "black") +
+      labs(title = "Texas Vaccination Rate by County",
+           subtitle = "Among Kindergarteners",
+           fill = "Percent\nVaccinated")
   } else {
     stop("Plot type not found. Try one of the following: 'barplot', 'boxplot', 'scatterplot', 'histogram'",
               call. = FALSE)
@@ -44,8 +53,9 @@ tpl_plot_test <- function(type = "barplot", font = "adobe", include.logo = F) {
     return(plot)
   }
 
-# plot <- tpl_plot_test(type = "barplot", include.logo = T)
+# tpl_plot_test(type = "barplot", include.logo = T)
 # tpl_plot_test(type = "boxplot", include.logo = T)
 # tpl_plot_test(type = "scatterplot", include.logo = F)
 # tpl_plot_test(type = "histogram", include.logo = F)
+# tpl_plot_test(type = "Texas", include.logo = T)
 # tpl_plot_test(type = "pie")

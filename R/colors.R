@@ -10,8 +10,7 @@
 #'@family TPL palettes
 #'@rdname TPL_palletes
 #'@export
-palette_TPL_main <- config$palettes$tpl_main
-
-palette_school_soc_sci <- config$palettes$school_soc_sci
-
-palette_rice <- config$palettes$rice
+palette_tpl_main <- config$palettes$tpl_main
+palette_tpl_diverging <- config$palettes$tpl_diverging
+palette_tpl_cat <- config$palettes$cat[9][[1]]
+palette_tpl_sequential <- config$palettes$tpl_sequential

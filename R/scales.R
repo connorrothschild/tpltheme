@@ -2,6 +2,8 @@
 #'
 #' Color palettes used by TPL
 #'
+#' @import RColorBrewer
+#' @import grDevices
 #' @export
 #' @param palette Palette name.
 tpl_color_pal <- function(palette = "categorical") {
@@ -10,7 +12,13 @@ tpl_color_pal <- function(palette = "categorical") {
   types <- palette_list[[palette]]
 
   function(n) {
+    if (n < 10) {
     types[[n]]
+  } else {
+    cols <- RColorBrewer::brewer.pal(n, "Paired")
+    pal <- grDevices::colorRampPalette(cols)
+    pal(n)
+  }
   }
 }
 
@@ -20,7 +28,7 @@ tpl_color_pal <- function(palette = "categorical") {
 #' @param ... other arguments passed to \code{discrete_scale()}
 #' @export
 scale_color_discrete <- function(...) {
-  ggplot2::discrete_scale("colour", "tpl", tpl_color_pal("categorical"), ...)
+  ggplot2::discrete_scale("colour", "tpl", tpl_color_pal(palette = "categorical"), ...)
 }
 
 #' Discrete color scale
@@ -36,7 +44,7 @@ scale_colour_discrete <- scale_color_discrete
 #' @param ... other arguments passed to \code{discrete_scale()}
 #' @export
 scale_fill_discrete <- function(...) {
-  ggplot2::discrete_scale("fill", "tpl", tpl_color_pal("categorical"), ...)
+  ggplot2::discrete_scale("fill", "tpl", tpl_color_pal(palette = "categorical"), ...)
 }
 
 #' Continuous fill scale
@@ -51,8 +59,8 @@ scale_fill_discrete <- function(...) {
 #' @param ... other arguments passed to \code{discrete_scale()}
 #' @export
 scale_color_gradientn <- function(...,
-                                  colours = config$palettes$seq,
-                                  colors = config$palettes$seq,
+                                  colours = config$palettes$seq[9][[1]],
+                                  colors = config$palettes$seq[9][[1]],
                                   values = NULL,
                                   space = "Lab",
                                   na.value = "grey50",
@@ -89,8 +97,8 @@ scale_colour_gradientn <- scale_color_gradientn
 #' @param ... other arguments passed to \code{discrete_scale()}
 #' @export
 scale_fill_gradientn <- function(...,
-                                 colours = config$palettes$seq,
-                                 colors = config$palettes$seq,
+                                 colours = config$palettes$seq[9][[1]],
+                                 colors = config$palettes$seq[9][[1]],
                                  values = NULL,
                                  space = "Lab",
                                  na.value = "grey50",
@@ -101,6 +109,32 @@ scale_fill_gradientn <- function(...,
   ggplot2::continuous_scale("fill", "gradientn",
                             scales::gradient_n_pal(colours, values, space), na.value = na.value, guide = guide, ...)
 }
+
+#' Continuous fill scale
+#'
+#' @md
+#' @param colours vector of colours
+#' @param colors vector of colours
+#' @param values if colours should not be evenly positioned along the gradient this vector gives the position (between 0 and 1) for each colour in the colours vector. See rescale for a convience function to map an arbitrary range to between 0 and 1
+#' @param space colour space in which to calculate gradient. Must be "Lab" - other values are deprecated.
+#' @param na.value default color for NA values
+#' @param guide legend representation of scale
+#' @param ... other arguments passed to \code{discrete_scale()}
+#' @export
+scale_fill_gradient <- scale_fill_gradientn
+
+#' Continuous fill scale
+#'
+#' @md
+#' @param colours vector of colours
+#' @param colors vector of colours
+#' @param values if colours should not be evenly positioned along the gradient this vector gives the position (between 0 and 1) for each colour in the colours vector. See rescale for a convience function to map an arbitrary range to between 0 and 1
+#' @param space colour space in which to calculate gradient. Must be "Lab" - other values are deprecated.
+#' @param na.value default color for NA values
+#' @param guide legend representation of scale
+#' @param ... other arguments passed to \code{discrete_scale()}
+#' @export
+scale_fill_continuous <- scale_fill_gradient
 
 #' Discrete fill scale for ordinal factors
 #'

@@ -12,3 +12,6 @@ read_word(pth)
 \description{
 Reads text from word into Rmarkdown files
 }
+\seealso{
+read_word_table
+}
