@@ -7,6 +7,8 @@ Authors@R: person("Connor", "Rothschild", email = "connorrothschild@gmail.com",
 URL: https://github.com/connorrothschild/tpltheme
 Maintainer: Connor Rothschild <connorrothschild@gmail.com>
 Description: Creates custom ggplot themes in the style of Texas Policy Lab
+Depends:
+    R (>= 3.6.1)
 Imports: 
     ggplot2,
     gridExtra,
