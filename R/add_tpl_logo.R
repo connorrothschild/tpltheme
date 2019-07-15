@@ -7,7 +7,6 @@
 #' }
 #' @import grid
 #' @import gridExtra
-#' @import grobblR
 #' @md
 #' @export
 add_tpl_logo <- function(plot, size = "regular", position = "top", align = 0) {
