@@ -41,6 +41,6 @@ undo_tpl_theme <- function() {
 
   palette("default")
 
-  #detach("package::tplthemes", unload = TRUE)
+  detach("package::tplthemes", unload = TRUE)
 
 }

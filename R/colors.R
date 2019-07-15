@@ -12,5 +12,5 @@
 #'@export
 palette_tpl_main <- config$palettes$tpl_main
 palette_tpl_diverging <- config$palettes$tpl_diverging
-palette_tpl_cat <- config$palettes$cat[9][[1]]
+#palette_tpl_cat <- config$palettes$cat[9][[1]]
 palette_tpl_sequential <- config$palettes$tpl_sequential
