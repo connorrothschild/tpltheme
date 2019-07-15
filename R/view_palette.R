@@ -33,12 +33,3 @@ view_palette <- function(palette = palette_tpl_main) {
     ggplot2::guides(color = FALSE)
 
 }
-
-# #option 1 for tpl categorical
-# view_palette(palette = palette_tpl_main)
-# #option 2 for tpl categorical
-# view_palette(palette = palette_tpl_cat)
-# #diverging
-# view_palette(palette = palette_tpl_diverging)
-# #sequential
-# palette_tpl_sequential <- config$palettes$tpl_sequential

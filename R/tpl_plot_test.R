@@ -52,10 +52,3 @@ tpl_plot_test <- function(type = "barplot", font = "adobe", include.logo = F) {
     }
     return(plot)
   }
-
-# tpl_plot_test(type = "barplot", include.logo = T)
-# tpl_plot_test(type = "boxplot", include.logo = T)
-# tpl_plot_test(type = "scatterplot", include.logo = F)
-# tpl_plot_test(type = "histogram", include.logo = F)
-# tpl_plot_test(type = "Texas", include.logo = T)
-# tpl_plot_test(type = "pie")
