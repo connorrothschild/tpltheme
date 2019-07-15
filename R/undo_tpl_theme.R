@@ -9,7 +9,7 @@
 #' @export
 undo_tpl_theme <- function() {
 
-  # set default theme to theme_urbn_web()
+  # set default theme to theme_grey()
 
   ggplot2::theme_set(ggplot2::theme_grey())
 
@@ -36,5 +36,11 @@ undo_tpl_theme <- function() {
   ggplot2::update_stat_defaults("boxplot", list(fill = "#595959"))
   ggplot2::update_stat_defaults("density", list(fill = "#595959"))
   ggplot2::update_stat_defaults("ydensity", list(fill = "#595959"))
+
+  # default palette
+
+  palette("default")
+
+  #detach("package::tplthemes", unload = TRUE)
 
 }
