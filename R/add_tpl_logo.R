@@ -13,28 +13,28 @@
 add_tpl_logo <- function(plot, size = "regular", position = "top", align = 0) {
 
   img <- "https://raw.githubusercontent.com/connorrothschild/tpltheme/master/TPL_Logo_Full_TPL_Logo_2_Color.png"
-  download.file(img, 'logo.png', mode = 'wb')
-  separator <- grid::rectGrob(gp=gpar(col="white"))
+  download.file(img, 'figures/logo.png', mode = 'wb')
+  separator <- grid::rectGrob(gp=grid::gpar(col="white"))
 
     if (size == "regular" && position != "bottomleft") {
 
-      groblogo <- grobblR::grob_image("./logo.png", aes_list = NULL, height = 15, width = 54)
+      groblogo <- grobblR::grob_image("figures/logo.png", aes_list = NULL, height = 15, width = 54)
       finalgrob <- gridExtra::arrangeGrob(separator, groblogo, separator, widths = c(15 + align,10 - align,2))
 
     } else if (size == "small" && position != "bottomleft") {
 
-      groblogo <- grobblR::grob_image("./logo.png", aes_list = NULL, height = 10, width = 36)
+      groblogo <- grobblR::grob_image("figures/logo.png", aes_list = NULL, height = 10, width = 36)
       finalgrob <- gridExtra::arrangeGrob(separator, groblogo, separator, widths = c(30 + align,10 - align,5))
 
     } else if (position == "bottomleft") {
        if (size == "regular") {
 
-         groblogo <- grobblR::grob_image("./logo.png", aes_list = NULL, height = 15, width = 54)
+         groblogo <- grobblR::grob_image("figures/logo.png", aes_list = NULL, height = 15, width = 54)
          finalgrob <- gridExtra::arrangeGrob(groblogo, separator, widths = c(12 + align,20 - align))
 
        } else if (size == "small") {
 
-         groblogo <- grobblR::grob_image("./logo.png", aes_list = NULL, height = 10, width = 36)
+         groblogo <- grobblR::grob_image("figures/logo.png", aes_list = NULL, height = 10, width = 36)
          finalgrob <- gridExtra::arrangeGrob(groblogo, separator, widths = c(10 + align,24 - align))
 
        } else {
@@ -87,7 +87,7 @@ add_tpl_logo <- function(plot, size = "regular", position = "top", align = 0) {
 #   labs(x="Sepal Width (cm)", y="Sepal Length (cm)", col="Species", title="Iris Dataset")
 #
 # wseparator <- grid::rectGrob(gp=gpar(col="white"))
-# groblogo <- grobblR::grob_image("./logo.png", aes_list = NULL, height = 15, width = 54)
+# groblogo <- grobblR::grob_image("figures/logo.png", aes_list = NULL, height = 15, width = 54)
 # finalgrob <- gridExtra::arrangeGrob(separator, groblogo, separator, widths = c(20,10,5))
 # lay <- rbind(c(3,3,3,2,2,2),
 #              c(3,3,3,2,2,2),
