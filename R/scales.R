@@ -4,7 +4,6 @@
 #'
 #' @export
 #' @param palette Palette name.
-
 tpl_color_pal <- function(palette = "categorical") {
   palette_list <- palette_tpl
 
@@ -29,9 +28,7 @@ scale_color_discrete <- function(...) {
 #' @md
 #' @param ... other arguments passed to \code{discrete_scale()}
 #' @export
-scale_colour_discrete <- function(...) {
-  ggplot2::discrete_scale("colour", "tpl", tpl_color_pal("categorical"), ...)
-}
+scale_colour_discrete <- scale_color_discrete
 
 #' Discrete fill scale
 #'

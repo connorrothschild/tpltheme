@@ -2,15 +2,15 @@
 % Please edit documentation in R/tpl_plot_test.R
 \name{tpl_plot_test}
 \alias{tpl_plot_test}
-\title{Sample plots to test the appearance of \code {theme_TPL_print}}
+\title{Sample plots to test the appearance of \code{theme_TPL_print}}
 \usage{
-tpl_plot_test(type = "barplot", include.logo = F)
+tpl_plot_test(type = "barplot", font = "adobe", include.logo = F)
 }
 \arguments{
-\item{type}{Type of plot to be produced}
+\item{type}{Type of plot to be produced. Options include \code{barplot}, \code{scatterplot}, \code{boxplot}, and \code{histogram}}
 
 \item{include.logo}{Whether to include the TPL logo at the bottom of the plot}
 }
 \description{
-Sample plots to test the appearance of \code {theme_TPL_print}
+Sample plots to test the appearance of \code{theme_TPL_print}
 }

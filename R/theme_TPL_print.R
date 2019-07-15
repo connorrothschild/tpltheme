@@ -11,7 +11,6 @@
 #' @param base_line_size base line
 #' @param base_rect_size rectangle sizes
 #' @export
-
 theme_tpl_print <- function(base_size = 11, base_family = "Adobe Caslon Pro",
                              base_line_size = 0.5,
                              base_rect_size = 0.5) {
@@ -87,6 +86,13 @@ theme_tpl_print <- function(base_size = 11, base_family = "Adobe Caslon Pro",
 
     axis.ticks = ggplot2::element_line(),
     axis.ticks.length = ggplot2::unit(4L, "pt"),
+    axis.ticks.length.x = ggplot2::unit(4L, "pt"),
+    axis.ticks.length.x.top = ggplot2::unit(4L, "pt"),
+    axis.ticks.length.x.bottom = ggplot2::unit(4L, "pt"),
+    axis.ticks.length.y = ggplot2::unit(4L, "pt"),
+    axis.ticks.length.y.left = ggplot2::unit(4L, "pt"),
+    axis.ticks.length.y.right = ggplot2::unit(4L, "pt"),
+
     axis.ticks.x = ggplot2::element_line(colour = NULL,
                                          size = NULL,
                                          linetype = NULL,
@@ -125,7 +131,7 @@ theme_tpl_print <- function(base_size = 11, base_family = "Adobe Caslon Pro",
     legend.justification = NULL,
     legend.margin = ggplot2::margin(t = 6L, r = 0L, b = 6L, l = 0L, "pt"),
 
-    legend.box = "horizontal",
+    legend.box = "vertical",
     legend.box.margin = NULL,
     legend.box.background = NULL,
     legend.box.spacing = NULL,
