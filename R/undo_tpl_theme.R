@@ -37,6 +37,10 @@ undo_tpl_theme <- function() {
   ggplot2::update_stat_defaults("density", list(fill = "#595959"))
   ggplot2::update_stat_defaults("ydensity", list(fill = "#595959"))
 
+  # default palette
+
+  palette("default")
+
   #detach("package::tplthemes", unload = TRUE)
 
 }
