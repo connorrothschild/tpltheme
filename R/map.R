@@ -26,7 +26,7 @@ base_map <- function(data) {
 
   ggplot2::ggplot() +
     ggplot2::geom_polygon(data = data,
-                          ggplot2::aes(x = long, y = lat, fill = region, group = group)) +#, color = cmp$color, fill = cmp$fill) +
+                          ggplot2::aes(x = state$long, y = state$lat, fill = state$region, group = state$group)) +#, color = cmp$color, fill = cmp$fill) +
     ggplot2::coord_fixed(1.3) +
     ggplot2::guides(fill = FALSE) +
     ggplot2::theme_bw() +
@@ -41,10 +41,21 @@ usa_base_map <- function() {
 }
 
 #' @title Texas base map
-#' @param data Geographic ata passed to the function
-tx_base_map <- function(data = data) {
+#' @param data Geographic data passed to the function
+tx_base_map <- function(data = "cntys") {
 
   texas <- state[state$region == "texas", ]
+
+  base_map <- function(data) {
+
+    ggplot2::ggplot() +
+      ggplot2::geom_polygon(data = data,
+                            ggplot2::aes(x = data$long, y = data$lat, fill = data$region, group = data$group)) +#, color = cmp$color, fill = cmp$fill) +
+      ggplot2::coord_fixed(1.3) +
+      ggplot2::guides(fill = FALSE) +
+      ggplot2::theme_bw() +
+      ditch_the_axes
+  }
 
   if (data == "none") {
   base_map(data = texas)
