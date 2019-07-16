@@ -22,23 +22,23 @@ add_tpl_logo <- function(plot, size = "regular", position = "top", align = 0) {
 
     if (size == "regular" && position != "bottomleft") {
 
-      groblogo <- grobblR::grob_image("figures/logo.png", aes_list = NULL, height = 15, width = 54)
+      groblogo <- grobblR::grob_image("./figures/logo.png", aes_list = NULL, height = 15, width = 54)
       finalgrob <- gridExtra::arrangeGrob(separator, groblogo, separator, widths = c(15 + align,10 - align,2))
 
     } else if (size == "small" && position != "bottomleft") {
 
-      groblogo <- grobblR::grob_image("figures/logo.png", aes_list = NULL, height = 10, width = 36)
+      groblogo <- grobblR::grob_image("./figures/logo.png", aes_list = NULL, height = 10, width = 36)
       finalgrob <- gridExtra::arrangeGrob(separator, groblogo, separator, widths = c(30 + align,10 - align,5))
 
     } else if (position == "bottomleft") {
        if (size == "regular") {
 
-         groblogo <- grobblR::grob_image("figures/logo.png", aes_list = NULL, height = 15, width = 54)
+         groblogo <- grobblR::grob_image("./figures/logo.png", aes_list = NULL, height = 15, width = 54)
          finalgrob <- gridExtra::arrangeGrob(groblogo, separator, widths = c(12 + align,20 - align))
 
        } else if (size == "small") {
 
-         groblogo <- grobblR::grob_image("figures/logo.png", aes_list = NULL, height = 10, width = 36)
+         groblogo <- grobblR::grob_image("./figures/logo.png", aes_list = NULL, height = 10, width = 36)
          finalgrob <- gridExtra::arrangeGrob(groblogo, separator, widths = c(10 + align,24 - align))
 
        } else {
