@@ -1,10 +1,12 @@
 #' Sample plots to test the appearance of \code{theme_TPL_print}
 #'
 #' @import ggplot2
+#' @import datasets
 #'
 #' @example \dontrun{
 #' tpl_plot_test(type = "scatterplot")
 #' }
+#'
 #' @export
 #' @param type Type of plot to be produced. Options include \code{barplot}, \code{scatterplot}, \code{boxplot}, \code{histogram}, and \code{Texas}.
 #' @param include.logo Whether to include the TPL logo at the bottom of the plot
