@@ -35,7 +35,7 @@ tpl_plot_test <- function(type = "barplot", font = "adobe", include.logo = F) {
       labs(x="Sepal Width (cm)", y="Count", title="Iris Dataset")
   } else if (type == "Texas") {
     set_tpl_theme(style = "Texas", font = font)
-    tx_vac <- readr::read_csv("https://raw.githubusercontent.com/connorrothschild/tpltheme/master/tx_vac_example.csv")
+    tx_vac <- readr::read_csv("https://raw.githubusercontent.com/connorrothschild/tpltheme/master/data/tx_vac_example.csv")
     plot <- ggplot2::ggplot(data = tx_vac, mapping = ggplot2::aes(x = tx_vac$long, y = tx_vac$lat, group = tx_vac$group, fill = tx_vac$avgvac*100)) +
       ggplot2::coord_fixed(1.3) +
       ggplot2::geom_polygon(color = "black") +

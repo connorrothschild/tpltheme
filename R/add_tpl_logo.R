@@ -16,7 +16,7 @@
 #' @export
 add_tpl_logo <- function(plot, size = "regular", position = "top", align = 0) {
 
-  img <- "https://raw.githubusercontent.com/connorrothschild/tpltheme/master/TPL_Logo_Full_TPL_Logo_2_Color.png"
+  img <- "https://raw.githubusercontent.com/connorrothschild/tpltheme/master/figures/TPL_Logo_Full_TPL_Logo_2_Color.png"
   utils::download.file(img, 'figures/logo.png', mode = 'wb')
   separator <- grid::rectGrob(gp=grid::gpar(col="white"))
 
