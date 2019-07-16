@@ -41,7 +41,8 @@ usa_base_map <- function() {
 }
 
 #' @title Texas base map
-tx_base_map <- function(data = data, mapping = mapping) {
+#' @param data Geographic ata passed to the function
+tx_base_map <- function(data = data) {
 
   texas <- state[state$region == "texas", ]
 
@@ -61,6 +62,8 @@ tx_base_map <- function(data = data, mapping = mapping) {
 }
 
 #' @title Add Texas cities
+#'
+#' @param label Whether the plotted cities should also have labels
 #' @export
 add_tx_cities <- function(label = FALSE) {
 

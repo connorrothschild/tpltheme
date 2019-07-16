@@ -5,6 +5,11 @@
 #' @example \dontrun{
 #' add_tpl_logo(plot, size = "regular", position = "bottomright", align = .5)
 #' }
+#'
+#' @param plot The plot object passed to `add_tpl_logo`
+#' @param size The size of the TPL logo
+#' @param position The position of the logo. Options are "top", "bottomright", and "bottomleft"
+#' @param align An optional specification of horizontal nudging of the TPL logo
 #' @import grid
 #' @import gridExtra
 #' @md
@@ -12,7 +17,7 @@
 add_tpl_logo <- function(plot, size = "regular", position = "top", align = 0) {
 
   img <- "https://raw.githubusercontent.com/connorrothschild/tpltheme/master/TPL_Logo_Full_TPL_Logo_2_Color.png"
-  download.file(img, 'figures/logo.png', mode = 'wb')
+  utils::download.file(img, 'figures/logo.png', mode = 'wb')
   separator <- grid::rectGrob(gp=grid::gpar(col="white"))
 
     if (size == "regular" && position != "bottomleft") {

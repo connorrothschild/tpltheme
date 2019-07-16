@@ -8,17 +8,14 @@ view_palette(palette = palette_tpl_main)
 }
 \arguments{
 \item{palette}{A \code{palette_tpl_*} vector from \code{library(tpltheme)}.
-Options are \code{palette_tpl_diverging}, \code{palette_tpl_politics},
-\code{palette_tpl_quintile}, \code{palette_tpl_cyan}, \code{palette_tpl_gray},
-\code{palette_tpl_yellow}, \code{palette_tpl_magenta}, \code{palette_tpl_green},
-\code{palette_tpl_spacegray}, and \code{palette_tpl_red}.}
+Options are \code{palette_tpl_main}, \code{palette_tpl_diverging}, \code{palette_tpl_politics}, and `palette_tpl_sequential``}
 }
 \description{
 \code{view_palette} displays the colors and hexadecimal codes for \code{palette_tpl_*} vectors.
-These palettes were generated on \link{https://coolors.co/}.
+These palettes were generated on \link{coolors.co/}.
 }
 \examples{
 view_palette()
-view_palette(palette_tpl_cyan)
+view_palette(palette_tpl_main)
 
 }

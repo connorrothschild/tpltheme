@@ -6,6 +6,15 @@
 \usage{
 add_tpl_logo(plot, size = "regular", position = "top", align = 0)
 }
+\arguments{
+\item{plot}{The plot object passed to \code{add_tpl_logo}}
+
+\item{size}{The size of the TPL logo}
+
+\item{position}{The position of the logo. Options are "top", "bottomright", and "bottomleft"}
+
+\item{align}{An optional specification of horizontal nudging of the TPL logo}
+}
 \description{
 Add TPL logo to a single plot as grid object
 }

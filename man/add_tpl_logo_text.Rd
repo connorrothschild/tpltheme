@@ -6,6 +6,11 @@
 \usage{
 add_tpl_logo_text(plot, align = 0)
 }
+\arguments{
+\item{plot}{The plot object passed to \code{add_tpl_logo}}
+
+\item{align}{An optional specification of horizontal nudging of the TPL logo}
+}
 \description{
 Add TPL logo text to a single plot as grid object
 }

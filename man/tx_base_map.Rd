@@ -4,7 +4,10 @@
 \alias{tx_base_map}
 \title{Texas base map}
 \usage{
-tx_base_map(data = data, mapping = mapping)
+tx_base_map(data = data)
+}
+\arguments{
+\item{data}{Geographic ata passed to the function}
 }
 \description{
 Texas base map

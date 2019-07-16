@@ -6,7 +6,7 @@ Authors@R: person("Connor", "Rothschild", email = "connorrothschild@gmail.com",
     role = c("aut", "cre"))
 URL: https://github.com/connorrothschild/tpltheme
 Maintainer: Connor Rothschild <connorrothschild@gmail.com>
-Description: Creates custom ggplot themes in the style of Texas Policy Lab
+Description: Creates custom ggplot themes in the style of Texas Policy Lab.
 Imports: 
     ggplot2,
     gridExtra,
@@ -23,5 +23,10 @@ LazyData: true
 RoxygenNote: 6.1.1
 Suggests: 
     testthat,
-    knitr
+    knitr,
+    docxtractr,
+    grobblR,
+    readr,
+    textreadr,
+    tibble
 VignetteBuilder: knitr

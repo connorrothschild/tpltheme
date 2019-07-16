@@ -3,7 +3,8 @@
 #' \code{set_tpl_theme} provides a [ggplot2] theme formatted according to the
 #' TPL website.
 #'
-#' @param style The default theme style for the R session. "print" or "map".
+#' @param style The default theme style for the R session. Options are "print" or "map".
+#' @param font The font for plot labels, axes, and titles. Options are "adobe" (Adobe Caslon Pro) and "lato" (Lato).
 #' @import extrafont
 #' @import ggrepel
 #' @md
