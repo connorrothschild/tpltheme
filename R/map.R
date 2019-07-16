@@ -1,6 +1,6 @@
 #'@importFrom magrittr "%>%"
 
-cmp <- config$maps$base
+#cmp <- config$maps$base
 
 #' @importFrom magrittr "%>%"
 cntys <- ggplot2::map_data("county") %>%
@@ -26,7 +26,7 @@ base_map <- function(data) {
 
   ggplot2::ggplot() +
     ggplot2::geom_polygon(data = data,
-                          ggplot2::aes(x = long, y = lat, fill = region, group = group), color = cmp$color, fill = cmp$fill) +
+                          ggplot2::aes(x = state$long, y = state$lat, fill = state$region, group = state$group)) +#, color = cmp$color, fill = cmp$fill) +
     ggplot2::coord_fixed(1.3) +
     ggplot2::guides(fill = FALSE) +
     ggplot2::theme_bw() +
@@ -41,9 +41,21 @@ usa_base_map <- function() {
 }
 
 #' @title Texas base map
-tx_base_map <- function(data = data, mapping = mapping) {
+#' @param data Geographic data passed to the function
+tx_base_map <- function(data = "cntys") {
 
   texas <- state[state$region == "texas", ]
+
+  base_map <- function(data) {
+
+    ggplot2::ggplot() +
+      ggplot2::geom_polygon(data = data,
+                            ggplot2::aes(x = data$long, y = data$lat, fill = data$region, group = data$group)) +#, color = cmp$color, fill = cmp$fill) +
+      ggplot2::coord_fixed(1.3) +
+      ggplot2::guides(fill = FALSE) +
+      ggplot2::theme_bw() +
+      ditch_the_axes
+  }
 
   if (data == "none") {
   base_map(data = texas)
@@ -61,6 +73,8 @@ tx_base_map <- function(data = data, mapping = mapping) {
 }
 
 #' @title Add Texas cities
+#'
+#' @param label Whether the plotted cities should also have labels
 #' @export
 add_tx_cities <- function(label = FALSE) {
 

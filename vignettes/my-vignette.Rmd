@@ -10,6 +10,7 @@ vignette: >
   %\VignetteIndexEntry{my-vignette}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteDepends{htmltools}
 ---
 
 ```{r, include = FALSE}
@@ -25,7 +26,7 @@ knitr::opts_knit$set(
 
 ```{r, warning = FALSE, message = FALSE}
 if (!require('devtools')) install.packages('devtools')
-config <- utilsR::read_yaml("config.yaml")
+config <- yaml::yaml.load_file(file.path("config.yaml"), eval.expr = TRUE)
 library(ggplot2)
 #library(tpltheme)
 devtools::load_all()
@@ -74,7 +75,7 @@ ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, siz
 By specifying `style = "Texas"` within `set_tpl_theme`, the user may also create Texas-specific plots.
 
 ```{r, warning = FALSE, message = FALSE}
-tx_vac <- readr::read_csv("https://raw.githubusercontent.com/connorrothschild/tpltheme/master/tx_vac_example.csv")
+tx_vac <- readr::read_csv("https://raw.githubusercontent.com/connorrothschild/tpltheme/master/data/tx_vac_example.csv")
 set_tpl_theme(style = "Texas", font = "adobe")
 
 ggplot2::ggplot(data = tx_vac, mapping = ggplot2::aes(x = long, y = lat, group = group, fill = avgvac*100)) +
@@ -188,8 +189,8 @@ The function `view_palette` plots base color palettes included in `tplthemes`. A
 `palette_tpl_*` and therefore can be easily autocompleted within RStudio.
 
 ```{r}
-view_palette(palette = palette_tpl_diverging)
-view_palette(palette = palette_tpl_main)
+#view_palette(palette = palette_tpl_diverging)
+#view_palette(palette = palette_tpl_main)
 ```
 
 #### Restore Defaults

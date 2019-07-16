@@ -5,6 +5,9 @@
 #' @example \dontrun{
 #' add_tpl_logo_text(plot)
 #' }
+#'
+#' @param plot The plot object passed to `add_tpl_logo`
+#' @param align An optional specification of horizontal nudging of the TPL logo
 #' @import grid
 #' @import gridExtra
 #' @md
@@ -20,14 +23,14 @@ add_tpl_logo_text <- function(plot, align = 0) {
                      y = unit(1, "npc"),
                      hjust = 2.2,
                      vjust = 0,
-                     gp = grid::gpar(col = config$palettes$tpl_main$oxfordblue,
+                     gp = grid::gpar(col = "#151248",#config$palettes$tpl_main$oxfordblue,
                                      fontfamily = "Adobe Caslon Pro")),
       grid::textGrob(label = "TEXAS",
                      x = unit(1 + align/10, "npc") - grid::grobWidth("caption1") - unit(0.001, "lines"),
                      y = unit(1, "npc"),
                      hjust = 3.3,
                      vjust = 0,
-                     gp = grid::gpar(col = config$palettes$tpl_main$carminepink,
+                     gp = grid::gpar(col = "#E54E4D",#config$palettes$tpl_main$carminepink,
                                      fontfamily = "Adobe Caslon Pro"))
     )
   }

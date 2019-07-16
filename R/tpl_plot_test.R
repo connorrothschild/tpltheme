@@ -1,13 +1,16 @@
 #' Sample plots to test the appearance of \code{theme_TPL_print}
 #'
 #' @import ggplot2
+#' @import datasets
 #'
 #' @example \dontrun{
 #' tpl_plot_test(type = "scatterplot")
 #' }
+#'
 #' @export
 #' @param type Type of plot to be produced. Options include \code{barplot}, \code{scatterplot}, \code{boxplot}, \code{histogram}, and \code{Texas}.
 #' @param include.logo Whether to include the TPL logo at the bottom of the plot
+#' @param font Font specification
 tpl_plot_test <- function(type = "barplot", font = "adobe", include.logo = F) {
 
   #set theme
@@ -15,25 +18,25 @@ tpl_plot_test <- function(type = "barplot", font = "adobe", include.logo = F) {
 
   #select plot type
     if (type == "barplot") {
-  plot <- ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
+  plot <- ggplot(datasets::iris, aes(x=datasets::iris$Species, y=datasets::iris$Sepal.Width, fill=datasets::iris$Species)) +
     geom_bar(stat="summary", fun.y="mean") +
     labs(x="Species", y="Mean Sepal Width (cm)", fill="Species", title="Iris Dataset")
   } else if (type == "scatterplot") {
-  plot <- ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, size = Petal.Length)) +
+  plot <- ggplot(datasets::iris, aes(x=jitter(datasets::iris$Sepal.Width), y=jitter(datasets::iris$Sepal.Length), col=datasets::iris$Species, size = datasets::iris$etal.Length)) +
     geom_point() +
     labs(x="Sepal Width (cm)", y="Sepal Length (cm)", col="Species", title="Iris Dataset")
   } else if (type == "boxplot") {
-  plot <- ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
+  plot <- ggplot(datasets::iris, aes(x=datasets::iris$Species, y=datasets::iris$Sepal.Width, fill=datasets::iris$Species)) +
     geom_boxplot() +
     labs(x="Species", y="Sepal Width (cm)", fill="Species", title="Iris Dataset")
   } else if (type == "histogram") {
-    plot <- ggplot(iris, aes(x=Sepal.Width)) +
+    plot <- ggplot(datasets::iris, aes(x=datasets::iris$Sepal.Width)) +
       geom_histogram(bins = 20) +
       labs(x="Sepal Width (cm)", y="Count", title="Iris Dataset")
   } else if (type == "Texas") {
     set_tpl_theme(style = "Texas", font = font)
-    tx_vac <- readr::read_csv("https://raw.githubusercontent.com/connorrothschild/tpltheme/master/tx_vac_example.csv")
-    plot <- ggplot2::ggplot(data = tx_vac, mapping = ggplot2::aes(x = long, y = lat, group = group, fill = avgvac*100)) +
+    tx_vac <- readr::read_csv("https://raw.githubusercontent.com/connorrothschild/tpltheme/master/data/tx_vac_example.csv")
+    plot <- ggplot2::ggplot(data = tx_vac, mapping = ggplot2::aes(x = tx_vac$long, y = tx_vac$lat, group = tx_vac$group, fill = tx_vac$avgvac*100)) +
       ggplot2::coord_fixed(1.3) +
       ggplot2::geom_polygon(color = "black") +
       labs(title = "Texas Vaccination Rate by County",

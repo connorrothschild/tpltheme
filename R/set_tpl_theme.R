@@ -3,7 +3,8 @@
 #' \code{set_tpl_theme} provides a [ggplot2] theme formatted according to the
 #' TPL website.
 #'
-#' @param style The default theme style for the R session. "print" or "map".
+#' @param style The default theme style for the R session. Options are "print" or "map".
+#' @param font The font for plot labels, axes, and titles. Options are "adobe" (Adobe Caslon Pro) and "lato" (Lato).
 #' @import extrafont
 #' @import ggrepel
 #' @md
@@ -44,21 +45,21 @@ set_tpl_theme <- function(style = "print", font = "adobe") {
 
 # set colors for single bars, etc.
 
-    ggplot2::update_geom_defaults("bar", list(fill = config$palettes$tpl_main$oxfordblue))
-    ggplot2::update_geom_defaults("col", list(fill = config$palettes$tpl_main$oxfordblue))
-    ggplot2::update_geom_defaults("point", list(colour = config$palettes$tpl_main$oxfordblue))
-    ggplot2::update_geom_defaults("line", list(colour = config$palettes$tpl_main$oxfordblue))
-    ggplot2::update_geom_defaults("step", list(colour = config$palettes$tpl_main$oxfordblue))
-    ggplot2::update_geom_defaults("path", list(colour = config$palettes$tpl_main$oxfordblue))
-    ggplot2::update_geom_defaults("boxplot", list(fill = config$palettes$tpl_main$oxfordblue))
-    ggplot2::update_geom_defaults("density", list(fill = config$palettes$tpl_main$oxfordblue))
-    ggplot2::update_geom_defaults("violin", list(fill = config$palettes$tpl_main$oxfordblue))
+    ggplot2::update_geom_defaults("bar", list(fill = "#151248")) #config$palettes$tpl_main$oxfordblue))
+    ggplot2::update_geom_defaults("col", list(fill = "#151248")) #config$palettes$tpl_main$oxfordblue))
+    ggplot2::update_geom_defaults("point", list(colour = "#151248")) #config$palettes$tpl_main$oxfordblue))
+    ggplot2::update_geom_defaults("line", list(colour = "#151248")) #config$palettes$tpl_main$oxfordblue))
+    ggplot2::update_geom_defaults("step", list(colour = "#151248")) #config$palettes$tpl_main$oxfordblue))
+    ggplot2::update_geom_defaults("path", list(colour = "#151248")) #config$palettes$tpl_main$oxfordblue))
+    ggplot2::update_geom_defaults("boxplot", list(fill = "#151248")) #config$palettes$tpl_main$oxfordblue))
+    ggplot2::update_geom_defaults("density", list(fill = "#151248")) #config$palettes$tpl_main$oxfordblue))
+    ggplot2::update_geom_defaults("violin", list(fill = "#151248")) #config$palettes$tpl_main$oxfordblue))
 
 # set colors for stats
 
-    ggplot2::update_stat_defaults("count", list(fill = config$palettes$tpl_main$oxfordblue))
-    ggplot2::update_stat_defaults("boxplot", list(fill = config$palettes$tpl_main$oxfordblue))
-    ggplot2::update_stat_defaults("density", list(fill = config$palettes$tpl_main$oxfordblue))
-    ggplot2::update_stat_defaults("ydensity", list(fill = config$palettes$tpl_main$oxfordblue))
+    ggplot2::update_stat_defaults("count", list(fill = "#151248")) #config$palettes$tpl_main$oxfordblue))
+    ggplot2::update_stat_defaults("boxplot", list(fill = "#151248")) #config$palettes$tpl_main$oxfordblue))
+    ggplot2::update_stat_defaults("density", list(fill = "#151248")) #config$palettes$tpl_main$oxfordblue))
+    ggplot2::update_stat_defaults("ydensity", list(fill = "#151248")) #config$palettes$tpl_main$oxfordblue))
 
 }

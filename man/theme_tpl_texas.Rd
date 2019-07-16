@@ -9,6 +9,8 @@ theme_tpl_texas(scale = "continuous", base_size = 12,
   base_rect_size = 0.5)
 }
 \arguments{
+\item{scale}{scale}
+
 \item{base_size}{base font size}
 
 \item{base_family}{base font family}

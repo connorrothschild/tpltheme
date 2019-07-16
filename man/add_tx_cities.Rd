@@ -6,6 +6,9 @@
 \usage{
 add_tx_cities(label = FALSE)
 }
+\arguments{
+\item{label}{Whether the plotted cities should also have labels}
+}
 \description{
 Add Texas cities
 }

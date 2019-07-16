@@ -10,6 +10,7 @@
 #' @param base_size base font size
 #' @param base_line_size base line
 #' @param base_rect_size base rectangle sizes
+#' @param scale scale
 #' @export
 theme_tpl_texas <- function(scale = "continuous",
                            base_size = 12,
