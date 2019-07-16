@@ -1,6 +1,6 @@
 #'@importFrom magrittr "%>%"
 
-cmp <- config$maps$base
+#cmp <- config$maps$base
 
 #' @importFrom magrittr "%>%"
 cntys <- ggplot2::map_data("county") %>%
@@ -26,7 +26,7 @@ base_map <- function(data) {
 
   ggplot2::ggplot() +
     ggplot2::geom_polygon(data = data,
-                          ggplot2::aes(x = long, y = lat, fill = region, group = group), color = cmp$color, fill = cmp$fill) +
+                          ggplot2::aes(x = long, y = lat, fill = region, group = group)) +#, color = cmp$color, fill = cmp$fill) +
     ggplot2::coord_fixed(1.3) +
     ggplot2::guides(fill = FALSE) +
     ggplot2::theme_bw() +

@@ -1,4 +1,4 @@
-library(testthat)
-library(tpltheme)
+#library(testthat)
+#library(tpltheme)
 
-test_check("tpltheme")
+#test_check("tpltheme")

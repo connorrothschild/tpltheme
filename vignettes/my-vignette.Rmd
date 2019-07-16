@@ -188,8 +188,8 @@ The function `view_palette` plots base color palettes included in `tplthemes`. A
 `palette_tpl_*` and therefore can be easily autocompleted within RStudio.
 
 ```{r}
-view_palette(palette = palette_tpl_diverging)
-view_palette(palette = palette_tpl_main)
+#view_palette(palette = palette_tpl_diverging)
+#view_palette(palette = palette_tpl_main)
 ```
 
 #### Restore Defaults
