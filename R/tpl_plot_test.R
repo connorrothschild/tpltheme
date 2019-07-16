@@ -18,25 +18,25 @@ tpl_plot_test <- function(type = "barplot", font = "adobe", include.logo = F) {
 
   #select plot type
     if (type == "barplot") {
-  plot <- ggplot(datasets::iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
+  plot <- ggplot(datasets::iris, aes(x=iris$Species, y=iris$Sepal.Width, fill=iris$Species)) +
     geom_bar(stat="summary", fun.y="mean") +
-    labs(x="Species", y="Mean Sepal Width (cm)", fill="Species", title="datasets::iris Dataset")
+    labs(x="Species", y="Mean Sepal Width (cm)", fill="Species", title="Iris Dataset")
   } else if (type == "scatterplot") {
-  plot <- ggplot(datasets::iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, size = Petal.Length)) +
+  plot <- ggplot(datasets::iris, aes(x=jitter(iris$Sepal.Width), y=jitter(iris$Sepal.Length), col=iris$Species, size = iris$etal.Length)) +
     geom_point() +
-    labs(x="Sepal Width (cm)", y="Sepal Length (cm)", col="Species", title="datasets::iris Dataset")
+    labs(x="Sepal Width (cm)", y="Sepal Length (cm)", col="Species", title="Iris Dataset")
   } else if (type == "boxplot") {
-  plot <- ggplot(datasets::iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
+  plot <- ggplot(datasets::iris, aes(x=iris$Species, y=iris$Sepal.Width, fill=iris$Species)) +
     geom_boxplot() +
-    labs(x="Species", y="Sepal Width (cm)", fill="Species", title="datasets::iris Dataset")
+    labs(x="Species", y="Sepal Width (cm)", fill="Species", title="Iris Dataset")
   } else if (type == "histogram") {
-    plot <- ggplot(datasets::iris, aes(x=Sepal.Width)) +
+    plot <- ggplot(datasets::iris, aes(x=iris$Sepal.Width)) +
       geom_histogram(bins = 20) +
-      labs(x="Sepal Width (cm)", y="Count", title="datasets::iris Dataset")
+      labs(x="Sepal Width (cm)", y="Count", title="Iris Dataset")
   } else if (type == "Texas") {
     set_tpl_theme(style = "Texas", font = font)
     tx_vac <- readr::read_csv("https://raw.githubusercontent.com/connorrothschild/tpltheme/master/tx_vac_example.csv")
-    plot <- ggplot2::ggplot(data = tx_vac, mapping = ggplot2::aes(x = long, y = lat, group = group, fill = avgvac*100)) +
+    plot <- ggplot2::ggplot(data = tx_vac, mapping = ggplot2::aes(x = tx_vac$long, y = tx_vac$lat, group = tx_vac$group, fill = tx_vac$avgvac*100)) +
       ggplot2::coord_fixed(1.3) +
       ggplot2::geom_polygon(color = "black") +
       labs(title = "Texas Vaccination Rate by County",
