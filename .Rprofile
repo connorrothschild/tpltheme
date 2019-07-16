@@ -1,2 +1,1 @@
-# source("R/helper_fun.R")
-# source("packrat/init.R")
+config <- yaml::read_yaml("https://raw.githubusercontent.com/connorrothschild/tpltheme/master/config.yaml", eval.expr = TRUE)

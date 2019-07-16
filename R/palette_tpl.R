@@ -6,6 +6,8 @@
 #' @export
 palette_tpl <- {
 
+  config <- yaml::read_yaml("https://raw.githubusercontent.com/connorrothschild/tpltheme/master/config.yaml")
+
   palette <- list(
     categorical = config$palettes$cat,
     #list(

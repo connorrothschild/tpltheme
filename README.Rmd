@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 
 ```{r, warning = FALSE, message = FALSE}
 if (!require('devtools')) install.packages('devtools')
-config <- utilsR::read_yaml("./config.yaml")
+config <- yaml::read_yaml("https://raw.githubusercontent.com/connorrothschild/tpltheme/master/config.yaml")
 library(ggplot2)
 #library(tpltheme)
 devtools::load_all()

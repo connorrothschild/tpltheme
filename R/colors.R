@@ -1,3 +1,5 @@
+config <- yaml::read_yaml("https://raw.githubusercontent.com/connorrothschild/tpltheme/master/config.yaml")
+
 #' Texas Policy Lab color palettes
 #'
 #' Vectors with hex-color codes that correspond to the color palettes found on the Texas Policy Lab website
