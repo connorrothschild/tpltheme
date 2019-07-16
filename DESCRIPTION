@@ -28,5 +28,7 @@ Suggests:
     grobblR,
     readr,
     textreadr,
-    tibble
+    tibble,
+    devtools,
+    yaml
 VignetteBuilder: knitr

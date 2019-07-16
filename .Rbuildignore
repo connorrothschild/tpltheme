@@ -1,4 +1,5 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^packrat/
-^\.Rprofile$
+^README\.Rmd$
+^figures$
