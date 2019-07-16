@@ -18,21 +18,21 @@ tpl_plot_test <- function(type = "barplot", font = "adobe", include.logo = F) {
 
   #select plot type
     if (type == "barplot") {
-  plot <- ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
+  plot <- ggplot(datasets::iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
     geom_bar(stat="summary", fun.y="mean") +
-    labs(x="Species", y="Mean Sepal Width (cm)", fill="Species", title="Iris Dataset")
+    labs(x="Species", y="Mean Sepal Width (cm)", fill="Species", title="datasets::iris Dataset")
   } else if (type == "scatterplot") {
-  plot <- ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, size = Petal.Length)) +
+  plot <- ggplot(datasets::iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, size = Petal.Length)) +
     geom_point() +
-    labs(x="Sepal Width (cm)", y="Sepal Length (cm)", col="Species", title="Iris Dataset")
+    labs(x="Sepal Width (cm)", y="Sepal Length (cm)", col="Species", title="datasets::iris Dataset")
   } else if (type == "boxplot") {
-  plot <- ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
+  plot <- ggplot(datasets::iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
     geom_boxplot() +
-    labs(x="Species", y="Sepal Width (cm)", fill="Species", title="Iris Dataset")
+    labs(x="Species", y="Sepal Width (cm)", fill="Species", title="datasets::iris Dataset")
   } else if (type == "histogram") {
-    plot <- ggplot(iris, aes(x=Sepal.Width)) +
+    plot <- ggplot(datasets::iris, aes(x=Sepal.Width)) +
       geom_histogram(bins = 20) +
-      labs(x="Sepal Width (cm)", y="Count", title="Iris Dataset")
+      labs(x="Sepal Width (cm)", y="Count", title="datasets::iris Dataset")
   } else if (type == "Texas") {
     set_tpl_theme(style = "Texas", font = font)
     tx_vac <- readr::read_csv("https://raw.githubusercontent.com/connorrothschild/tpltheme/master/tx_vac_example.csv")
