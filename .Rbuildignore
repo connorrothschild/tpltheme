@@ -2,3 +2,4 @@
 ^\.Rproj\.user$
 ^packrat/
 ^README\.Rmd$
+^\.Rprofile$

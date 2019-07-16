@@ -18,19 +18,19 @@ tpl_plot_test <- function(type = "barplot", font = "adobe", include.logo = F) {
 
   #select plot type
     if (type == "barplot") {
-  plot <- ggplot(datasets::iris, aes(x=iris$Species, y=iris$Sepal.Width, fill=iris$Species)) +
+  plot <- ggplot(datasets::iris, aes(x=datasets::iris$Species, y=datasets::iris$Sepal.Width, fill=datasets::iris$Species)) +
     geom_bar(stat="summary", fun.y="mean") +
     labs(x="Species", y="Mean Sepal Width (cm)", fill="Species", title="Iris Dataset")
   } else if (type == "scatterplot") {
-  plot <- ggplot(datasets::iris, aes(x=jitter(iris$Sepal.Width), y=jitter(iris$Sepal.Length), col=iris$Species, size = iris$etal.Length)) +
+  plot <- ggplot(datasets::iris, aes(x=jitter(datasets::iris$Sepal.Width), y=jitter(datasets::iris$Sepal.Length), col=datasets::iris$Species, size = datasets::iris$etal.Length)) +
     geom_point() +
     labs(x="Sepal Width (cm)", y="Sepal Length (cm)", col="Species", title="Iris Dataset")
   } else if (type == "boxplot") {
-  plot <- ggplot(datasets::iris, aes(x=iris$Species, y=iris$Sepal.Width, fill=iris$Species)) +
+  plot <- ggplot(datasets::iris, aes(x=datasets::iris$Species, y=datasets::iris$Sepal.Width, fill=datasets::iris$Species)) +
     geom_boxplot() +
     labs(x="Species", y="Sepal Width (cm)", fill="Species", title="Iris Dataset")
   } else if (type == "histogram") {
-    plot <- ggplot(datasets::iris, aes(x=iris$Sepal.Width)) +
+    plot <- ggplot(datasets::iris, aes(x=datasets::iris$Sepal.Width)) +
       geom_histogram(bins = 20) +
       labs(x="Sepal Width (cm)", y="Count", title="Iris Dataset")
   } else if (type == "Texas") {
