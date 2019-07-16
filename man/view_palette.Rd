@@ -8,11 +8,11 @@ view_palette(palette = palette_tpl_main)
 }
 \arguments{
 \item{palette}{A \code{palette_tpl_*} vector from \code{library(tpltheme)}.
-Options are \code{palette_tpl_main}, \code{palette_tpl_diverging}, \code{palette_tpl_politics}, and `palette_tpl_sequential``}
+Options are \code{palette_tpl_main}, \code{palette_tpl_diverging}, \code{palette_tpl_politics}, and \code{palette_tpl_sequential}}
 }
 \description{
 \code{view_palette} displays the colors and hexadecimal codes for \code{palette_tpl_*} vectors.
-These palettes were generated on \link{coolors.co/}.
+These palettes were generated on \link{www.coolors.co/}.
 }
 \examples{
 view_palette()

@@ -1,10 +1,10 @@
 #' Texas Policy Lab [ggplot2] theme
 #'
 #' \code{view_palette} displays the colors and hexadecimal codes for \code{palette_tpl_*} vectors.
-#' These palettes were generated on [coolors.co/].
+#' These palettes were generated on [www.coolors.co/].
 #'
 #' @param palette A \code{palette_tpl_*} vector from \code{library(tpltheme)}.
-#'   Options are `palette_tpl_main`, `palette_tpl_diverging`, `palette_tpl_politics`, and `palette_tpl_sequential``
+#'   Options are `palette_tpl_main`, `palette_tpl_diverging`, `palette_tpl_politics`, and `palette_tpl_sequential`
 #'
 #' @examples
 #' view_palette()
