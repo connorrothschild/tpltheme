@@ -12,7 +12,7 @@ Options are \code{palette_tpl_main}, \code{palette_tpl_diverging}, \code{palette
 }
 \description{
 \code{view_palette} displays the colors and hexadecimal codes for \code{palette_tpl_*} vectors.
-These palettes were generated on \link{www.coolors.co/}.
+These palettes were generated on www.coolors.co/.
 }
 \examples{
 view_palette()
