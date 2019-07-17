@@ -1,6 +1,6 @@
 #'@importFrom magrittr "%>%"
 
-#cmp <- config$maps$base
+cmp <- config$maps$base
 
 #' @importFrom magrittr "%>%"
 cntys <- ggplot2::map_data("county") %>%

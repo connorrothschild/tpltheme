@@ -17,7 +17,9 @@ Imports:
     maps,
     magrittr,
     RColorBrewer,
-    htmltools
+    htmltools,
+    yaml,
+    magick
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
@@ -30,6 +32,5 @@ Suggests:
     readr,
     textreadr,
     tibble,
-    devtools,
-    yaml
+    devtools
 VignetteBuilder: knitr

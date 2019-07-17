@@ -3,14 +3,20 @@
 \docType{data}
 \name{palette_tpl_main}
 \alias{palette_tpl_main}
+\alias{palette_tpl_diverging}
+\alias{palette_tpl_sequential}
 \title{Texas Policy Lab color palettes}
-\format{An object of class \code{character} of length 1.}
+\format{An object of class \code{list} of length 9.}
 \source{
 Texas Policy Lab website
   \url{https://www.texaspolicylab.org/}
 }
 \usage{
 palette_tpl_main
+
+palette_tpl_diverging
+
+palette_tpl_sequential
 }
 \description{
 Vectors with hex-color codes that correspond to the color palettes found on the Texas Policy Lab website

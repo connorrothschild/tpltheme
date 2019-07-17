@@ -26,7 +26,7 @@ knitr::opts_knit$set(
 
 ```{r, warning = FALSE, message = FALSE}
 if (!require('devtools')) install.packages('devtools')
-config <- yaml::yaml.load_file(file.path("config.yaml"), eval.expr = TRUE)
+config <- yaml::read_yaml("https://raw.githubusercontent.com/connorrothschild/tpltheme/master/config.yaml", eval.expr = TRUE)
 library(ggplot2)
 #library(tpltheme)
 devtools::load_all()
@@ -137,7 +137,7 @@ add_tpl_logo(plot)
 The user can specify the `position` of the logo as well as it's `size`:
 
 ```{r, message = FALSE, results = 'hide'}
-add_tpl_logo(tpl_plot_test(type = "barplot"), size = "regular", position = "bottomright")
+add_tpl_logo(tpl_plot_test(type = "barplot"), size = "small", position = "bottomright")
 ```
 
 Finally, the user is able to move the logo horizontally by specifying `align`. Positive values will shift the logo rightward while negative values shift it leftward:

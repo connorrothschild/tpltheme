@@ -1,3 +1,5 @@
+config <- yaml::read_yaml("https://raw.githubusercontent.com/connorrothschild/tpltheme/master/config.yaml")
+
 #' Texas Policy Lab color palettes
 #'
 #' Vectors with hex-color codes that correspond to the color palettes found on the Texas Policy Lab website
@@ -8,9 +10,14 @@
 #'
 #'
 #'@family TPL palettes
-#'@rdname TPL_palletes
+#'@rdname TPL_palettes
 #'@export
-palette_tpl_main <- "#151248"#config$palettes$tpl_main
-#palette_tpl_diverging <- config$palettes$tpl_diverging
-#palette_tpl_cat <- config$palettes$cat[9][[1]]
-#palette_tpl_sequential <- config$palettes$tpl_sequential
+palette_tpl_main <- config$palettes$tpl_main
+
+#'@rdname TPL_palettes
+#'@export
+palette_tpl_diverging <- config$palettes$tpl_diverging
+
+#'@rdname TPL_palettes
+#'@export
+palette_tpl_sequential <- config$palettes$tpl_sequential
