@@ -4,7 +4,7 @@
 \alias{add_tpl_logo}
 \title{Texas Policy Lab \link{ggplot2} theme}
 \usage{
-add_tpl_logo(plot, size = "regular", position = "top", align = 0)
+add_tpl_logo(plot, size = "small", position = "top", align = 0)
 }
 \arguments{
 \item{plot}{The plot object passed to \code{add_tpl_logo}}

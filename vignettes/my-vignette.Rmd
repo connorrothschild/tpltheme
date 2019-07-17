@@ -137,7 +137,7 @@ add_tpl_logo(plot)
 The user can specify the `position` of the logo as well as it's `size`:
 
 ```{r, message = FALSE, results = 'hide'}
-add_tpl_logo(tpl_plot_test(type = "barplot"), size = "regular", position = "bottomright")
+add_tpl_logo(tpl_plot_test(type = "barplot"), size = "small", position = "bottomright")
 ```
 
 Finally, the user is able to move the logo horizontally by specifying `align`. Positive values will shift the logo rightward while negative values shift it leftward:
