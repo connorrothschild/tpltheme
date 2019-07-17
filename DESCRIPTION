@@ -18,7 +18,8 @@ Imports:
     magrittr,
     RColorBrewer,
     htmltools,
-    yaml
+    yaml,
+    magick
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
