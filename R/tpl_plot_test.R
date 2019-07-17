@@ -18,28 +18,28 @@ tpl_plot_test <- function(type = "barplot", font = "adobe", include.logo = F) {
 
   #select plot type
     if (type == "barplot") {
-  plot <- ggplot(datasets::iris, aes(x=datasets::iris$Species, y=datasets::iris$Sepal.Width, fill=datasets::iris$Species)) +
-    geom_bar(stat="summary", fun.y="mean") +
-    labs(x="Species", y="Mean Sepal Width (cm)", fill="Species", title="Iris Dataset")
+  plot <- ggplot2::ggplot(datasets::iris, ggplot2::aes(x=datasets::iris$Species, y=datasets::iris$Sepal.Width, fill=datasets::iris$Species)) +
+    ggplot2::geom_bar(stat="summary", fun.y="mean") +
+    ggplot2::labs(x="Species", y="Mean Sepal Width (cm)", fill="Species", title="Iris Dataset")
   } else if (type == "scatterplot") {
-  plot <- ggplot(datasets::iris, aes(x=jitter(datasets::iris$Sepal.Width), y=jitter(datasets::iris$Sepal.Length), col=datasets::iris$Species, size = datasets::iris$etal.Length)) +
-    geom_point() +
-    labs(x="Sepal Width (cm)", y="Sepal Length (cm)", col="Species", title="Iris Dataset")
+  plot <- ggplot2::ggplot(datasets::iris, ggplot2::aes(x=jitter(datasets::iris$Sepal.Width), y=jitter(datasets::iris$Sepal.Length), col=datasets::iris$Species, size = datasets::iris$etal.Length)) +
+    ggplot2::geom_point() +
+    ggplot2::labs(x="Sepal Width (cm)", y="Sepal Length (cm)", col="Species", title="Iris Dataset")
   } else if (type == "boxplot") {
-  plot <- ggplot(datasets::iris, aes(x=datasets::iris$Species, y=datasets::iris$Sepal.Width, fill=datasets::iris$Species)) +
-    geom_boxplot() +
-    labs(x="Species", y="Sepal Width (cm)", fill="Species", title="Iris Dataset")
+  plot <- ggplot2::ggplot(datasets::iris, ggplot2::aes(x=datasets::iris$Species, y=datasets::iris$Sepal.Width, fill=datasets::iris$Species)) +
+    ggplot2::geom_boxplot() +
+    ggplot2::labs(x="Species", y="Sepal Width (cm)", fill="Species", title="Iris Dataset")
   } else if (type == "histogram") {
-    plot <- ggplot(datasets::iris, aes(x=datasets::iris$Sepal.Width)) +
-      geom_histogram(bins = 20) +
-      labs(x="Sepal Width (cm)", y="Count", title="Iris Dataset")
+    plot <- ggplot2::ggplot(datasets::iris, ggplot2::aes(x=datasets::iris$Sepal.Width)) +
+      ggplot2::geom_histogram(bins = 20) +
+      ggplot2::labs(x="Sepal Width (cm)", y="Count", title="Iris Dataset")
   } else if (type == "Texas") {
     set_tpl_theme(style = "Texas", font = font)
     tx_vac <- readr::read_csv("https://raw.githubusercontent.com/connorrothschild/tpltheme/master/data/tx_vac_example.csv")
     plot <- ggplot2::ggplot(data = tx_vac, mapping = ggplot2::aes(x = tx_vac$long, y = tx_vac$lat, group = tx_vac$group, fill = tx_vac$avgvac*100)) +
       ggplot2::coord_fixed(1.3) +
       ggplot2::geom_polygon(color = "black") +
-      labs(title = "Texas Vaccination Rate by County",
+      ggplot2::labs(title = "Texas Vaccination Rate by County",
            subtitle = "Among Kindergarteners",
            fill = "Percent\nVaccinated")
   } else {
