@@ -19,7 +19,8 @@ Imports:
     RColorBrewer,
     htmltools,
     yaml,
-    magick
+    magick,
+    conflicted
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
