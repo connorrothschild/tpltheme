@@ -1,23 +1,21 @@
-config <- yaml::read_yaml("https://raw.githubusercontent.com/connorrothschild/tpltheme/master/config.yaml")
-
-#' Texas Policy Lab color palettes
+#' #' Texas Policy Lab color palettes
+#' #'
+#' #' Vectors with hex-color codes that correspond to the color palettes found on the Texas Policy Lab website
+#' #' \url{https://www.texaspolicylab.org/}
+#' #'
+#' #' @source Texas Policy Lab website
+#' #'   \url{https://www.texaspolicylab.org/}
+#' #'
+#' #'
+#' #'@family TPL palettes
+#' #'@rdname TPL_palettes
+#' #'@export
+#' palette_tpl_main <- tpl_palettes$categorical
 #'
-#' Vectors with hex-color codes that correspond to the color palettes found on the Texas Policy Lab website
-#' \url{https://www.texaspolicylab.org/}
+#' #'@rdname TPL_palettes
+#' #'@export
+#' palette_tpl_diverging <- tpl_palettes$diverging
 #'
-#' @source Texas Policy Lab website
-#'   \url{https://www.texaspolicylab.org/}
-#'
-#'
-#'@family TPL palettes
-#'@rdname TPL_palettes
-#'@export
-palette_tpl_main <- config$palettes$tpl_main
-
-#'@rdname TPL_palettes
-#'@export
-palette_tpl_diverging <- config$palettes$tpl_diverging
-
-#'@rdname TPL_palettes
-#'@export
-palette_tpl_sequential <- config$palettes$tpl_sequential
+#' #'@rdname TPL_palettes
+#' #'@export
+#' palette_tpl_sequential <- tpl_palettes$sequential
