@@ -135,16 +135,10 @@ plot <- ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Spec
 add_tpl_logo(plot)
 ```
 
-The user can specify the `position` of the logo as well as it's `size`:
+The user can specify the `position` of the logo as well as it's `size`. The user is able to move the logo horizontally by specifying `align`. Positive values will shift the logo rightward while negative values shift it leftward:
 
 ```{r, message = FALSE, results = 'hide'}
-add_tpl_logo(tpl_plot_test(type = "barplot"), size = "small", position = "bottomright")
-```
-
-Finally, the user is able to move the logo horizontally by specifying `align`. Positive values will shift the logo rightward while negative values shift it leftward:
-
-```{r, message = FALSE, results = 'hide'}
-add_tpl_logo(tpl_plot_test(type = "barplot"), size = "small", position = "bottomright", align = -2)
+add_tpl_logo(tpl_plot_test(type = "barplot"), size = "small", position = "bottomright", align = -3)
 ```
 
 #### Logo Text
@@ -190,15 +184,46 @@ The function `view_palette` plots base color palettes included in `tplthemes`. A
 `palette_tpl_*` and therefore can be easily autocompleted within RStudio.
 
 ```{r}
-#view_palette(palette = palette_tpl_diverging)
-#view_palette(palette = palette_tpl_main)
+p1 <- view_palette(palette = palette_tpl_main)
+p2 <- view_palette(palette = palette_tpl_diverging)
+p3 <- view_palette(palette = palette_tpl_sequential)
+
+grid.arrange(p1, p2, p3, nrow = 1)
+```
+
+These palettes were created using http://colorbrewer2.org and http://coloors.co and are colorblind friendly. 
+
+The user may specify the color palette in the `scale_fill_*` or `scale_color_*` functions in a ggplot call. Specifically, the user can specify the `palette` (categorical, diverging, sequential) and whether the palette should be reversed.
+
+```{r}
+set_tpl_theme(style = "print", font = "lato")
+normal <- ggplot(diamonds) +
+  geom_bar(aes(x = cut, fill = clarity)) +
+  labs(title = "TPL Color Palette",
+       subtitle = "On sample data",
+       x = "Cut",
+       y = "Count",
+       fill = "Clarity") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+reversed <- ggplot(diamonds) +
+  geom_bar(aes(x = cut, fill = clarity)) +
+  labs(title = "TPL Color Palette",
+       subtitle = "(reversed)",
+       x = "Cut",
+       y = "Count",
+       fill = "Clarity") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_fill_discrete(reverse = TRUE)
+
+grid.arrange(normal, reversed, nrow = 1)
 ```
 
 #### Restore Defaults
 
 By calling `undo_tpl_theme`, you are able to remove TPL-specific theme settings and restores to ggplot defaults.
 
-```{r}
+```{r, warning = FALSE, message = FALSE}
 undo_tpl_theme()
 ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, size = Petal.Length)) +
     geom_point() +
