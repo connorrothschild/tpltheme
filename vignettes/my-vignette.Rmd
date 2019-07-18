@@ -64,6 +64,7 @@ ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
     geom_bar(stat="summary", fun.y="mean", show.legend = FALSE) +
     labs(x="Species", y="Mean Sepal Width (cm)", fill="Species", title="Iris Dataset")
 ```
+
 ```{r}
 set_tpl_theme(style = "print", font = "lato")
 
