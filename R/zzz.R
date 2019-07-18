@@ -4,8 +4,8 @@
               "scale_colour_gradient", "scale_fill_discrete", "scale_fill_ordinal", "scale_fill_continuous", "scale_fill_gradient")
 
   for (i in scales) {
-  conflicted::conflict_prefer(name   =  i,
-                              winner ="tpltheme",
+  conflicted::conflict_prefer(name   = i,
+                              winner = "tpltheme",
                               loser  = "ggplot2")
   }
 
