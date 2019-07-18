@@ -1,151 +1,180 @@
-#' #' Texas Policy Lab [ggplot2] theme
-#' #'
-#' #' Color palettes used by TPL
-#' #'
-#' #' @import RColorBrewer
-#' #' @import grDevices
-#' #' @export
-#' #' @param palette Palette name.
-#' tpl_color_pal <- function(palette = "categorical") {
-#'   palette_list <- palette_tpl
+#' Texas Policy Lab [ggplot2] theme
 #'
-#'   types <- palette_list[[palette]]
+#' Set custom color palettes in the `tplthemes` library
+#' Color palettes found on http://colorbrewer2.org and are colorblind safe.
 #'
-#'   function(n) {
-#'     if (n < 10) {
-#'     types[[n]]
-#'   } else {
-#'     cols <- RColorBrewer::brewer.pal(n, "Paired")
-#'     pal <- grDevices::colorRampPalette(cols)
-#'     pal(n)
-#'   }
-#'   }
-#' }
+#' @import RColorBrewer
+#' @import grDevices
 #'
-#' #' Discrete color scale
-#' #'
-#' #' @md
-#' #' @param ... other arguments passed to \code{discrete_scale()}
-#' #' @export
-#' scale_color_discrete <- function(...) {
-#'   ggplot2::discrete_scale("colour", "tpl", palette = tpl_color_pal(palette = "categorical"), ...)
-#' }
+#' @param palette Character name of palette in tpl_palettes
+#' @param reverse Boolean indicating whether the palette should be reversed
+#' @param ... Additional arguments to pass to colorRampPalette()
+#' @export
+set_color_pal <- function(palette = "categorical", reverse = FALSE, ...) {
+  pal <- tpl_palettes[[palette]]
+
+  if (reverse) pal <- rev(pal)
+
+  # function(n) {
+  #   if (n < 10) {
+  #     types[[n]]
+  #   } else {
+  #     cols <- RColorBrewer::brewer.pal(n, "Paired")
+  #     pal <- grDevices::colorRampPalette(cols)
+  #     pal(n)
+  #   }
+  # }
+
+  grDevices::colorRampPalette(pal, ...)
+
+}
+
+#' Discrete color scale
 #'
-#' #' Discrete color scale
-#' #'
-#' #' @md
-#' #' @param ... other arguments passed to \code{discrete_scale()}
-#' #' @export
-#' scale_colour_discrete <- scale_color_discrete
+#' @param palette Character name of palette in tpl_palettes
+#' @param reverse Boolean indicating whether the palette should be reversed
+#' @param ... Additional arguments passed to \code{discrete_scale()}
 #'
-#' #' Discrete fill scale
-#' #'
-#' #' @md
-#' #' @param ... other arguments passed to \code{discrete_scale()}
-#' #' @export
-#' scale_fill_discrete <- function(...) {
-#'   ggplot2::discrete_scale("fill", "tpl", palette = tpl_color_pal(palette = "categorical"), ...)
-#' }
+#' @md
+#' @export
+scale_color_discrete <- function(palette = "categorical", reverse = FALSE, ...) {
+
+  pal <- set_color_pal(palette = palette, reverse = reverse)
+  ggplot2::discrete_scale("colour", paste0("tpl_", palette), palette = pal, ...)
+
+}
+
+#' Discrete color scale
 #'
-#' #' Continuous fill scale
-#' #'
-#' #' @md
-#' #' @param colours vector of colours
-#' #' @param colors vector of colours
-#' #' @param values if colours should not be evenly positioned along the gradient this vector gives the position (between 0 and 1) for each colour in the colours vector. See rescale for a convience function to map an arbitrary range to between 0 and 1
-#' #' @param space colour space in which to calculate gradient. Must be "Lab" - other values are deprecated.
-#' #' @param na.value default color for NA values
-#' #' @param guide legend representation of scale
-#' #' @param ... other arguments passed to \code{discrete_scale()}
-#' #' @export
-#' scale_color_gradientn <- function(...,
-#'                                   colours = c("#1188A6","#117B9B","#116E91","#126186","#12547C","#134771","#133A67","#142D5C","#142052"),#config$palettes$seq[9][[1]],
-#'                                   colors = c("#1188A6","#117B9B","#116E91","#126186","#12547C","#134771","#133A67","#142D5C","#142052"),#config$palettes$seq[9][[1]],
-#'                                   values = NULL,
-#'                                   space = "Lab",
-#'                                   na.value = "grey50",
-#'                                   guide = "colourbar") {
+#' @param palette Character name of palette in tpl_palettes
+#' @param reverse Boolean indicating whether the palette should be reversed
+#' @param ... Additional arguments passed to \code{discrete_scale()}
 #'
-#'   colours <- if (missing(colours)) colors else colours
+#' @md
+#' @export
+scale_colour_ordinal <- scale_color_discrete
+
+#' Discrete color scale
 #'
-#'   ggplot2::continuous_scale("colour", "gradientn",
-#'                             palette = scales::gradient_n_pal(colours, values, space), na.value = na.value, guide = guide, ...)
-#' }
+#' @param palette Character name of palette in tpl_palettes
+#' @param reverse Boolean indicating whether the palette should be reversed
+#' @param ... Additional arguments passed to \code{discrete_scale()}
 #'
-#' #' Continuous fill scale
-#' #'
-#' #' @md
-#' #' @param colours vector of colours
-#' #' @param colors vector of colours
-#' #' @param values if colours should not be evenly positioned along the gradient this vector gives the position (between 0 and 1) for each colour in the colours vector. See rescale for a convience function to map an arbitrary range to between 0 and 1
-#' #' @param space colour space in which to calculate gradient. Must be "Lab" - other values are deprecated.
-#' #' @param na.value default color for NA values
-#' #' @param guide legend representation of scale
-#' #' @param ... other arguments passed to \code{discrete_scale()}
-#' #' @export
-#' scale_colour_gradientn <- scale_color_gradientn
+#' @md
+#' @export
+scale_colour_discrete <- scale_color_discrete
+
+#' Continuous color scale
 #'
-#' #' Continuous fill scale
-#' #'
-#' #' @md
-#' #' @param colours vector of colours
-#' #' @param colors vector of colours
-#' #' @param values if colours should not be evenly positioned along the gradient this vector gives the position (between 0 and 1) for each colour in the colours vector. See rescale for a convience function to map an arbitrary range to between 0 and 1
-#' #' @param space colour space in which to calculate gradient. Must be "Lab" - other values are deprecated.
-#' #' @param na.value default color for NA values
-#' #' @param guide legend representation of scale
-#' #' @param ... other arguments passed to \code{discrete_scale()}
-#' #' @export
-#' scale_fill_gradientn <- function(...,
-#'                                  colours = c("#1188A6","#117B9B","#116E91","#126186","#12547C","#134771","#133A67","#142D5C","#142052"),#config$palettes$seq[9][[1]],
-#'                                  colors = c("#1188A6","#117B9B","#116E91","#126186","#12547C","#134771","#133A67","#142D5C","#142052"),#config$palettes$seq[9][[1]],
-#'                                  values = NULL,
-#'                                  space = "Lab",
-#'                                  na.value = "grey50",
-#'                                  guide = "colourbar") {
+#' @param palette Character name of palette in tpl_palettes
+#' @param reverse Boolean indicating whether the palette should be reversed
+#' @param ... Additional arguments passed to \code{discrete_scale()}
 #'
-#'   colours <- if (missing(colours)) colors else colours
+#' @md
+#' @export
+scale_color_continuous <- function(palette = "categorical", reverse = FALSE, ...) {
+
+  pal <- set_color_pal(palette = palette, reverse = reverse)
+  ggplot2::scale_color_gradientn(colours = pal(256), ...)
+
+}
+
+#' Continuous color scale
 #'
-#'   ggplot2::continuous_scale("fill", "gradientn",
-#'                             palette = scales::gradient_n_pal(colours, values, space), na.value = na.value, guide = guide, ...)
-#' }
+#' @param palette Character name of palette in tpl_palettes
+#' @param reverse Boolean indicating whether the palette should be reversed
+#' @param ... Additional arguments passed to \code{discrete_scale()}
 #'
-#' #' Continuous fill scale
-#' #'
-#' #' @md
-#' #' @param colours vector of colours
-#' #' @param colors vector of colours
-#' #' @param values if colours should not be evenly positioned along the gradient this vector gives the position (between 0 and 1) for each colour in the colours vector. See rescale for a convience function to map an arbitrary range to between 0 and 1
-#' #' @param space colour space in which to calculate gradient. Must be "Lab" - other values are deprecated.
-#' #' @param na.value default color for NA values
-#' #' @param guide legend representation of scale
-#' #' @param ... other arguments passed to \code{discrete_scale()}
-#' #' @export
-#' scale_fill_gradient <- scale_fill_gradientn
+#' @md
+#' @export
+scale_color_gradient <- scale_color_continuous
+
+#' Continuous color scale
 #'
-#' #' Continuous fill scale
-#' #'
-#' #' @md
-#' #' @param colours vector of colours
-#' #' @param colors vector of colours
-#' #' @param values if colours should not be evenly positioned along the gradient this vector gives the position (between 0 and 1) for each colour in the colours vector. See rescale for a convience function to map an arbitrary range to between 0 and 1
-#' #' @param space colour space in which to calculate gradient. Must be "Lab" - other values are deprecated.
-#' #' @param na.value default color for NA values
-#' #' @param guide legend representation of scale
-#' #' @param ... other arguments passed to \code{discrete_scale()}
-#' #' @export
-#' scale_fill_continuous <- scale_fill_gradient
+#' @param palette Character name of palette in tpl_palettes
+#' @param reverse Boolean indicating whether the palette should be reversed
+#' @param ... Additional arguments passed to \code{discrete_scale()}
 #'
-#' #' Discrete fill scale for ordinal factors
-#' #'
-#' #' @md
-#' #' @param ... other arguments passed to \code{discrete_scale()}
-#' #' @export
-#' scale_fill_ordinal <- scale_fill_discrete
+#' @md
+#' @export
+scale_colour_gradient <- scale_color_continuous
+
+#' Continuous color scale
 #'
-#' #' Discrete color scale for ordinal factors
-#' #'
-#' #' @md
-#' #' @param ... other arguments passed to \code{discrete_scale()}
-#' #' @export
-#' scale_colour_ordinal <- scale_color_discrete
+#' @param palette Character name of palette in tpl_palettes
+#' @param reverse Boolean indicating whether the palette should be reversed
+#' @param ... Additional arguments passed to \code{discrete_scale()}
+#'
+#' @md
+#' @export
+scale_color_gradientn <- scale_color_continuous
+
+#' Continuous color scale
+#'
+#' @param palette Character name of palette in tpl_palettes
+#' @param reverse Boolean indicating whether the palette should be reversed
+#' @param ... Additional arguments passed to \code{discrete_scale()}
+#'
+#' @md
+#' @export
+scale_colour_gradientn <- scale_color_continuous
+
+#' Discrete fill scale
+#'
+#' @param palette Character name of palette in tpl_palettes
+#' @param reverse Boolean indicating whether the palette should be reversed
+#' @param ... Additional arguments passed to \code{discrete_scale()}
+#'
+#' @md
+#' @export
+scale_fill_discrete <- function(palette = "categorical", reverse = FALSE, ...) {
+
+  pal <- set_color_pal(palette = palette, reverse = reverse)
+  ggplot2::discrete_scale("fill", paste0("tpl_", palette), palette = pal, ...)
+
+}
+
+#' Discrete color scale
+#'
+#' @param palette Character name of palette in tpl_palettes
+#' @param reverse Boolean indicating whether the palette should be reversed
+#' @param ... Additional arguments passed to \code{discrete_scale()}
+#'
+#' @md
+#' @export
+scale_fill_ordinal <- scale_fill_discrete
+
+#' Continuous fill scale
+#'
+#' @param palette Character name of palette in tpl_palettes
+#' @param reverse Boolean indicating whether the palette should be reversed
+#' @param ... Additional arguments passed to \code{discrete_scale()}
+#'
+#' @md
+#' @export
+scale_fill_continuous <- function(palette = "categorical", reverse = FALSE, ...) {
+
+  pal <- set_color_pal(palette = palette, reverse = reverse)
+  ggplot2::scale_fill_gradientn(colours = pal(256), ...)
+
+}
+
+#' Continuous fill scale
+#'
+#' @param palette Character name of palette in tpl_palettes
+#' @param reverse Boolean indicating whether the palette should be reversed
+#' @param ... Additional arguments passed to \code{discrete_scale()}
+#'
+#' @md
+#' @export
+scale_fill_gradientn <- scale_fill_continuous
+
+#' Continuous fill scale
+#'
+#' @param palette Character name of palette in tpl_palettes
+#' @param reverse Boolean indicating whether the palette should be reversed
+#' @param ... Additional arguments passed to \code{discrete_scale()}
+#'
+#' @md
+#' @export
+scale_fill_gradient <- scale_fill_continuous
