@@ -4,10 +4,14 @@
 \alias{scale_color_discrete}
 \title{Discrete color scale}
 \usage{
-scale_color_discrete(...)
+scale_color_discrete(palette = "categorical", reverse = FALSE, ...)
 }
 \arguments{
-\item{...}{other arguments passed to \code{discrete_scale()}}
+\item{palette}{Character name of palette in tpl_palettes}
+
+\item{reverse}{Boolean indicating whether the palette should be reversed}
+
+\item{...}{Additional arguments passed to \code{discrete_scale()}}
 }
 \description{
 Discrete color scale

@@ -2,29 +2,17 @@
 % Please edit documentation in R/scales.R
 \name{scale_colour_gradientn}
 \alias{scale_colour_gradientn}
-\title{Continuous fill scale}
+\title{Continuous color scale}
 \usage{
-scale_colour_gradientn(..., colours = c("#1188A6", "#117B9B", "#116E91",
-  "#126186", "#12547C", "#134771", "#133A67", "#142D5C", "#142052"),
-  colors = c("#1188A6", "#117B9B", "#116E91", "#126186", "#12547C",
-  "#134771", "#133A67", "#142D5C", "#142052"), values = NULL,
-  space = "Lab", na.value = "grey50", guide = "colourbar")
+scale_colour_gradientn(palette = "categorical", reverse = FALSE, ...)
 }
 \arguments{
-\item{...}{other arguments passed to \code{discrete_scale()}}
+\item{palette}{Character name of palette in tpl_palettes}
 
-\item{colours}{vector of colours}
+\item{reverse}{Boolean indicating whether the palette should be reversed}
 
-\item{colors}{vector of colours}
-
-\item{values}{if colours should not be evenly positioned along the gradient this vector gives the position (between 0 and 1) for each colour in the colours vector. See rescale for a convience function to map an arbitrary range to between 0 and 1}
-
-\item{space}{colour space in which to calculate gradient. Must be "Lab" - other values are deprecated.}
-
-\item{na.value}{default color for NA values}
-
-\item{guide}{legend representation of scale}
+\item{...}{Additional arguments passed to \code{discrete_scale()}}
 }
 \description{
-Continuous fill scale
+Continuous color scale
 }

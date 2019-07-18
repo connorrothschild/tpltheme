@@ -22,7 +22,7 @@ tpl_plot_test <- function(type = "barplot", font = "adobe", include.logo = F) {
     ggplot2::geom_bar(stat="summary", fun.y="mean") +
     ggplot2::labs(x="Species", y="Mean Sepal Width (cm)", fill="Species", title="Iris Dataset")
   } else if (type == "scatterplot") {
-  plot <- ggplot2::ggplot(datasets::iris, ggplot2::aes(x=jitter(datasets::iris$Sepal.Width), y=jitter(datasets::iris$Sepal.Length), col=datasets::iris$Species, size = datasets::iris$etal.Length)) +
+  plot <- ggplot2::ggplot(datasets::iris, ggplot2::aes(x=jitter(datasets::iris$Sepal.Width), y=jitter(datasets::iris$Sepal.Length), col=datasets::iris$Species, size = datasets::iris$Setal.Length)) +
     ggplot2::geom_point() +
     ggplot2::labs(x="Sepal Width (cm)", y="Sepal Length (cm)", col="Species", title="Iris Dataset")
   } else if (type == "boxplot") {
@@ -43,7 +43,7 @@ tpl_plot_test <- function(type = "barplot", font = "adobe", include.logo = F) {
            subtitle = "Among Kindergarteners",
            fill = "Percent\nVaccinated")
   } else {
-    stop("Plot type not found. Try one of the following: 'barplot', 'boxplot', 'scatterplot', 'histogram'",
+    stop("Plot type not found. Try one of the following: 'barplot', 'boxplot', 'scatterplot', 'histogram', 'Texas'",
               call. = FALSE)
   }
     # logo option
@@ -54,4 +54,4 @@ tpl_plot_test <- function(type = "barplot", font = "adobe", include.logo = F) {
       return(plot)
     }
     return(plot)
-  }
+}

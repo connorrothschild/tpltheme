@@ -2,13 +2,17 @@
 % Please edit documentation in R/scales.R
 \name{scale_colour_ordinal}
 \alias{scale_colour_ordinal}
-\title{Discrete color scale for ordinal factors}
+\title{Discrete color scale}
 \usage{
-scale_colour_ordinal(...)
+scale_colour_ordinal(palette = "categorical", reverse = FALSE, ...)
 }
 \arguments{
-\item{...}{other arguments passed to \code{discrete_scale()}}
+\item{palette}{Character name of palette in tpl_palettes}
+
+\item{reverse}{Boolean indicating whether the palette should be reversed}
+
+\item{...}{Additional arguments passed to \code{discrete_scale()}}
 }
 \description{
-Discrete color scale for ordinal factors
+Discrete color scale
 }
