@@ -72,7 +72,7 @@ scale_colour_discrete <- scale_color_discrete
 #'
 #' @md
 #' @export
-scale_color_continuous <- function(palette = "categorical", reverse = FALSE, ...) {
+scale_color_continuous <- function(palette = "sequential", reverse = FALSE, ...) {
 
   pal <- set_color_pal(palette = palette, reverse = reverse)
   ggplot2::scale_color_gradientn(colours = pal(256), ...)
@@ -152,7 +152,7 @@ scale_fill_ordinal <- scale_fill_discrete
 #'
 #' @md
 #' @export
-scale_fill_continuous <- function(palette = "categorical", reverse = FALSE, ...) {
+scale_fill_continuous <- function(palette = "sequential", reverse = FALSE, ...) {
 
   pal <- set_color_pal(palette = palette, reverse = reverse)
   ggplot2::scale_fill_gradientn(colours = pal(256), ...)
