@@ -20,10 +20,13 @@ knitr::opts_chunk$set(
 
 ```{r, warning = FALSE, message = FALSE}
 if (!require('devtools')) install.packages('devtools')
-config <- yaml::read_yaml("https://raw.githubusercontent.com/connorrothschild/tpltheme/master/config.yaml", eval.expr = TRUE)
+#config <- yaml::read_yaml("https://raw.githubusercontent.com/connorrothschild/tpltheme/master/config.yaml", eval.expr = TRUE)
 library(ggplot2)
 library(tidyverse)
-library(tpltheme)
+
+#devtools::install_github("connorrothschild/tpltheme")
+#library(tpltheme)
+devtools::load_all()
 ```
 
 ## Plotting

@@ -18,6 +18,6 @@ tpl_font_install <- function() {
     # sysfonts::font_add("Lato", regular = "Lato.ttf")
     extrafont::font_import()
     extrafont::loadfonts()
-    font_test()
+    tpl_font_test()
   }
 }
