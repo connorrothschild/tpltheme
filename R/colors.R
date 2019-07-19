@@ -41,7 +41,8 @@ tpl_colors <- function(...) {
   tpl_color_list[cols]
 }
 
-#' @title TPL Palettes
+#' List of TPL Palettes
+#'
 #' @format A \code{list}
 #' @export
 tpl_palettes <-

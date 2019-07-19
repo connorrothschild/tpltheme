@@ -4,7 +4,7 @@
 \alias{scale_fill_gradientn}
 \title{Continuous fill scale}
 \usage{
-scale_fill_gradientn(palette = "categorical", reverse = FALSE, ...)
+scale_fill_gradientn(palette = "sequential", reverse = FALSE, ...)
 }
 \arguments{
 \item{palette}{Character name of palette in tpl_palettes}

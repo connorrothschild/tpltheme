@@ -4,7 +4,7 @@
 \alias{scale_color_gradientn}
 \title{Continuous color scale}
 \usage{
-scale_color_gradientn(palette = "categorical", reverse = FALSE, ...)
+scale_color_gradientn(palette = "sequential", reverse = FALSE, ...)
 }
 \arguments{
 \item{palette}{Character name of palette in tpl_palettes}

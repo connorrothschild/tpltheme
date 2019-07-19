@@ -11,6 +11,8 @@
 #' @export
 set_tpl_theme <- function(style = "print", font = "adobe") {
 
+  .onLoad()
+
   # set default theme
 
     if (style == "print") {

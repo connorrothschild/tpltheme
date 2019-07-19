@@ -7,10 +7,11 @@
 
 ``` r
 if (!require('devtools')) install.packages('devtools')
-config <- yaml::read_yaml("https://raw.githubusercontent.com/connorrothschild/tpltheme/master/config.yaml", eval.expr = TRUE)
 library(ggplot2)
-#library(tpltheme)
-devtools::load_all()
+library(tidyverse)
+
+devtools::install_github("connorrothschild/tpltheme")
+library(tpltheme)
 ```
 
 ## Plotting
@@ -29,23 +30,22 @@ The user is able to specify whether they want to use *Lato* or *Adobe
 Caslon Pro* in their figures.
 
 To ensure that these fonts are installed and registered, use
-`font_test()`. If fonts are not properly installed, install both fonts
-online and then run `font_install()`.
+`tpl_font_test()`. If fonts are not properly installed, install both
+fonts online and then run `tpl_font_install()`.
 
 ``` r
-font_test()
+tpl_font_test()
 ```
 
-    #> [1] "Lato isn't imported and registered. Install the font online and import and register using font_install()."
+    #> [1] "Adobe Caslon Pro is not imported and registered. Install the font online and import and register using font_install(). If that presents problems, try using sysfonts::font_add('Adobe Caslon Pro', regular = 'Adobe Caslon Pro.ttf') with your downloaded font name taking the place of 'Adobe Caslon Pro.ttf.'"
 
 ``` r
-font_install()
+tpl_font_install()
 ```
 
     #> Importing fonts may take a few minutes, depending on the number of fonts and the speed of the system.
-    #> Continue? [y/n]
-
-    #> [1] "Lato isn't imported and registered. Install the font online and import and register using font_install()."
+    #> Continue? [y/n] 
+    #> [1] "Adobe Caslon Pro is not imported and registered. Install the font online and import and register using font_install(). If that presents problems, try using sysfonts::font_add('Adobe Caslon Pro', regular = 'Adobe Caslon Pro.ttf') with your downloaded font name taking the place of 'Adobe Caslon Pro.ttf.'"
 
 ### Usage
 
@@ -56,8 +56,6 @@ Here are some examples of sample TPL plots with different specifications
 for `style` and `font`.
 
 ``` r
-#library(tidyverse)
-#library(tpltheme)
 set_tpl_theme(style = "print", font = "adobe")
 
 ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
@@ -65,7 +63,7 @@ ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
     labs(x="Species", y="Mean Sepal Width (cm)", fill="Species", title="Iris Dataset")
 ```
 
-![](man/figures/README-unnamed-chunk-4-1.png)<!-- -->
+<img src="man/figures/README-unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
 
 ``` r
 set_tpl_theme(style = "print", font = "lato")
@@ -75,7 +73,7 @@ ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, siz
     labs(x="Sepal Width (cm)", y="Sepal Length (cm)", col="Species", size = "Petal Length", title="Iris Dataset")
 ```
 
-![](man/figures/README-unnamed-chunk-5-1.png)<!-- -->
+<img src="man/figures/README-unnamed-chunk-5-1.png" style="display: block; margin: auto;" />
 
 By specifying `style = "Texas"` within `set_tpl_theme`, the user may
 also create Texas-specific plots.
@@ -94,7 +92,7 @@ ggplot2::ggplot(data = tx_vac, mapping = ggplot2::aes(x = long, y = lat, group =
        caption = "Source: Texas DSHS")
 ```
 
-![](man/figures/README-unnamed-chunk-6-1.png)<!-- -->
+<img src="man/figures/README-unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
 
 And it also works for categorical variables:
 
@@ -114,7 +112,7 @@ tx_vac %>%
        caption = "Source: Texas DSHS")
 ```
 
-![](man/figures/README-unnamed-chunk-7-1.png)<!-- -->
+<img src="man/figures/README-unnamed-chunk-7-1.png" style="display: block; margin: auto;" />
 
 If the number of colors exceeds the number of colors in the TPL palette
 (9), the function `tpl_color_pal()` will drop the TPL color palette and
@@ -131,7 +129,7 @@ tx_vac %>%
   labs(title = "Texas Counties")
 ```
 
-![](man/figures/README-unnamed-chunk-8-1.png)<!-- -->
+<img src="man/figures/README-unnamed-chunk-8-1.png" style="display: block; margin: auto;" />
 
 ``` r
 # default to print afterwards
@@ -156,7 +154,7 @@ plot <- ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Spec
 add_tpl_logo(plot)
 ```
 
-![](man/figures/README-unnamed-chunk-9-1.png)<!-- -->
+<img src="man/figures/README-unnamed-chunk-9-1.png" style="display: block; margin: auto;" />
 
 The user can specify the `position` of the logo as well as it’s `size`.
 The user is able to move the logo horizontally by specifying `align`.
@@ -167,7 +165,7 @@ shift it leftward:
 add_tpl_logo(tpl_plot_test(type = "barplot"), size = "small", position = "bottomright", align = -3)
 ```
 
-![](man/figures/README-unnamed-chunk-10-1.png)<!-- -->
+<img src="man/figures/README-unnamed-chunk-10-1.png" style="display: block; margin: auto;" />
 
 #### Logo Text
 
@@ -184,7 +182,7 @@ plot <- ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Spec
 add_tpl_logo_text(plot)
 ```
 
-![](man/figures/README-unnamed-chunk-11-1.png)<!-- -->
+<img src="man/figures/README-unnamed-chunk-11-1.png" style="display: block; margin: auto;" />
 
 The user may also need to specify `align`, which moves the plot
 horizontally across the bottom of the page.
@@ -192,12 +190,12 @@ horizontally across the bottom of the page.
 ``` r
 plot <- ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
     geom_boxplot(show.legend = FALSE) +
-    labs(x="Species", y="Sepal Width (cm)", fill="Species", title="Iris Dataset", subtitle ="When specifying align = 1.5")
+    labs(x="Species", y="Sepal Width (cm)", fill="Species", title="Iris Dataset", subtitle ="When specifying align = 1")
     
-add_tpl_logo_text(plot, align = 1.5)    
+add_tpl_logo_text(plot, align = 1)    
 ```
 
-![](man/figures/README-unnamed-chunk-12-1.png)<!-- -->
+<img src="man/figures/README-unnamed-chunk-12-1.png" style="display: block; margin: auto;" />
 
 ### Additional Functions
 
@@ -218,7 +216,7 @@ ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, siz
     drop_axis(axis = "y")
 ```
 
-![](man/figures/README-unnamed-chunk-13-1.png)<!-- -->
+<img src="man/figures/README-unnamed-chunk-13-1.png" style="display: block; margin: auto;" />
 
 #### Color Palettes
 
@@ -235,7 +233,7 @@ p3 <- view_palette(palette = palette_tpl_sequential)
 grid.arrange(p1, p2, p3, nrow = 1)
 ```
 
-![](man/figures/README-unnamed-chunk-14-1.png)<!-- -->
+<img src="man/figures/README-unnamed-chunk-14-1.png" style="display: block; margin: auto;" />
 
 These palettes were created using <http://colorbrewer2.org> and
 <http://coloors.co> and are colorblind friendly.
@@ -269,7 +267,7 @@ reversed <- ggplot(diamonds) +
 grid.arrange(normal, reversed, nrow = 1)
 ```
 
-![](man/figures/README-unnamed-chunk-15-1.png)<!-- -->
+<img src="man/figures/README-unnamed-chunk-15-1.png" style="display: block; margin: auto;" />
 
 #### Restore Defaults
 
@@ -278,12 +276,17 @@ settings and restores to ggplot defaults.
 
 ``` r
 undo_tpl_theme()
+```
+
+    #> [1] "All TPL defaults were removed and the tplthemes package has been effectively from the current environment. To restore TPL defaults, use set_tpl_theme()."
+
+``` r
 ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, size = Petal.Length)) +
     geom_point() +
     labs(x="Sepal Width (cm)", y="Sepal Length (cm)", col="Species", size = "Petal Length", title="Iris Dataset")
 ```
 
-![](man/figures/README-unnamed-chunk-16-1.png)<!-- -->
+<img src="man/figures/README-unnamed-chunk-16-1.png" style="display: block; margin: auto;" />
 
 ## Reporting
 

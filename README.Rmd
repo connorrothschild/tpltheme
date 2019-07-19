@@ -1,5 +1,8 @@
 ---
-output: github_document
+output: 
+ github_document: 
+  fig_width: 8.5
+  fig_height: 4.8
 editor_options:
   chunk_output_type: console
 ---
@@ -9,7 +12,8 @@ editor_options:
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(
   comment = "#>",
-  fig.path = "man/figures/README-"
+  fig.path = "man/figures/README-",
+  fig.align = "center"
 )
 ```
 
@@ -19,10 +23,11 @@ knitr::opts_chunk$set(
 
 ```{r, warning = FALSE, message = FALSE}
 if (!require('devtools')) install.packages('devtools')
-config <- yaml::read_yaml("https://raw.githubusercontent.com/connorrothschild/tpltheme/master/config.yaml", eval.expr = TRUE)
 library(ggplot2)
-#library(tpltheme)
-devtools::load_all()
+library(tidyverse)
+
+devtools::install_github("connorrothschild/tpltheme")
+library(tpltheme)
 ```
 
 ## Plotting
@@ -35,11 +40,11 @@ This package creates a standardized formats for plots to be used in reports crea
 
 The user is able to specify whether they want to use *Lato* or *Adobe Caslon Pro* in their figures.
 
-To ensure that these fonts are installed and registered, use `font_test()`. If fonts are not properly installed, install both fonts online and then run `font_install()`.
+To ensure that these fonts are installed and registered, use `tpl_font_test()`. If fonts are not properly installed, install both fonts online and then run `tpl_font_install()`.
 
 ```{r, warning = FALSE, message = FALSE}
-font_test()
-font_install()
+tpl_font_test()
+tpl_font_install()
 ```
 
 ### Usage
@@ -49,8 +54,6 @@ Load `library(tpltheme)` **after** `library(ggplot2)` and/or `library(tidyverse)
 Here are some examples of sample TPL plots with different specifications for `style` and `font`.
 
 ```{r}
-#library(tidyverse)
-#library(tpltheme)
 set_tpl_theme(style = "print", font = "adobe")
 
 ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
@@ -151,9 +154,9 @@ The user may also need to specify `align`, which moves the plot horizontally acr
 ```{r}
 plot <- ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
     geom_boxplot(show.legend = FALSE) +
-    labs(x="Species", y="Sepal Width (cm)", fill="Species", title="Iris Dataset", subtitle ="When specifying align = 1.5")
+    labs(x="Species", y="Sepal Width (cm)", fill="Species", title="Iris Dataset", subtitle ="When specifying align = 1")
     
-add_tpl_logo_text(plot, align = 1.5)    
+add_tpl_logo_text(plot, align = 1)    
 ```
 
 ### Additional Functions

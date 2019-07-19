@@ -11,9 +11,17 @@
 #' @param ... Additional arguments to pass to colorRampPalette()
 #' @export
 set_color_pal <- function(palette = "categorical", reverse = FALSE, ...) {
-  pal <- tpl_palettes[[palette]]
 
-  if (reverse) pal <- rev(pal)
+  if (palette == "default") {
+    pal <- palette("default")
+
+  } else {
+
+    pal <- tpl_palettes[[palette]]
+
+    if (reverse) pal <- rev(pal)
+
+  }
 
   # function(n) {
   #   if (n < 10) {
