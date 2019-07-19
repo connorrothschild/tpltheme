@@ -39,17 +39,20 @@ undo_tpl_theme <- function() {
 
   # default palette
 
-  palette <- palette()
-
+  set_color_pal(palette = "default")
   scales <- c("scale_color_discrete", "scale_colour_ordinal", "scale_colour_discrete", "scale_color_continuous", "scale_color_gradient",
               "scale_colour_gradient", "scale_fill_discrete", "scale_fill_ordinal", "scale_fill_continuous", "scale_fill_gradient")
 
-  for (i in scales) {
+  suppressMessages(
+    for (i in scales) {
     conflicted::conflict_prefer(name   = i,
                                 winner = "ggplot2",
                                 loser  = "tpltheme")
   }
+  )
 
-  #detach("package::tplthemes", unload = TRUE)
+  # warning message
+
+  print("All TPL defaults were removed and the tplthemes package has been effectively from the current environment. To restore TPL defaults, use set_tpl_theme().")
 
 }
