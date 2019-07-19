@@ -1,11 +1,11 @@
 ---
 title: "TPL Themes"
 author: "Connor Rothschild"
-date: "Last updated 7/15/19"
+date: "Last updated 7/19/19"
 output: 
   rmarkdown::html_vignette:
-    fig_width: 7
-    fig_height: 4
+    fig_width: 8
+    fig_height: 4.5
 vignette: >
   %\VignetteIndexEntry{my-vignette}
   %\VignetteEngine{knitr::rmarkdown}
@@ -25,15 +25,15 @@ knitr::opts_knit$set(
 )
 ```
 
+## Installation
+
 ```{r, warning = FALSE, message = FALSE}
 if (!require('devtools')) install.packages('devtools')
-#config <- yaml::read_yaml("https://raw.githubusercontent.com/connorrothschild/tpltheme/master/config.yaml", eval.expr = TRUE)
 library(ggplot2)
 library(tidyverse)
 
-#devtools::install_github("connorrothschild/tpltheme")
-#library(tpltheme)
-devtools::load_all()
+devtools::install_github("connorrothschild/tpltheme")
+library(tpltheme)
 ```
 
 ## Plotting
@@ -160,9 +160,9 @@ The user may also need to specify `align`, which moves the plot horizontally acr
 ```{r}
 plot <- ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
     geom_boxplot(show.legend = FALSE) +
-    labs(x="Species", y="Sepal Width (cm)", fill="Species", title="Iris Dataset", subtitle ="When specifying align = 1.5")
+    labs(x="Species", y="Sepal Width (cm)", fill="Species", title="Iris Dataset", subtitle ="When specifying align = 1")
     
-add_tpl_logo_text(plot, align = 1.5)    
+add_tpl_logo_text(plot, align = 1)    
 ```
 
 ### Additional Functions
