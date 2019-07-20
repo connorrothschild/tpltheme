@@ -254,20 +254,41 @@ normal <- ggplot(diamonds) +
        fill = "Clarity") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-reversed <- ggplot(diamonds) +
-  geom_bar(aes(x = cut, fill = clarity)) +
-  labs(title = "TPL Color Palette",
-       subtitle = "(reversed)",
-       x = "Cut",
-       y = "Count",
-       fill = "Clarity") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+reversed <- normal +
+  labs(subtitle = "(reversed)") +
   scale_fill_discrete(reverse = TRUE)
 
 grid.arrange(normal, reversed, nrow = 1)
 ```
 
 <img src="man/figures/README-unnamed-chunk-15-1.png" style="display: block; margin: auto;" />
+
+``` r
+normal <- diamonds %>% 
+  group_by(clarity) %>% 
+  summarise(price = mean(price)) %>% 
+  mutate(clarity = forcats::fct_reorder(clarity, price)) %>% 
+  ggplot() +
+  geom_col(aes(x = clarity, y = price, fill = clarity), show.legend = FALSE) +
+  labs(title = "TPL Color Palette",
+       subtitle = "in action",
+       x = "Clarity",
+       y = "Price",
+       fill = element_blank()) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  coord_flip() +
+  scale_fill_discrete() +
+  scale_y_continuous(expand = expand_scale(mult = c(0, 0.001))) +
+  drop_axis(axis = "x")
+
+reversed <- normal +
+  labs(subtitle = "(reversed)") +
+  scale_fill_discrete(reverse = TRUE)
+
+gridExtra::grid.arrange(normal, reversed)
+```
+
+<img src="man/figures/README-unnamed-chunk-16-1.png" style="display: block; margin: auto;" />
 
 #### Restore Defaults
 
@@ -286,7 +307,16 @@ ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, siz
     labs(x="Sepal Width (cm)", y="Sepal Length (cm)", col="Species", size = "Petal Length", title="Iris Dataset")
 ```
 
-<img src="man/figures/README-unnamed-chunk-16-1.png" style="display: block; margin: auto;" />
+<img src="man/figures/README-unnamed-chunk-17-1.png" style="display: block; margin: auto;" />
+
+To restore the TPL theme, simply call `set_tpl_theme()`:
+
+``` r
+set_tpl_theme()
+last_plot()
+```
+
+<img src="man/figures/README-unnamed-chunk-18-1.png" style="display: block; margin: auto;" />
 
 ## Reporting
 
