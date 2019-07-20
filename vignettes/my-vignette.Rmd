@@ -32,8 +32,9 @@ if (!require('devtools')) install.packages('devtools')
 library(ggplot2)
 library(tidyverse)
 
-devtools::install_github("connorrothschild/tpltheme")
-library(tpltheme)
+#devtools::install_github("connorrothschild/tpltheme")
+#library(tpltheme)
+devtools::load_all()
 ```
 
 ## Plotting
@@ -127,21 +128,11 @@ set_tpl_theme(style = "print")
 
 The user also has the option to include the TPL logo in single plots. This may be preferred for those reports being made especially public, or to serve as a pseudo-watermark in proprietary plots.
 
-``` {r, message = FALSE, results ='hide'}
-library(grid)
-library(gridExtra)
-plot <- ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, size = Petal.Length)) +
-    geom_point() +
-    labs(x="Sepal Width (cm)", y="Sepal Length (cm)", col="Species", size = "Petal Length", title="Iris Dataset")
- 
-add_tpl_logo(plot)
+```{r, message = FALSE, out.width='100%'}
+add_tpl_logo(tpl_plot_test(type = "barplot"), position = "top right", scale = 2)
 ```
 
-The user can specify the `position` of the logo as well as it's `size`. The user is able to move the logo horizontally by specifying `align`. Positive values will shift the logo rightward while negative values shift it leftward:
-
-```{r, message = FALSE, results = 'hide'}
-add_tpl_logo(tpl_plot_test(type = "barplot"), size = "small", position = "bottomright", align = -3)
-```
+The user can specify the `position` of the logo as well as its `scale`. The scale argument refers to the size of the logo object, with the specified number corresponding to a multiplication with the normal logo size. In other words, `scale = 2` will *double* the size of the logo. The logo defaults to 1/7th of the size of the plot.
 
 #### Logo Text
 
