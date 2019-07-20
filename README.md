@@ -299,7 +299,7 @@ settings and restores to ggplot defaults.
 undo_tpl_theme()
 ```
 
-    #> [1] "All TPL defaults were removed and the tplthemes package has been effectively detached from the current environment. To restore TPL defaults, use set_tpl_theme()."
+    #> [1] "All TPL defaults were removed and the tplthemes package has been effectively from the current environment. To restore TPL defaults, use set_tpl_theme()."
 
 ``` r
 ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, size = Petal.Length)) +
