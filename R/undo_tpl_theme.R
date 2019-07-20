@@ -54,6 +54,6 @@ undo_tpl_theme <- function() {
 
   # warning message
 
-  print("All TPL defaults were removed and the tplthemes package has been effectively detached from the current environment. To restore TPL defaults, use set_tpl_theme().")
+  print("All TPL defaults were removed and the tplthemes package has been effectively from the current environment. To restore TPL defaults, use set_tpl_theme().")
 
 }
