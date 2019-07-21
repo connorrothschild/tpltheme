@@ -6,7 +6,7 @@
 #' add_tpl_logo_text(plot)
 #' }
 #'
-#' @param plot The plot object passed to `add_tpl_logo`
+#' @param plot The plot object passed to `add_tpl_logo_text`
 #' @param align An optional specification of horizontal nudging of the TPL logo
 #' @import grid
 #' @import gridExtra

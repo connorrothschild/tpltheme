@@ -7,7 +7,7 @@
 add_tpl_logo_text(plot, align = 0)
 }
 \arguments{
-\item{plot}{The plot object passed to \code{add_tpl_logo}}
+\item{plot}{The plot object passed to \code{add_tpl_logo_text}}
 
 \item{align}{An optional specification of horizontal nudging of the TPL logo}
 }

@@ -10,8 +10,9 @@ if (!require('devtools')) install.packages('devtools')
 library(ggplot2)
 library(tidyverse)
 
-devtools::install_github("connorrothschild/tpltheme")
-library(tpltheme)
+devtools::load_all()
+#devtools::install_github("connorrothschild/tpltheme")
+#library(tpltheme)
 ```
 
 ## Plotting
@@ -144,28 +145,17 @@ The user also has the option to include the TPL logo in single plots.
 This may be preferred for those reports being made especially public, or
 to serve as a pseudo-watermark in proprietary plots.
 
+The user can specify the `position` of the logo as well as its `scale`.
+The scale argument refers to the size of the logo object, with the
+specified number corresponding to a multiplication with the normal logo
+size. In other words, `scale = 2` will *double* the size of the logo.
+The logo defaults to 1/7th of the size of the plot.
+
 ``` r
-library(grid)
-library(gridExtra)
-plot <- ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, size = Petal.Length)) +
-    geom_point() +
-    labs(x="Sepal Width (cm)", y="Sepal Length (cm)", col="Species", size = "Petal Length", title="Iris Dataset")
- 
-add_tpl_logo(plot)
+add_tpl_logo(tpl_plot_test(type = "barplot"), position = "top right", scale = 2)
 ```
 
 <img src="man/figures/README-unnamed-chunk-9-1.png" style="display: block; margin: auto;" />
-
-The user can specify the `position` of the logo as well as it’s `size`.
-The user is able to move the logo horizontally by specifying `align`.
-Positive values will shift the logo rightward while negative values
-shift it leftward:
-
-``` r
-add_tpl_logo(tpl_plot_test(type = "barplot"), size = "small", position = "bottomright", align = -3)
-```
-
-<img src="man/figures/README-unnamed-chunk-10-1.png" style="display: block; margin: auto;" />
 
 #### Logo Text
 
@@ -182,7 +172,7 @@ plot <- ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Spec
 add_tpl_logo_text(plot)
 ```
 
-<img src="man/figures/README-unnamed-chunk-11-1.png" style="display: block; margin: auto;" />
+<img src="man/figures/README-unnamed-chunk-10-1.png" style="display: block; margin: auto;" />
 
 The user may also need to specify `align`, which moves the plot
 horizontally across the bottom of the page.
@@ -195,7 +185,7 @@ plot <- ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
 add_tpl_logo_text(plot, align = 1)    
 ```
 
-<img src="man/figures/README-unnamed-chunk-12-1.png" style="display: block; margin: auto;" />
+<img src="man/figures/README-unnamed-chunk-11-1.png" style="display: block; margin: auto;" />
 
 ### Additional Functions
 
@@ -216,7 +206,7 @@ ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, siz
     drop_axis(axis = "y")
 ```
 
-<img src="man/figures/README-unnamed-chunk-13-1.png" style="display: block; margin: auto;" />
+<img src="man/figures/README-unnamed-chunk-12-1.png" style="display: block; margin: auto;" />
 
 #### Color Palettes
 
@@ -233,7 +223,7 @@ p3 <- view_palette(palette = palette_tpl_sequential)
 grid.arrange(p1, p2, p3, nrow = 1)
 ```
 
-<img src="man/figures/README-unnamed-chunk-14-1.png" style="display: block; margin: auto;" />
+<img src="man/figures/README-unnamed-chunk-13-1.png" style="display: block; margin: auto;" />
 
 These palettes were created using <http://colorbrewer2.org> and
 <http://coloors.co> and are colorblind friendly.
@@ -254,17 +244,38 @@ normal <- ggplot(diamonds) +
        fill = "Clarity") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-reversed <- ggplot(diamonds) +
-  geom_bar(aes(x = cut, fill = clarity)) +
-  labs(title = "TPL Color Palette",
-       subtitle = "(reversed)",
-       x = "Cut",
-       y = "Count",
-       fill = "Clarity") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+reversed <- normal +
+  labs(subtitle = "(reversed)") +
   scale_fill_discrete(reverse = TRUE)
 
 grid.arrange(normal, reversed, nrow = 1)
+```
+
+<img src="man/figures/README-unnamed-chunk-14-1.png" style="display: block; margin: auto;" />
+
+``` r
+normal <- diamonds %>% 
+  group_by(clarity) %>% 
+  summarise(price = mean(price)) %>% 
+  mutate(clarity = forcats::fct_reorder(clarity, price)) %>% 
+  ggplot() +
+  geom_col(aes(x = clarity, y = price, fill = clarity), show.legend = FALSE) +
+  labs(title = "TPL Color Palette",
+       subtitle = "in action",
+       x = "Clarity",
+       y = "Price",
+       fill = element_blank()) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  coord_flip() +
+  scale_fill_discrete() +
+  scale_y_continuous(expand = expand_scale(mult = c(0, 0.001))) +
+  drop_axis(axis = "x")
+
+reversed <- normal +
+  labs(subtitle = "(reversed)") +
+  scale_fill_discrete(reverse = TRUE)
+
+gridExtra::grid.arrange(normal, reversed)
 ```
 
 <img src="man/figures/README-unnamed-chunk-15-1.png" style="display: block; margin: auto;" />
@@ -287,6 +298,15 @@ ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, siz
 ```
 
 <img src="man/figures/README-unnamed-chunk-16-1.png" style="display: block; margin: auto;" />
+
+To restore the TPL theme, simply call `set_tpl_theme()`:
+
+``` r
+set_tpl_theme()
+last_plot()
+```
+
+<img src="man/figures/README-unnamed-chunk-17-1.png" style="display: block; margin: auto;" />
 
 ## Reporting
 
