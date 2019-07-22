@@ -179,11 +179,11 @@ grid.arrange(p1, p2, p3, nrow = 1)
 ```
 
 ```{r, include = FALSE}
-p1 <- scales::show_col(palette_tpl_main)
-p2 <- scales::show_col(palette_tpl_diverging)
-p3 <- scales::show_col(palette_tpl_sequential)
-
-grid.arrange(p1, p2, p3, nrow = 1)
+# p1 <- scales::show_col(palette_tpl_main)
+# p2 <- scales::show_col(palette_tpl_diverging)
+# p3 <- scales::show_col(palette_tpl_sequential)
+# 
+# grid.arrange(p1, p2, p3, nrow = 1)
 ```
 
 These palettes were created using http://colorbrewer2.org and http://coloors.co and are colorblind friendly. 
@@ -209,8 +209,8 @@ grid.arrange(normal, reversed, nrow = 1)
 ```
 
 ```{r, include = FALSE}
-data <- gapminder %>% 
-  dplyr::filter(gapminder$country %in% c("France", "Germany", "Ireland", "Italy", "Japan", "Norway", "Belarus")) %>% 
+data <- gapminder::gapminder %>% 
+  dplyr::filter(gapminder::gapminder$country %in% c("France", "Germany", "Ireland", "Italy", "Japan", "Norway", "Belarus")) %>% 
   mutate(year = as.Date(paste(year, "-01-01", sep = "", format='%Y-%b-%d')))
 
 ggplot(data = data, aes(x = year, y = gdpPercap, fill = country)) +

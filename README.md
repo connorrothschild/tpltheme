@@ -155,7 +155,7 @@ The logo defaults to 1/7th of the size of the plot.
 add_tpl_logo(tpl_plot_test(type = "barplot"), position = "top right", scale = 2)
 ```
 
-<img src="man/figures/README-unnamed-chunk-9-1.png" style="display: block; margin: auto;" />
+<img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" style="display: block; margin: auto;" />
 
 #### Logo Text
 
@@ -251,7 +251,7 @@ reversed <- normal +
 grid.arrange(normal, reversed, nrow = 1)
 ```
 
-<img src="man/figures/README-unnamed-chunk-14-1.png" style="display: block; margin: auto;" />
+<img src="man/figures/README-unnamed-chunk-15-1.png" style="display: block; margin: auto;" />
 
 ``` r
 normal <- diamonds %>% 
@@ -278,7 +278,7 @@ reversed <- normal +
 gridExtra::grid.arrange(normal, reversed)
 ```
 
-<img src="man/figures/README-unnamed-chunk-15-1.png" style="display: block; margin: auto;" />
+<img src="man/figures/README-unnamed-chunk-17-1.png" style="display: block; margin: auto;" />
 
 #### Restore Defaults
 
@@ -297,7 +297,7 @@ ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, siz
     labs(x="Sepal Width (cm)", y="Sepal Length (cm)", col="Species", size = "Petal Length", title="Iris Dataset")
 ```
 
-<img src="man/figures/README-unnamed-chunk-16-1.png" style="display: block; margin: auto;" />
+<img src="man/figures/README-unnamed-chunk-18-1.png" style="display: block; margin: auto;" />
 
 To restore the TPL theme, simply call `set_tpl_theme()`:
 
@@ -306,7 +306,7 @@ set_tpl_theme()
 last_plot()
 ```
 
-<img src="man/figures/README-unnamed-chunk-17-1.png" style="display: block; margin: auto;" />
+<img src="man/figures/README-unnamed-chunk-19-1.png" style="display: block; margin: auto;" />
 
 ## Reporting
 
