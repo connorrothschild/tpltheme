@@ -178,6 +178,14 @@ p3 <- view_palette(palette = palette_tpl_sequential)
 grid.arrange(p1, p2, p3, nrow = 1)
 ```
 
+```{r, include = FALSE}
+p1 <- scales::show_col(palette_tpl_main)
+p2 <- scales::show_col(palette_tpl_diverging)
+p3 <- scales::show_col(palette_tpl_sequential)
+
+grid.arrange(p1, p2, p3, nrow = 1)
+```
+
 These palettes were created using http://colorbrewer2.org and http://coloors.co and are colorblind friendly. 
 
 The user may specify the color palette in the `scale_fill_*` or `scale_color_*` functions in a ggplot call. Specifically, the user can specify the `palette` (categorical, diverging, sequential) and whether the palette should be reversed.
@@ -198,6 +206,24 @@ reversed <- normal +
   scale_fill_discrete(reverse = TRUE)
 
 grid.arrange(normal, reversed, nrow = 1)
+```
+
+```{r, include = FALSE}
+data <- gapminder %>% 
+  dplyr::filter(gapminder$country %in% c("France", "Germany", "Ireland", "Italy", "Japan", "Norway", "Belarus")) %>% 
+  mutate(year = as.Date(paste(year, "-01-01", sep = "", format='%Y-%b-%d')))
+
+ggplot(data = data, aes(x = year, y = gdpPercap, fill = country)) +
+  geom_area(alpha = 0.8) +
+  scale_x_date(expand = c(0,0)) +
+  scale_y_continuous(expand = c(0, 0), labels = scales::dollar) +
+  labs(title = "GDP Per Capita Over Time",
+       subtitle = "Using the TPL Color Palette",
+       x = element_blank(),
+       y = "GDP Per Capita",
+       fill = element_blank()) + 
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+add_tpl_logo(last_plot(), scale = 1.5)
 ```
 
 ```{r, warning = FALSE, message = FALSE, fig.height = 7}
