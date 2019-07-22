@@ -32,9 +32,9 @@ if (!require('devtools')) install.packages('devtools')
 library(ggplot2)
 library(tidyverse)
 
-#devtools::install_github("connorrothschild/tpltheme")
-#library(tpltheme)
-devtools::load_all()
+devtools::install_github("connorrothschild/tpltheme")
+library(tpltheme)
+#devtools::load_all()
 ```
 
 ## Plotting
@@ -181,7 +181,7 @@ p1 <- view_palette(palette = palette_tpl_main)
 p2 <- view_palette(palette = palette_tpl_diverging)
 p3 <- view_palette(palette = palette_tpl_sequential)
 
-grid.arrange(p1, p2, p3, nrow = 1)
+gridExtra::grid.arrange(p1, p2, p3, nrow = 1)
 ```
 
 These palettes were created using http://colorbrewer2.org and http://coloors.co and are colorblind friendly. 
@@ -203,7 +203,7 @@ reversed <- normal +
   labs(subtitle = "(reversed)") +
   scale_fill_discrete(reverse = TRUE)
 
-grid.arrange(normal, reversed, nrow = 1)
+gridExtra::grid.arrange(normal, reversed, nrow = 1)
 ```
 
 ```{r, warning = FALSE, message = FALSE, fig.height = 7}
