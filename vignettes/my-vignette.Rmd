@@ -128,9 +128,15 @@ set_tpl_theme(style = "print")
 
 The user also has the option to include the TPL logo in single plots. This may be preferred for those reports being made especially public, or to serve as a pseudo-watermark in proprietary plots.
 
-```{r, message = FALSE, out.width='100%'}
-add_tpl_logo(tpl_plot_test(type = "barplot"), position = "top right", scale = 2)
+```{r, eval = FALSE, echo = FALSE, message = FALSE, out.width='100%'}
+plot <- ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, size = Petal.Length)) +
+    geom_point() +
+    labs(x="Sepal Width (cm)", y="Sepal Length (cm)", col="Species", size = "Petal Length", title="Iris Dataset")
+
+add_tpl_logo(plot, position = "top right", scale = 2)
 ```
+
+![](https://raw.githubusercontent.com/connorrothschild/tpltheme/master/man/figures/README-unnamed-chunk-9-1.png){width = 50%}
 
 The user can specify the `position` of the logo as well as its `scale`. The scale argument refers to the size of the logo object, with the specified number corresponding to a multiplication with the normal logo size. In other words, `scale = 2` will *double* the size of the logo. The logo defaults to 1/7th of the size of the plot.
 
@@ -139,10 +145,7 @@ The user can specify the `position` of the logo as well as its `scale`. The scal
 There may be some instances when an all-out logo is not warranted or preferred. If that is the case and the user would still like to watermark their figures, they can use the function `add_tpl_logo_text()` to add text to an existing plot object:
 
 ```{r}
-plot <- ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, size = Petal.Length)) +
-    geom_point() +
-    labs(x="Sepal Width (cm)", y="Sepal Length (cm)", col="Species", size = "Petal Length", title="Iris Dataset")
-    
+plot <- tpl_plot_test()
 add_tpl_logo_text(plot)
 ```
 
