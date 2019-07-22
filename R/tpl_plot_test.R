@@ -22,9 +22,9 @@ tpl_plot_test <- function(type = "barplot", font = "adobe", include.logo = F) {
     ggplot2::geom_bar(stat="summary", fun.y="mean") +
     ggplot2::labs(x="Species", y="Mean Sepal Width (cm)", fill="Species", title="Iris Dataset")
   } else if (type == "scatterplot") {
-  plot <- ggplot2::ggplot(datasets::iris, ggplot2::aes(x=jitter(datasets::iris$Sepal.Width), y=jitter(datasets::iris$Sepal.Length), col=datasets::iris$Species, size = datasets::iris$Setal.Length)) +
+  plot <- ggplot2::ggplot(datasets::iris, ggplot2::aes(x=jitter(datasets::iris$Sepal.Width), y=jitter(datasets::iris$Sepal.Length), col=datasets::iris$Species, size = datasets::iris$Petal.Length)) +
     ggplot2::geom_point() +
-    ggplot2::labs(x="Sepal Width (cm)", y="Sepal Length (cm)", col="Species", title="Iris Dataset")
+    ggplot2::labs(x="Sepal Width (cm)", y="Sepal Length (cm)", col="Species", title="Iris Dataset", size="Petal Length")
   } else if (type == "boxplot") {
   plot <- ggplot2::ggplot(datasets::iris, ggplot2::aes(x=datasets::iris$Species, y=datasets::iris$Sepal.Width, fill=datasets::iris$Species)) +
     ggplot2::geom_boxplot() +

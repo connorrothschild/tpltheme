@@ -4,7 +4,7 @@
 #' Modified from https://gist.github.com/Ryo-N7/67ca1c364c342a82c4098918082ca445
 #'
 #' @example \dontrun{
-#' add_tpl_logo(plot, size = "large", position = "bottomright", align = .5)
+#' add_tpl_logo(plot, position = "top right", scale = 1.5)
 #' }
 #'
 #' @param plot The plot object passed to `add_tpl_logo`
@@ -58,9 +58,3 @@ add_tpl_logo <- function(plot, position = "top right", scale = 1) {
   magick::image_composite(plot, logo, offset = paste0("+", x_pos, "+", y_pos))
 
 }
-
-# plot <- ggplot2::ggplot(datasets::iris, ggplot2::aes(x = datasets::iris$Sepal.Width)) +
-#   ggplot2::geom_histogram(bins = 20) + ggplot2::labs(x = "Sepal Width (cm)",
-#                                                      y = "Count", title = "Iris Dataset")
-#
-# add_tpl_logo(plot, scale = 1.5)
