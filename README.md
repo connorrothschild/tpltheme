@@ -281,8 +281,8 @@ gridExtra::grid.arrange(normal, reversed)
 
 ``` r
 data <- gapminder::gapminder %>% 
-  dplyr::filter(gapminder::gapminder$country %in% c("France", "Germany", "Ireland", "Italy", "Japan", "Norway", "Belarus")) %>% 
-  mutate(year = as.Date(paste(year, "-01-01", sep = "", format='%Y-%b-%d')))
+  dplyr::filter(gapminder::gapminder$country %in% c("France", "Germany", "Ireland", "Italy", "Japan", "Norway", "Mexico", "United States")) %>%
+  dplyr::mutate(year = as.Date(paste(year, "-01-01", sep = "", format='%Y-%b-%d')))
 
 ggplot(data = data, aes(x = year, y = gdpPercap, fill = country)) +
   geom_area(alpha = 0.8) +
@@ -292,17 +292,9 @@ ggplot(data = data, aes(x = year, y = gdpPercap, fill = country)) +
        subtitle = "Using the TPL Color Palette",
        x = element_blank(),
        y = "GDP Per Capita",
-       fill = element_blank()) + 
+       fill = "Country") + 
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
-
-<img src="man/figures/README-unnamed-chunk-17-2.png" style="display: block; margin: auto;" />
-
-``` r
-add_tpl_logo(last_plot(), scale = 1.5)
-```
-
-    #> Saving 8.5 x 4.8 in image
 
 <img src="man/figures/README-unnamed-chunk-17-1.png" style="display: block; margin: auto;" />
 
