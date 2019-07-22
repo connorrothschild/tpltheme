@@ -13,7 +13,8 @@ editor_options:
 knitr::opts_chunk$set(
   comment = "#>",
   fig.path = "man/figures/README-",
-  fig.align = "center"
+  fig.align = "center",
+  dpi = 300
 )
 ```
 
@@ -125,7 +126,7 @@ The user also has the option to include the TPL logo in single plots. This may b
 The user can specify the `position` of the logo as well as its `scale`. The scale argument refers to the size of the logo object, with the specified number corresponding to a multiplication with the normal logo size. In other words, `scale = 2` will *double* the size of the logo. The logo defaults to 1/7th of the size of the plot.
 
 ```{r, message = FALSE, out.width='100%'}
-add_tpl_logo(tpl_plot_test(type = "barplot"), position = "top right", scale = 2)
+add_tpl_logo(tpl_plot_test(type = "barplot"), position = "top right", scale = 1.5)
 ```
 
 #### Logo Text

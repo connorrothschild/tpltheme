@@ -152,7 +152,7 @@ size. In other words, `scale = 2` will *double* the size of the logo.
 The logo defaults to 1/7th of the size of the plot.
 
 ``` r
-add_tpl_logo(tpl_plot_test(type = "barplot"), position = "top right", scale = 2)
+add_tpl_logo(tpl_plot_test(type = "barplot"), position = "top right", scale = 1.5)
 ```
 
 <img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" style="display: block; margin: auto;" />
