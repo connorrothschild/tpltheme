@@ -10,9 +10,8 @@ if (!require('devtools')) install.packages('devtools')
 library(ggplot2)
 library(tidyverse)
 
-devtools::load_all()
-#devtools::install_github("connorrothschild/tpltheme")
-#library(tpltheme)
+devtools::install_github("connorrothschild/tpltheme")
+library(tpltheme)
 ```
 
 ## Plotting
@@ -83,10 +82,10 @@ also create Texas-specific plots.
 tx_vac <- readr::read_csv("https://raw.githubusercontent.com/connorrothschild/tpltheme/master/data/tx_vac_example.csv")
 set_tpl_theme(style = "Texas", font = "adobe")
 
-ggplot2::ggplot(data = tx_vac, mapping = ggplot2::aes(x = long, y = lat, group = group, fill = avgvac*100)) +
-  ggplot2::coord_fixed(1.3) +
+ggplot(data = tx_vac, mapping = aes(x = long, y = lat, group = group, fill = avgvac*100)) +
+  coord_fixed(1.3) +
   scale_fill_continuous(limits = c(78.3,100)) +
-  ggplot2::geom_polygon(color = "black") +
+  geom_polygon(color = "black") +
   labs(title = "Texas Vaccination Rate by County",
        subtitle = "Among Kindergarteners",
        fill = "Percent\nVaccinated",
@@ -104,9 +103,9 @@ tx_vac %>%
   dplyr::mutate(cat = factor(dplyr::case_when(avgvac*100 > 99 ~ "Great",
                          avgvac*100 > 90 ~ "Average",
                          avgvac*100 < 90 ~ "Bad"))) %>% 
-  ggplot2::ggplot(mapping = ggplot2::aes(x = long, y = lat, group = group, fill = cat)) +
-  ggplot2::coord_fixed(1.3) +
-  ggplot2::geom_polygon(color = "black") +
+  ggplot(mapping = aes(x = long, y = lat, group = group, fill = cat)) +
+  coord_fixed(1.3) +
+  geom_polygon(color = "black") +
   labs(title = "Texas Vaccination Rate by County",
        subtitle = "Among Kindergarteners",
        fill = "Vaccination Rating",
@@ -124,9 +123,9 @@ chapter](https://bookdown.org/rdpeng/exdata/plotting-and-color-in-r.html#using-t
 
 ``` r
 tx_vac %>% 
-  ggplot2::ggplot(mapping = ggplot2::aes(x = long, y = lat, group = group, fill = subregion)) +
-  ggplot2::coord_fixed(1.3) +
-  ggplot2::geom_polygon(color = "black", show.legend = FALSE) +
+  ggplot(mapping = aes(x = long, y = lat, group = group, fill = subregion)) +
+  coord_fixed(1.3) +
+  geom_polygon(color = "black", show.legend = FALSE) +
   labs(title = "Texas Counties")
 ```
 
@@ -220,7 +219,7 @@ p1 <- view_palette(palette = palette_tpl_main)
 p2 <- view_palette(palette = palette_tpl_diverging)
 p3 <- view_palette(palette = palette_tpl_sequential)
 
-grid.arrange(p1, p2, p3, nrow = 1)
+gridExtra::grid.arrange(p1, p2, p3, nrow = 1)
 ```
 
 <img src="man/figures/README-unnamed-chunk-13-1.png" style="display: block; margin: auto;" />
@@ -248,7 +247,7 @@ reversed <- normal +
   labs(subtitle = "(reversed)") +
   scale_fill_discrete(reverse = TRUE)
 
-grid.arrange(normal, reversed, nrow = 1)
+gridExtra::grid.arrange(normal, reversed, nrow = 1)
 ```
 
 <img src="man/figures/README-unnamed-chunk-15-1.png" style="display: block; margin: auto;" />
@@ -277,6 +276,33 @@ reversed <- normal +
 
 gridExtra::grid.arrange(normal, reversed)
 ```
+
+<img src="man/figures/README-unnamed-chunk-16-1.png" style="display: block; margin: auto;" />
+
+``` r
+data <- gapminder::gapminder %>% 
+  dplyr::filter(gapminder::gapminder$country %in% c("France", "Germany", "Ireland", "Italy", "Japan", "Norway", "Belarus")) %>% 
+  mutate(year = as.Date(paste(year, "-01-01", sep = "", format='%Y-%b-%d')))
+
+ggplot(data = data, aes(x = year, y = gdpPercap, fill = country)) +
+  geom_area(alpha = 0.8) +
+  scale_x_date(expand = c(0,0)) +
+  scale_y_continuous(expand = c(0, 0), labels = scales::dollar) +
+  labs(title = "GDP Per Capita Over Time",
+       subtitle = "Using the TPL Color Palette",
+       x = element_blank(),
+       y = "GDP Per Capita",
+       fill = element_blank()) + 
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+<img src="man/figures/README-unnamed-chunk-17-2.png" style="display: block; margin: auto;" />
+
+``` r
+add_tpl_logo(last_plot(), scale = 1.5)
+```
+
+    #> Saving 8.5 x 4.8 in image
 
 <img src="man/figures/README-unnamed-chunk-17-1.png" style="display: block; margin: auto;" />
 
