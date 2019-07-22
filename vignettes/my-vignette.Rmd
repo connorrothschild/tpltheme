@@ -1,5 +1,5 @@
 ---
-title: "TPL Themes"
+title: "TPL Theme"
 author: "Connor Rothschild"
 date: "Last updated 7/19/19"
 output: 
@@ -7,7 +7,7 @@ output:
     fig_width: 8
     fig_height: 4.5
 vignette: >
-  %\VignetteIndexEntry{my-vignette}
+  %\VignetteIndexEntry{TPL Theme}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
   %\VignetteDepends{htmltools}
@@ -18,7 +18,9 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.align = "center",
-  dpi = 100
+  dpi = 100,
+  fig.width = 8,
+  fig.height = 4.5
 )
 
 knitr::opts_knit$set(
@@ -134,7 +136,7 @@ plot <- tpl_plot_test(type = "scatterplot")
 add_tpl_logo(plot, position = "top right", scale = 2)
 ```
 
-```{r}
+```{r, echo = FALSE}
 img <- magick::image_read("https://raw.githubusercontent.com/connorrothschild/tpltheme/master/figures/plot_w_logo.png")
 grid::grid.raster(img)
 ```
@@ -180,10 +182,10 @@ ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, siz
 The function `view_palette` plots base color palettes included in `tplthemes`. All TPL color palettes are led by the notation
 `palette_tpl_*` and therefore can be easily autocompleted within RStudio.
 
-```{r}
-p1 <- view_palette(palette = palette_tpl_main)
-p2 <- view_palette(palette = palette_tpl_diverging)
-p3 <- view_palette(palette = palette_tpl_sequential)
+```{r, fig.height = 8, fig.width=8}
+p1 <- view_palette(palette = palette_tpl_main) + ggtitle("Categorical")
+p2 <- view_palette(palette = palette_tpl_diverging) + ggtitle("Diverging")
+p3 <- view_palette(palette = palette_tpl_sequential) + ggtitle("Sequential")
 
 gridExtra::grid.arrange(p1, p2, p3, nrow = 1)
 ```

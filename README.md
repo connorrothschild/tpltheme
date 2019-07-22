@@ -215,9 +215,9 @@ The function `view_palette` plots base color palettes included in
 RStudio.
 
 ``` r
-p1 <- view_palette(palette = palette_tpl_main)
-p2 <- view_palette(palette = palette_tpl_diverging)
-p3 <- view_palette(palette = palette_tpl_sequential)
+p1 <- view_palette(palette = palette_tpl_main) + ggtitle("Categorical")
+p2 <- view_palette(palette = palette_tpl_diverging) + ggtitle("Diverging")
+p3 <- view_palette(palette = palette_tpl_sequential) + ggtitle("Sequential")
 
 gridExtra::grid.arrange(p1, p2, p3, nrow = 1)
 ```

@@ -170,10 +170,10 @@ ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, siz
 The function `view_palette` plots base color palettes included in `tplthemes`. All TPL color palettes are led by the notation
 `palette_tpl_*` and therefore can be easily autocompleted within RStudio.
 
-```{r}
-p1 <- view_palette(palette = palette_tpl_main)
-p2 <- view_palette(palette = palette_tpl_diverging)
-p3 <- view_palette(palette = palette_tpl_sequential)
+```{r, fig.height = 8, fig.width=8}
+p1 <- view_palette(palette = palette_tpl_main) + ggtitle("Categorical")
+p2 <- view_palette(palette = palette_tpl_diverging) + ggtitle("Diverging")
+p3 <- view_palette(palette = palette_tpl_sequential) + ggtitle("Sequential")
 
 gridExtra::grid.arrange(p1, p2, p3, nrow = 1)
 ```
