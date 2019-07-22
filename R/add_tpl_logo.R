@@ -58,9 +58,3 @@ add_tpl_logo <- function(plot, position = "top right", scale = 1) {
   magick::image_composite(plot, logo, offset = paste0("+", x_pos, "+", y_pos))
 
 }
-
-# plot <- ggplot2::ggplot(datasets::iris, ggplot2::aes(x = datasets::iris$Sepal.Width)) +
-#   ggplot2::geom_histogram(bins = 20) + ggplot2::labs(x = "Sepal Width (cm)",
-#                                                      y = "Count", title = "Iris Dataset")
-#
-# add_tpl_logo(plot, scale = 1.5)
