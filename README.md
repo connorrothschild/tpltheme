@@ -1,7 +1,8 @@
-<!-- see https://github.com/connorrothschild/tpltheme -->
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # TPL Theme
+
+See https://github.com/connorrothschild/tpltheme
 
 ## Installation
 
