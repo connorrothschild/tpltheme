@@ -210,7 +210,7 @@ ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, siz
 #### Color Palettes
 
 The function `view_palette` plots base color palettes included in
-`tplthemes`. All TPL color palettes are led by the notation
+`tpltheme`. All TPL color palettes are led by the notation
 `palette_tpl_*` and therefore can be easily autocompleted within
 RStudio.
 
