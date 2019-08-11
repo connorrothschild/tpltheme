@@ -12,7 +12,7 @@ tpl_color_list <- c(
   `divred3`  = "#d6604d",
   `divred4`  = "#f4a582",
   `divred5`  = "#fddbc7",
-  `divneutr` = "#f7f7f7",
+  `divneutr` = "#dedede",
   `divblue5` = "#d1e5f0",
   `divblue4` = "#92c5de",
   `divblue3` = "#4393c3",
