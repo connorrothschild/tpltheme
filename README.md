@@ -61,6 +61,7 @@ set_tpl_theme(style = "print", font = "adobe")
 
 ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
     geom_bar(stat="summary", fun.y="mean", show.legend = FALSE) +
+    scale_y_continuous(expand = expand_scale(mult = c(0, 0.001))) +
     labs(x="Species", y="Mean Sepal Width (cm)", fill="Species", title="Iris Dataset")
 ```
 
@@ -152,7 +153,12 @@ size. In other words, `scale = 2` will *double* the size of the logo.
 The logo defaults to 1/7th of the size of the plot.
 
 ``` r
-add_tpl_logo(tpl_plot_test(type = "barplot"), position = "top right", scale = 1.5)
+plot <- ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
+    geom_bar(stat="summary", fun.y="mean", show.legend = FALSE) +
+    scale_y_continuous(expand = expand_scale(mult = c(0, 0.001))) +
+    labs(x="Species", y="Mean Sepal Width (cm)", fill="Species", title="Iris Dataset")
+
+add_tpl_logo(plot, position = "top right", scale = 1.5)
 ```
 
 <img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" style="display: block; margin: auto;" />
@@ -211,7 +217,7 @@ ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, siz
 #### Color Palettes
 
 The function `view_palette` plots base color palettes included in
-`tplthemes`. All TPL color palettes are led by the notation
+`tpltheme`. All TPL color palettes are led by the notation
 `palette_tpl_*` and therefore can be easily autocompleted within
 RStudio.
 
@@ -242,6 +248,7 @@ normal <- ggplot(diamonds) +
        x = "Cut",
        y = "Count",
        fill = "Clarity") +
+  scale_y_continuous(expand = expand_scale(mult = c(0, 0.001))) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 reversed <- normal +
@@ -308,7 +315,7 @@ settings and restores to ggplot defaults.
 undo_tpl_theme()
 ```
 
-    #> [1] "All TPL defaults were removed and the tplthemes package has been effectively detached from the current environment. To restore TPL defaults, use set_tpl_theme()."
+    #> [1] "All TPL defaults were removed and the tpltheme package has been effectively detached from the current environment. To restore TPL defaults, use set_tpl_theme()."
 
 ``` r
 ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, size = Petal.Length)) +
