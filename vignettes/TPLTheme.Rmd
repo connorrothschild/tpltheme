@@ -21,7 +21,7 @@ if (!require('devtools')) install.packages('devtools')
 library(ggplot2)
 library(tidyverse)
 
-#devtools::install_github("connorrothschild/tpltheme")
+devtools::install_github("connorrothschild/tpltheme")
 library(tpltheme)
 ```
 
@@ -37,7 +37,7 @@ The user is able to specify whether they want to use *Lato* or *Adobe Caslon Pro
 
 To ensure that these fonts are installed and registered, use `tpl_font_test()`. If fonts are not properly installed, install both fonts online and then run `tpl_font_install()`.
 
-```{r, warning = FALSE, message = FALSE, eval = FALSE}
+```{r, warning = FALSE, message = FALSE}
 tpl_font_test()
 tpl_font_install()
 ```
@@ -53,6 +53,7 @@ set_tpl_theme(style = "print", font = "adobe")
 
 ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
     geom_bar(stat="summary", fun.y="mean", show.legend = FALSE) +
+    scale_y_continuous(expand = expand_scale(mult = c(0, 0.001))) +
     labs(x="Species", y="Mean Sepal Width (cm)", fill="Species", title="Iris Dataset")
 ```
 
@@ -119,7 +120,12 @@ The user also has the option to include the TPL logo in single plots. This may b
 The user can specify the `position` of the logo as well as its `scale`. The scale argument refers to the size of the logo object, with the specified number corresponding to a multiplication with the normal logo size. In other words, `scale = 2` will *double* the size of the logo. The logo defaults to 1/7th of the size of the plot.
 
 ```{r, message = FALSE, out.width='100%'}
-add_tpl_logo(tpl_plot_test(type = "barplot"), position = "top right", scale = 1.5)
+plot <- ggplot(iris, aes(x=Species, y=Sepal.Width, fill=Species)) +
+    geom_bar(stat="summary", fun.y="mean", show.legend = FALSE) +
+    scale_y_continuous(expand = expand_scale(mult = c(0, 0.001))) +
+    labs(x="Species", y="Mean Sepal Width (cm)", fill="Species", title="Iris Dataset")
+
+add_tpl_logo(plot, position = "top right", scale = 1.5)
 ```
 
 #### Logo Text
@@ -193,6 +199,7 @@ normal <- ggplot(diamonds) +
        x = "Cut",
        y = "Count",
        fill = "Clarity") +
+  scale_y_continuous(expand = expand_scale(mult = c(0, 0.001))) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 reversed <- normal +
