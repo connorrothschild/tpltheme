@@ -2,8 +2,6 @@
 
 # TPL Theme
 
-See https://github.com/connorrothschild/tpltheme
-
 ## Installation
 
 ``` r
