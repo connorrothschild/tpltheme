@@ -2,7 +2,8 @@
 #'
 #' Add TPL logo text to a single plot as grid object
 #'
-#' @example \dontrun{
+#' @examples
+#' \dontrun{
 #' add_tpl_logo_text(plot)
 #' }
 #'

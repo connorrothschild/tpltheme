@@ -4,29 +4,29 @@
 #' TPL website.
 #'
 #' @param style The default theme style for the R session. Options are "print" or "map".
-#' @param font The font for plot labels, axes, and titles. Options are "adobe" (Adobe Caslon Pro) and "lato" (Lato).
+#' @param font The font for plot labels, axes, and titles. We recommend 'Adobe Caslon Pro' or 'Lato.'
 #' @import extrafont
 #' @import ggrepel
 #' @md
 #' @export
-set_tpl_theme <- function(style = "print", font = "adobe") {
+set_tpl_theme <- function(style = "print", font = 'Arial') {
 
   .onLoad()
 
   # set default theme
 
-    if (style == "print") {
-    ggplot2::theme_set(theme_tpl_print())
+  if (style == "print") {
+    ggplot2::theme_set(theme_tpl_print(base_family = font))
   } else if (style == "Texas") {
-    ggplot2::theme_set(theme_tpl_texas())
+    ggplot2::theme_set(theme_tpl_texas(base_family = font))
   } else {
     stop('Style does not exist. Try "print" or "Texas".',
-         call. = FALSE
-      )
+         call. = FALSE)
   }
 
   # add font
 
+  ## Legacy handling of fonts:
   if (font == "adobe") {
     ggplot2::theme_update(text = ggplot2::element_text(family = "Adobe Caslon Pro"))
     ggplot2::update_geom_defaults("text", list(family = "Adobe Caslon Pro"))
@@ -42,8 +42,11 @@ set_tpl_theme <- function(style = "print", font = "adobe") {
     ggplot2::update_geom_defaults("label_repel", list(family = "Lato"))
 
   } else {
-    stop('Font does not exist. Try "adobe" (Adobe Caslon Pro) or "lato" (Lato).',
-         call. = FALSE)
+    ggplot2::theme_update(text = ggplot2::element_text(family = font))
+    ggplot2::update_geom_defaults("text", list(family = font))
+    ggplot2::update_geom_defaults("label", list(family = font))
+    ggplot2::update_geom_defaults("text_repel", list(family = font))
+    ggplot2::update_geom_defaults("label_repel", list(family = font))
   }
 
 # select color palette

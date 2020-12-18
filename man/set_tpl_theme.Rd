@@ -4,12 +4,12 @@
 \alias{set_tpl_theme}
 \title{The TPL \link{ggplot2} theme}
 \usage{
-set_tpl_theme(style = "print", font = "adobe")
+set_tpl_theme(style = "print", font = "Arial")
 }
 \arguments{
 \item{style}{The default theme style for the R session. Options are "print" or "map".}
 
-\item{font}{The font for plot labels, axes, and titles. Options are "adobe" (Adobe Caslon Pro) and "lato" (Lato).}
+\item{font}{The font for plot labels, axes, and titles. We recommend 'Adobe Caslon Pro' or 'Lato.'}
 }
 \description{
 \code{set_tpl_theme} provides a \link{ggplot2} theme formatted according to the

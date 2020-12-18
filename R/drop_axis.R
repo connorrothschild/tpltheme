@@ -2,7 +2,8 @@
 #'
 #' Drops tick axes and axes labels
 #'
-#' @example \dontrun{
+#' @examples
+#' \dontrun{
 #' plot + drop_axis(axis = "both")
 #' }
 #'

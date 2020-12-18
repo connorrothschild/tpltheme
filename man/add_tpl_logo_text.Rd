@@ -14,3 +14,9 @@ add_tpl_logo_text(plot, align = 0)
 \description{
 Add TPL logo text to a single plot as grid object
 }
+\examples{
+\dontrun{
+add_tpl_logo_text(plot)
+}
+
+}

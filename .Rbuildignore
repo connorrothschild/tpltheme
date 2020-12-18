@@ -3,3 +3,6 @@
 ^packrat/
 ^README\.Rmd$
 ^\.Rprofile$
+config.yaml
+figures/
+plot.png

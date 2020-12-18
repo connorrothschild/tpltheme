@@ -6,67 +6,82 @@
 #' @import extrafont
 #' @import ggrepel
 #' @md
-#' @param base_family base font family. font options are Adobe Caslon Pro and Lato. Choices are "adobe" and "lato"
+#' @param base_family base font family
 #' @param base_size base font size
 #' @param base_line_size base line
 #' @param base_rect_size rectangle sizes
 #' @export
-theme_tpl_print <- function(base_size = 11, base_family = "Adobe Caslon Pro",
-                             base_line_size = 0.5,
-                             base_rect_size = 0.5) {
-
+theme_tpl_print <- function(base_size = 11,
+                            base_family = 'Arial',
+                            base_line_size = 0.5,
+                            base_rect_size = 0.5) {
   half_line <- base_size / 2L
 
   ggplot2::theme(
-
     # main attributes
 
-    line = ggplot2::element_line(colour = "#000000",
-                                 size = base_line_size,
-                                 linetype = 1L,
-                                 lineend = "butt"),
-    rect = ggplot2::element_rect(fill = "#FFFFFF",
-                                 colour = "#000000",
-                                 size = base_rect_size,
-                                 linetype = 1L),
-    text = ggplot2::element_text(family = base_family,
-                                 face = "plain",
-                                 colour = "#000000",
-                                 size = base_size,
-                                 hjust = 0.5,
-                                 vjust = 0.5,
-                                 angle = 0,
-                                 lineheight = 0.9,
-                                 margin = ggplot2::margin(),
-                                 debug = FALSE),
+    line = ggplot2::element_line(
+      colour = "#000000",
+      size = base_line_size,
+      linetype = 1L,
+      lineend = "butt"
+    ),
+    rect = ggplot2::element_rect(
+      fill = "#FFFFFF",
+      colour = "#000000",
+      size = base_rect_size,
+      linetype = 1L
+    ),
+    text = ggplot2::element_text(
+      family = base_family,
+      face = "plain",
+      colour = "#000000",
+      size = base_size,
+      hjust = 0.5,
+      vjust = 0.5,
+      angle = 0,
+      lineheight = 0.9,
+      margin = ggplot2::margin(),
+      debug = FALSE
+    ),
 
     # Plot Attributes
 
-    plot.tag = ggplot2::element_text(size = base_size * 1.5,
-                                     hjust = 0L,
-                                     vjust = 0L,
-                                     face = "bold",
-                                     margin = ggplot2::margin(b = 10L)),
+    plot.tag = ggplot2::element_text(
+      size = base_size * 1.5,
+      hjust = 0L,
+      vjust = 0L,
+      face = "bold",
+      margin = ggplot2::margin(b = 10L)
+    ),
     plot.tag.position = "topleft",
-    plot.title = ggplot2::element_text(size = base_size * 12 / 8.5,
-                                       hjust = 0L,
-                                       vjust = 0L,
-                                       face = "bold",
-                                       margin = ggplot2::margin(b = 10L)),
-    plot.subtitle = ggplot2::element_text(size = base_size * 9.5 / 8.5,
-                                          hjust = 0L,
-                                          vjust = 1L,
-                                          margin = ggplot2::margin(b = 10L)),
-    plot.caption = ggplot2::element_text(size = base_size * 7 / 8.5,
-                                         hjust = 1L,
-                                         vjust = 1L,
-                                         margin = ggplot2::margin(t = half_line * 0.9)),
+    plot.title = ggplot2::element_text(
+      size = base_size * 12 / 8.5,
+      hjust = 0L,
+      vjust = 0L,
+      face = "bold",
+      margin = ggplot2::margin(b = 10L)
+    ),
+    plot.subtitle = ggplot2::element_text(
+      size = base_size * 9.5 / 8.5,
+      hjust = 0L,
+      vjust = 1L,
+      margin = ggplot2::margin(b = 10L)
+    ),
+    plot.caption = ggplot2::element_text(
+      size = base_size * 7 / 8.5,
+      hjust = 1L,
+      vjust = 1L,
+      margin = ggplot2::margin(t = half_line * 0.9)
+    ),
     plot.background = NULL,
 
-    plot.margin = ggplot2::margin(t = half_line,
-                                  r = base_line_size * 24,
-                                  b = half_line,
-                                  l = half_line),
+    plot.margin = ggplot2::margin(
+      t = half_line,
+      r = base_line_size * 24,
+      b = half_line,
+      l = half_line
+    ),
 
     # axis attributes
 
@@ -77,7 +92,7 @@ theme_tpl_print <- function(base_size = 11, base_family = "Adobe Caslon Pro",
     axis.text.y.right = NULL,
 
     axis.title = ggplot2::element_text(#face = "italic",
-                                       size = base_size),
+      size = base_size),
     axis.title.x = ggplot2::element_text(margin = ggplot2::margin(t = 2L)),
     axis.title.y = ggplot2::element_text(angle = 90L,
                                          margin = ggplot2::margin(r = 8L)),
@@ -93,17 +108,21 @@ theme_tpl_print <- function(base_size = 11, base_family = "Adobe Caslon Pro",
     axis.ticks.length.y.left = ggplot2::unit(4L, "pt"),
     axis.ticks.length.y.right = ggplot2::unit(4L, "pt"),
 
-    axis.ticks.x = ggplot2::element_line(colour = NULL,
-                                         size = NULL,
-                                         linetype = NULL,
-                                         lineend = NULL),
+    axis.ticks.x = ggplot2::element_line(
+      colour = NULL,
+      size = NULL,
+      linetype = NULL,
+      lineend = NULL
+    ),
     axis.ticks.y = ggplot2::element_blank(),
 
     axis.line = ggplot2::element_line(),
-    axis.line.x = ggplot2::element_line(colour = NULL,
-                                        size = NULL,
-                                        linetype = NULL,
-                                        lineend = NULL),
+    axis.line.x = ggplot2::element_line(
+      colour = NULL,
+      size = NULL,
+      linetype = NULL,
+      lineend = NULL
+    ),
     axis.line.y = ggplot2::element_line(),
 
     # legend attributes
@@ -122,14 +141,20 @@ theme_tpl_print <- function(base_size = 11, base_family = "Adobe Caslon Pro",
     legend.text = ggplot2::element_text(size = base_size,
                                         vjust = 1),
     legend.text.align = NULL,
-    legend.title = ggplot2::element_text(size = base_size*1.25,
+    legend.title = ggplot2::element_text(size = base_size * 1.25,
                                          face = "bold"),
     legend.title.align = NULL,
 
     legend.position = "right",
     legend.direction = "vertical",
     legend.justification = NULL,
-    legend.margin = ggplot2::margin(t = 6L, r = 0L, b = 6L, l = 0L, "pt"),
+    legend.margin = ggplot2::margin(
+      t = 6L,
+      r = 0L,
+      b = 6L,
+      l = 0L,
+      "pt"
+    ),
 
     legend.box = "vertical",
     legend.box.margin = NULL,
@@ -156,16 +181,27 @@ theme_tpl_print <- function(base_size = 11, base_family = "Adobe Caslon Pro",
 
     # strip attributes (Faceting)
 
-    strip.background = ggplot2::element_rect(fill = "#dedddd",
-                                             colour = NA,
-                                             size = 10L),
-    strip.text = ggplot2::element_text(face = "bold",
-                                       size = base_size * 9.5 / 8.5,
-                                       margin = ggplot2::margin(t = 0L, r = 0L, b = 0L, l = 0L)),
+    strip.background = ggplot2::element_rect(
+      fill = "#dedddd",
+      colour = NA,
+      size = 10L
+    ),
+    strip.text = ggplot2::element_text(
+      face = "bold",
+      size = base_size * 9.5 / 8.5,
+      margin = ggplot2::margin(
+        t = 0L,
+        r = 0L,
+        b = 0L,
+        l = 0L
+      )
+    ),
 
     strip.text.x = ggplot2::element_text(margin = ggplot2::margin(t = 4.5, b = 4.5)),
-    strip.text.y = ggplot2::element_text(angle = -90L,
-                                         margin = ggplot2::margin(l = 4.5, r = 4.5)),
+    strip.text.y = ggplot2::element_text(
+      angle = -90L,
+      margin = ggplot2::margin(l = 4.5, r = 4.5)
+    ),
 
     strip.placement = "inside",
     strip.placement.x =  NULL,
@@ -179,4 +215,3 @@ theme_tpl_print <- function(base_size = 11, base_family = "Adobe Caslon Pro",
 
   )
 }
-

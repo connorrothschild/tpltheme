@@ -12,3 +12,9 @@ drop_axis(axis = "both")
 \description{
 Drops tick axes and axes labels
 }
+\examples{
+\dontrun{
+plot + drop_axis(axis = "both")
+}
+
+}

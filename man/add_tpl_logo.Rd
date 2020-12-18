@@ -17,3 +17,9 @@ add_tpl_logo(plot, position = "top right", scale = 1)
 Add TPL logo to a single plot as grid object
 Modified from https://gist.github.com/Ryo-N7/67ca1c364c342a82c4098918082ca445
 }
+\examples{
+\dontrun{
+add_tpl_logo(plot, position = "top right", scale = 1.5)
+}
+
+}

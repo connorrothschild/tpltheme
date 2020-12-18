@@ -6,7 +6,13 @@
 \alias{palette_tpl_diverging}
 \alias{palette_tpl_sequential}
 \title{Texas Policy Lab color palettes}
-\format{An object of class \code{character} of length 9.}
+\format{
+An object of class \code{character} of length 9.
+
+An object of class \code{character} of length 9.
+
+An object of class \code{character} of length 9.
+}
 \source{
 Texas Policy Lab website
   \url{https://www.texaspolicylab.org/}

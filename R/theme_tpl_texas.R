@@ -14,11 +14,12 @@
 #' @export
 theme_tpl_texas <- function(scale = "continuous",
                            base_size = 12,
-                           base_family = "Adobe Caslon Pro",
+                           base_family = 'Arial',
                            base_line_size = 0.5,
                            base_rect_size = 0.5) {
 
-  gg <- theme_tpl_print(base_size = 12, base_family = "Adobe Caslon Pro",
+  gg <- theme_tpl_print(base_size = 12,
+                        base_family = base_family,
                          base_line_size = 0.5,
                          base_rect_size = 0.5)
 

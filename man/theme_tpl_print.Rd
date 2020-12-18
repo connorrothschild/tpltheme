@@ -4,13 +4,17 @@
 \alias{theme_tpl_print}
 \title{A print \link{ggplot2} theme formatted in TPL style}
 \usage{
-theme_tpl_print(base_size = 11, base_family = "Adobe Caslon Pro",
-  base_line_size = 0.5, base_rect_size = 0.5)
+theme_tpl_print(
+  base_size = 11,
+  base_family = "Arial",
+  base_line_size = 0.5,
+  base_rect_size = 0.5
+)
 }
 \arguments{
 \item{base_size}{base font size}
 
-\item{base_family}{base font family. font options are Adobe Caslon Pro and Lato. Choices are "adobe" and "lato"}
+\item{base_family}{base font family}
 
 \item{base_line_size}{base line}
 

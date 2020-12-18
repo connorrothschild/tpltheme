@@ -265,7 +265,7 @@ ggplot(iris, aes(x=jitter(Sepal.Width), y=jitter(Sepal.Length), col=Species, siz
 To restore the TPL theme, simply call `set_tpl_theme()`:
 
 ```{r}
-set_tpl_theme()
+set_tpl_theme(style = 'print', font = 'lato')
 last_plot()
 ```
 

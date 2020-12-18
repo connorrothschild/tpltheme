@@ -1,7 +1,8 @@
 #' @title Read word
 #' @description Reads text from word into Rmarkdown files
 #' @param pth the path to the word document to read
-#' @example \dontrun{
+#' @examples
+#' \dontrun{
 #' # In Rmarkdown
 #' ```{r results = 'asis'}
 #' pth <- "./word/intro.docx'

@@ -3,7 +3,8 @@
 #' @import ggplot2
 #' @import datasets
 #'
-#' @example \dontrun{
+#' @examples
+#' \dontrun{
 #' tpl_plot_test(type = "scatterplot")
 #' }
 #'
@@ -11,10 +12,10 @@
 #' @param type Type of plot to be produced. Options include \code{barplot}, \code{scatterplot}, \code{boxplot}, \code{histogram}, and \code{Texas}.
 #' @param include.logo Whether to include the TPL logo at the bottom of the plot
 #' @param font Font specification
-tpl_plot_test <- function(type = "barplot", font = "adobe", include.logo = F) {
+tpl_plot_test <- function(type = "barplot", include.logo = F) {
 
   #set theme
-  set_tpl_theme(style = "print", font = font)
+  # set_tpl_theme()
 
   #select plot type
     if (type == "barplot") {
@@ -34,7 +35,7 @@ tpl_plot_test <- function(type = "barplot", font = "adobe", include.logo = F) {
       ggplot2::geom_histogram(bins = 20) +
       ggplot2::labs(x="Sepal Width (cm)", y="Count", title="Iris Dataset")
   } else if (type == "Texas") {
-    set_tpl_theme(style = "Texas", font = font)
+    set_tpl_theme(style = "Texas")
     tx_vac <- readr::read_csv("https://raw.githubusercontent.com/connorrothschild/tpltheme/master/data/tx_vac_example.csv")
     plot <- ggplot2::ggplot(data = tx_vac, mapping = ggplot2::aes(x = tx_vac$long, y = tx_vac$lat, group = tx_vac$group, fill = tx_vac$avgvac*100)) +
       ggplot2::coord_fixed(1.3) +
