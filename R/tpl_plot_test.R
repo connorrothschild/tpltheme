@@ -11,7 +11,6 @@
 #' @export
 #' @param type Type of plot to be produced. Options include \code{barplot}, \code{scatterplot}, \code{boxplot}, \code{histogram}, and \code{Texas}.
 #' @param include.logo Whether to include the TPL logo at the bottom of the plot
-#' @param font Font specification
 tpl_plot_test <- function(type = "barplot", include.logo = F) {
 
   #set theme

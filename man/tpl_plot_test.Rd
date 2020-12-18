@@ -10,8 +10,6 @@ tpl_plot_test(type = "barplot", include.logo = F)
 \item{type}{Type of plot to be produced. Options include \code{barplot}, \code{scatterplot}, \code{boxplot}, \code{histogram}, and \code{Texas}.}
 
 \item{include.logo}{Whether to include the TPL logo at the bottom of the plot}
-
-\item{font}{Font specification}
 }
 \description{
 Sample plots to test the appearance of \code{theme_TPL_print}
